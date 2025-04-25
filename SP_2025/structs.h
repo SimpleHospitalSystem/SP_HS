@@ -8,6 +8,8 @@
 #define maxDoc 5
 #define maxPatient 10
 
+// PLEASEEEEEEEEEEEEEEEEEEEEEEE 2E4T8ALLLLLLLLLLLLLLLL
+
 using namespace std;
 
 struct Time {
