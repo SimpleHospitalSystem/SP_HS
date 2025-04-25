@@ -6,6 +6,8 @@ using namespace std;
 int doctorcount = 0;
 int patientcount = 0;
 
+// PLEASEEEEEEEEEEEEEEEEEEEEEEE 2E4T8ALLLLLLLLLLLLLLLL
+
 Doctor doctors[3] = {
     {
         1, "Dr. Judy", "judydoc", "1234", "Dermatology",
