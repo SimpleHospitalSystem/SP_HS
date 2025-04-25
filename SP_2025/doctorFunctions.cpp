@@ -113,14 +113,77 @@ int getNumApptSlot(int loggedDoc) {
     return numSlots;
 }
 
-void displayDocListAvail(int DocIndex, int availableIndexes[], int& count, int slot) {
+void getInput(int& time)
+{
+    // makes sure there was no characters used in input
+    while (true)
+    {
+        bool isValid = true;
+        string currInput;
+        cin >> currInput;
+
+        for (int i = 0; i < currInput.size(); i++)
+        {
+            if (currInput[i] >= 'A' && currInput[i] <= 'z')
+            {
+                cout << "Invalid input! Please enter numbers.\n";
+                isValid = false;
+                break;
+            }
+        }
+
+        if (!isValid)
+            continue;
+
+        time = 0;
+
+        for (int i = 0; i < currInput.size(); i++)
+        {
+            int digit = currInput[i] - '0';
+            time = 10 * time + digit;
+        }
+
+        break;
+    };
+}
+
+void displayDocListAvail(int DocIndex, int slot) {
+    int count;
     int numSlots = getNumTimeSlots(DocIndex);
-    count = 0;
-    if (numSlots == 0) {
-        cout << "You haven't set your available times yet. Set them now to start receiving appointments!\n";
-        return;
+    if (slot == -1) {
+        for (int i = 0; i < numSlots; i++) {
+            if (doctors[DocIndex].listAvail[i].patientID == -1) {
+                cout << i + 1 << ". ";
+                if (doctors[DocIndex].listAvail[i].day == "Wednesday" || doctors[DocIndex].listAvail[i].day == "Thursday" || doctors[DocIndex].listAvail[i].day == "Saturday") {
+                    cout << doctors[DocIndex].listAvail[i].day << "\t"
+                        << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
+                        << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute << "\t";
+                }
+                else {
+                    cout << doctors[DocIndex].listAvail[i].day << "\t"
+                        << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
+                        << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute << "\t";
+                }
+                cout << "Unbooked\n";
+            }
+            else {
+                cout << i + 1 << ". ";
+                if (doctors[DocIndex].listAvail[i].day == "Wednesday" || doctors[DocIndex].listAvail[i].day == "Thursday" || doctors[DocIndex].listAvail[i].day == "Saturday") {
+                    cout << doctors[DocIndex].listAvail[i].day << "\t"
+                        << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
+                        << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute << "\t";
+                }
+                else {
+                    cout << doctors[DocIndex].listAvail[i].day << "\t"
+                        << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
+                        << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute << "\t";
+                }
+                cout << "Booked\n";
+            }
+        }
     }
-    else if (slot == -1) { // For editTime, removeTime, and editAppt functions
+    else if (slot == -2) {
+        count = 0;
         cout << doctors[DocIndex].Name << "\t" << doctors[DocIndex].specialication << "\n";
         for (int i = 0; i < numSlots; i++) {
             if (doctors[DocIndex].listAvail[i].patientID == -1) {
@@ -133,55 +196,41 @@ void displayDocListAvail(int DocIndex, int availableIndexes[], int& count, int s
                     << doctors[DocIndex].listAvail[i].startTime.minute << " - "
                     << doctors[DocIndex].listAvail[i].endTime.hour << ":"
                     << doctors[DocIndex].listAvail[i].endTime.minute << "\n";
-
-                availableIndexes[count] = i;
                 count++;
             }
         }
     }
-    else { // View my Available time list(user aka doc)(default purpose of displayDocListAvail function)  
-        cout << doctors[DocIndex].Name << "\t" << doctors[DocIndex].specialication << "\n";
-        for (int i = 0; i < numSlots; i++) {
-            if (doctors[DocIndex].listAvail[i].patientID == -1) {
-                if (doctors[DocIndex].listAvail[i].day == "Wednesday" || doctors[DocIndex].listAvail[i].day == "Thursday" || doctors[DocIndex].listAvail[i].day == "Saturday")
-                    cout << doctors[DocIndex].listAvail[i].day << "\t" << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
-                    << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute
-                    << "\n";
-                else
-                    cout << doctors[DocIndex].listAvail[i].day << "\t";
-                cout << " " << doctors[DocIndex].listAvail[i].startTime.hour << ":" << doctors[DocIndex].listAvail[i].startTime.minute
-                    << " - " << doctors[DocIndex].listAvail[i].endTime.hour << ":" << doctors[DocIndex].listAvail[i].endTime.minute
-                    << "\n";
-            }
-        }
+    else if (numSlots == 0) {
+        cout << "You haven't set your available times yet. Set them now to start receiving appointments!\n";
+        return;
     }
-    if (count == 0)
-        cout << "No available slots.\n";
 }
 
 void validateAvailTime(int loggedDoc, int Index) { // to make sure that the available time isn't repeated whether it's booked or unbooked
     string day;
     int numSlots = getNumTimeSlots(loggedDoc);
     int startHour, startMin, endHour, endMin;
-    string Day[7] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-    bool correctDay = false;
-    while (!correctDay) {
-        cout << "Enter new day: ";
-        cin >> day;
-        for (int i = 0; i < 7; i++) {
-            if (day == Day[i]) {
-                correctDay = true;
-                break;
-            }
-        }
-        if (!correctDay)
-            cout << "Invalid day entered. Please enter a valid day of the week.\n( Make sure that the first letter is a Capital letter )\n";
-    }
+
     while (true) {
+        string Day[7] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        cout << "Please choose a day : \n";
+        for (int i = 0; i < 7; i++)
+        {
+            cout << i + 1 << ". " << Day[i] << '\n';
+        }
+        int choice;
+        getInput(choice);
+        if (choice > 7 || choice < 1)
+        {
+            cout << "Invalid Choice!\n";
+            continue;
+        }
+        choice--;
+        day = Day[choice];
         cout << "Enter new start time (24-Hour Format: hour minute): ";
-        cin >> startHour >> startMin;
+        getInput(startHour), getInput(startMin);
         cout << "Enter new end time (24-Hour Format: hour minute): ";
-        cin >> endHour >> endMin;
+        getInput(endHour), getInput(endMin);
         if (startHour < 0 || startHour > 23 || startMin < 0 || startMin > 59 || endHour < 0 || endHour > 23 || endMin < 0 || endMin > 59) {
             cout << "Please re-enter valid times in 24-hour format.\n";
             continue;
@@ -190,7 +239,7 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
         int endTotalMins = endHour * 60 + endMin;
         int duration = endTotalMins - startTotalMins;
         if (startTotalMins >= endTotalMins) {
-            cout << "Set a proper start and end time for your available time.\n";
+            cout << "Set a proper start and end time for your session.\n";
             continue;
         }
         else if (duration < 30 || duration > 60) {
@@ -221,40 +270,37 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
 }
 
 void editTime(int loggedDocIndex) {
-    int realIndex;
+    int timeSlot;
     char ans;
     do {
         int numSlots = getNumTimeSlots(loggedDocIndex);
-        int availableIndexes[maxAvailTime];
-        int count;
-        displayDocListAvail(loggedDocIndex, availableIndexes, count);
-        if (count == 0) {
-            cout << "No available time slots to edit.\n";
-            return;
+        displayDocListAvail(loggedDocIndex, -1);
+        if (numSlots == 0) {
+            cout << "You haven't set your available times yet. Set them now to start receiving appointments!\n";
+            break;
         }
         while (true) {
-            cout << "Which time slot do you want to change/edit?\n";
-            int choice;
-            cout << "Enter your choice: ";
-            cin >> choice;
-            if (choice < 1 || choice > count) {
-                cout << "Invalid choice.\n";
-                continue;
-            }
-            realIndex = availableIndexes[choice - 1];
-            if (doctors[loggedDocIndex].listAvail[realIndex].patientID != -1) {
-                cout << "You cannot edit a time slot that has already been booked.\n";
+            cout << "Which time slot do you want to change/edit? ";
+            getInput(timeSlot);
+            timeSlot--;
+            if (timeSlot >= 0 && timeSlot < numSlots) {
+                if (doctors[loggedDocIndex].listAvail[timeSlot].patientID != -1) {
+                    cout << " WARNING!! You cannot edit a time slot that has already been booked.\n";
+                    continue;
+                }
+                validateAvailTime(loggedDocIndex, timeSlot);
+                displayDocListAvail(loggedDocIndex, -1);
+                cout << "Your schedule has been successfully updated.\n";
                 break;
             }
-            validateAvailTime(loggedDocIndex, realIndex);
-            displayDocListAvail(loggedDocIndex, availableIndexes, count);
-            cout << "Your schedule has been successfully updated.\n";
-            break;
+            else
+                cout << "Invalid time slot. Please enter a valid option from the list.\n";
         }
         cout << "Do you want to edit another time slot? (y/n): ";
         cin >> ans;
     } while (ans == 'y' || ans == 'Y');
 }
+
 
 void viewDocAppt(int loggedDoc) {
     int numSlots = getNumApptSlot(loggedDoc);
