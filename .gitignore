@@ -1,0 +1,11 @@
+# Ignore Visual Studio files
+.vs/
+.vscode/
+# Ignore build directories
+x64/
+SP_2025/x64/
+# Ignore compiled files
+*.dll
+*.exe
+*.obj
+*.pdb
