@@ -6,7 +6,7 @@
 // PLEASEEEEEEEEEEEEEEEEEEEEEEE 2E4T8ALLLLLLLLLLLLLLLL
 
 int getNumTimeSlots(int loggedDocIndex);
-void displayDocListAvail(int DocIndex, int availableIndexes[], int& count, int slot = -1);
+void displayDocListAvail(int DocIndex, int slot);
 void validateAvailTime(int loggedDoc, int Index);
 void editTime(int loggedDocIndex);
 int getNumApptSlot(int loggedDoc);
