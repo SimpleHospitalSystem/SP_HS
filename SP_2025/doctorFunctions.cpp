@@ -285,7 +285,7 @@ void editTime(int loggedDocIndex) {
             timeSlot--;
             if (timeSlot >= 0 && timeSlot < numSlots) {
                 if (doctors[loggedDocIndex].listAvail[timeSlot].patientID != -1) {
-                    cout << " WARNING!! You cannot edit a time slot that has already been booked.\n";
+                    cout << "WARNING!! You cannot edit a time slot that has already been booked.\n";
                     continue;
                 }
                 validateAvailTime(loggedDocIndex, timeSlot);
@@ -300,7 +300,6 @@ void editTime(int loggedDocIndex) {
         cin >> ans;
     } while (ans == 'y' || ans == 'Y');
 }
-
 
 void viewDocAppt(int loggedDoc) {
     int numSlots = getNumApptSlot(loggedDoc);
@@ -327,4 +326,39 @@ void viewDocAppt(int loggedDoc) {
             }
         }
     }
+}
+
+bool existAvailableTimeSlot(int loggedDocIndex, int& newTimeIndex)
+{
+
+    for (int i = 0; i < maxAvailTime; i++)
+    {
+        if (doctors[loggedDocIndex].listAvail[i].day == "\0")
+        {
+            newTimeIndex = i;
+            return 1;
+        }
+    }
+
+    cout << "You have already added the maximum number of available times.\n";
+    return 0;
+}
+
+void addAvailableTimeDoc(int loggedDocIndex)
+{
+    char ans;
+
+    do
+    {
+
+        int newTimeIndex; // used to know which index to put new time in
+
+        if (!existAvailableTimeSlot(loggedDocIndex, newTimeIndex))
+            return;
+
+        validateAvailTime(loggedDocIndex, newTimeIndex);
+        cout << "Operation was successful.\nDO you want to add another time slot ? ( Y / N )";
+        cin >> ans;
+
+    } while (ans == 'Y' || ans == 'y');
 }
