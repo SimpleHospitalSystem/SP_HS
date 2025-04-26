@@ -130,8 +130,12 @@
     <ClCompile Include="doctorFunctions.cpp" />
     <ClCompile Include="doctorFunctions.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="otherFunctions.cpp" />
+    <ClCompile Include="patientFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="otherFunctions.h" />
+    <ClInclude Include="patientFunctions.h" />
     <ClInclude Include="structs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
