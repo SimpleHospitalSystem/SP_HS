@@ -150,7 +150,7 @@ void getInput(int& time)
 void displayDocListAvail(int DocIndex, int slot) {
     int count;
     int numSlots = getNumTimeSlots(DocIndex);
-    if (slot == -1) {
+    if (slot == -1) { // editTime and removeTime
         for (int i = 0; i < numSlots; i++) {
             if (doctors[DocIndex].listAvail[i].patientID == -1) {
                 cout << i + 1 << ". ";
@@ -182,7 +182,7 @@ void displayDocListAvail(int DocIndex, int slot) {
             }
         }
     }
-    else if (slot == -2) {
+    else if (slot == -2) { // bookAppt and editAppt
         count = 0;
         cout << doctors[DocIndex].Name << "\t" << doctors[DocIndex].specialication << "\n";
         for (int i = 0; i < numSlots; i++) {
