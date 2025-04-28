@@ -4,5 +4,6 @@
 #include "structs.h"
 
 //Patient Function Deceleration
+void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor);
 
 #endif
