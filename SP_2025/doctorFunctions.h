@@ -14,5 +14,6 @@ void viewDocAppt(int loggedDoc);
 void addAvailableTimeDoc(int loggedDocIndex);
 bool existAvailableTimeSlot(int loggedDocIndex, int& newTimeIndex);
 void getInput(int& time);
-
+void RemoveTime(Doctor& doctor);
+void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor);
 #endif
