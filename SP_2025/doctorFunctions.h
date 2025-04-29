@@ -16,4 +16,5 @@ bool existAvailableTimeSlot(int loggedDocIndex, int& newTimeIndex);
 void getInput(int& time);
 void RemoveTime(Doctor& doctor);
 void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor);
+void edit_doctor_profile(Doctor & before);
 #endif
