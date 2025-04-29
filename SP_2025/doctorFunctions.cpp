@@ -462,3 +462,64 @@ void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor)
     cout << "\nUpdated appointments:\n";
     viewMyAppointment(loggedDocIndex);
 }
+
+void edit_doctor_profile(Doctor & before)
+{
+    int number;
+    cout << "choose what you want to chang. (press the number,please):";
+    cout << "\n1.Name \n 2.ID \n 3.User name \n 4.Password \n 5.specialication\n";
+    cin >> number;
+    if (number == 1)
+    {
+        cout << "Enter your new Name, Please\t";
+        cin >> before.Name;
+    }
+    else if (number == 2)
+    {
+
+        cout << "Enter your new ID, Please\t";
+        cin >> before.ID;
+    }
+    else if (number == 3)
+    {
+        cout << "Enter your new Username, Please\t";
+        //علشان انا عملته من الاول انه يكون false وانا محتجاه true علشان اروع اعمل check وده غناني عن اني استخدم variable تاني
+  int counter=1;
+  bool check=true;
+  string user;
+  while (counter!=0)
+  { 
+    counter=0;
+    cin>>user;
+    for (int i = 0; i < 3; i++)
+      {
+          if(user==doctors[i].User)
+          {
+              check=false;
+
+              counter++;
+          }
+
+      } if(check== false){
+          cout<<"This user is already exist. Choose another user, please.";
+      } 
+      check=true; 
+
+}  before.User=user;}
+ 
+    else if (number == 4)
+    {
+        cout << "Enter your new password, Please\t";
+        cin >> before.Password;
+    }
+    else if(number==5)
+    {
+        cout<<"Enter your new specialication, please\t";
+        cin >>before.specialication;
+    }
+    else
+    {
+        cout << "undefind choice!! please; choose another...\n";
+
+    }
+}            
