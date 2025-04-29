@@ -395,3 +395,134 @@ void RemoveTime(Doctor& doctor) {
     displayDocListAvail(loggedDocIndex, -1);
 
 }
+<<<<<<< HEAD
+=======
+
+void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor)
+{
+
+    cout << "Your appointments:\n";
+    for (int i = 0; i < maxMyAppt; i++) {
+        if (patient.myAppt[i].patientID != -1) {
+            cout << i + 1 << ". "
+                << "Doctor: " << doctor.Name << ", "
+                << "Day: " << patient.myAppt[i].day << ", "
+                << "Time: " << patient.myAppt[i].startTime.hour << ":"
+                << patient.myAppt[i].startTime.minute << " - "
+                << patient.myAppt[i].endTime.hour << ":"
+                << patient.myAppt[i].endTime.minute << "\n";
+        }
+    }
+
+    int timeSlotIndex;
+    cout << "\nEnter the appointment index to remove: ";
+    cin >> timeSlotIndex;
+    timeSlotIndex--;
+
+    if (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || patient.myAppt[timeSlotIndex].patientID == -1) {
+        cout << "Error: Invalid appointment index.\n";
+        return;
+    }
+
+    int patID = patient.myAppt[timeSlotIndex].patientID;
+    string day = patient.myAppt[timeSlotIndex].day;
+    Time start = patient.myAppt[timeSlotIndex].startTime;
+
+    for (int i = timeSlotIndex; i < maxMyAppt - 1; i++) {
+        patient.myAppt[i] = patient.myAppt[i + 1];
+    }
+    patient.myAppt[maxMyAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+
+    for (int i = 0; i < maxAvailTime; i++) {
+        if (doctor.docAppt[i].patientID == patID &&
+            doctor.docAppt[i].day == day &&
+            doctor.docAppt[i].startTime.hour == start.hour &&
+            doctor.docAppt[i].startTime.minute == start.minute)
+        {
+            for (int j = i; j < maxDocAppt - 1; j++) {
+                doctor.docAppt[j] = doctor.docAppt[j + 1];
+            }
+            doctor.docAppt[maxDocAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+            doctor.numAppt--;
+            break;
+        }
+    }
+
+
+    for (int i = 0; i < maxAvailTime; i++) {
+        if (doctor.listAvail[i].day == day &&
+            doctor.listAvail[i].startTime.hour == start.hour &&
+            doctor.listAvail[i].startTime.minute == start.minute)
+        {
+            doctor.listAvail[i].patientID = -1;
+            break;
+        }
+    }
+
+    cout << "\nAppointment removed successfully.\n";
+
+    cout << "\nUpdated appointments:\n";
+    viewMyAppointment(loggedDocIndex);
+}
+
+void edit_doctor_profile(Doctor & before)
+{
+    int number;
+    cout << "choose what you want to chang. (press the number,please):";
+    cout << "\n1.Name \n 2.ID \n 3.User name \n 4.Password \n 5.specialication\n";
+    cin >> number;
+    if (number == 1)
+    {
+        cout << "Enter your new Name, Please\t";
+        cin >> before.Name;
+    }
+    else if (number == 2)
+    {
+
+        cout << "Enter your new ID, Please\t";
+        cin >> before.ID;
+    }
+    else if (number == 3)
+    {
+        cout << "Enter your new Username, Please\t";
+        //علشان انا عملته من الاول انه يكون false وانا محتجاه true علشان اروع اعمل check وده غناني عن اني استخدم variable تاني
+  int counter=1;
+  bool check=true;
+  string user;
+  while (counter!=0)
+  { 
+    counter=0;
+    cin>>user;
+    for (int i = 0; i < 3; i++)
+      {
+          if(user==doctors[i].User)
+          {
+              check=false;
+
+              counter++;
+          }
+
+      } if(check== false){
+          cout<<"This user is already exist. Choose another user, please.";
+      } 
+      check=true; 
+
+}  before.User=user;}
+ 
+    else if (number == 4)
+    {
+        cout << "Enter your new password, Please\t";
+        cin >> before.Password;
+    }
+    else if(number==5)
+    {
+        cout<<"Enter your new specialication, please\t";
+        cin >>before.specialication;
+    }
+    else
+    {
+        cout << "undefind choice!! please; choose another...\n";
+
+    }
+}            
+>>>>>>> 4253c1072ab2f27bea744ec736dc2f90c07324cd
