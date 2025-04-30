@@ -3,7 +3,8 @@
 #include "otherFunctions.h"
 #include <iostream>
 using namespace std;
-int DocIndex = 2;
+int DocIndex = 0;
+int patientIndex = 2;
 
 int main() {
 

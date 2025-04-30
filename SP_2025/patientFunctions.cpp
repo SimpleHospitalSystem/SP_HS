@@ -9,6 +9,79 @@ int loggedpatient = 1;
 // Patient function definitions
 int doctorcount = 0;
 int patientcount = 0;
+
+Doctor doctors[3] = {
+    {
+        1, "Dr. Judy", "judydoc", "1234", "Dermatology",
+        {
+            {201, 1, "Monday", {9, 0}, {9, 30}},
+            {201, 1, "Wednesday", {14, 0}, {14, 30}},
+            {-1, 1, "Thursday", {10, 0}, {11, 0}},
+            {-1, 1, "Friday", {8, 0}, {12, 0}},
+            {-1, 1, "Saturday", {14, 0}, {18, 0}}
+        },
+    },
+
+    {
+        2, "Dr. Sam", "samdoc", "5678", "Cardiology",
+        {
+            {203, 2, "Tuesday", {9, 0}, {9, 30}},
+            {-1, 2, "Wednesday", {14, 0}, {18, 0}},
+            {-1, 2, "Sunday", {10, 0}, {15, 0}},
+            {-1, 2, "", {-1, -1}, {-1, -1}},
+            {-1, 2, "", {-1, -1}, {-1, -1}}
+        },
+    },
+
+    {
+        3, "Dr. Lee", "leedoc", "9012", "Neurology",
+        {
+            {-1, 3, "", {-1, -1}, {-1, -1}},
+            {-1, 3, "", {-1, -1}, {-1, -1}},
+            {-1, 3, "", {-1, -1}, {-1, -1}},
+            {-1, 3, "", {-1, -1}, {-1, -1}},
+            {-1, 3, "", {-1, -1}, {-1, -1}}
+        },
+    }
+};
+Patient patients[3] = {
+    {
+        201, "Alice", "aliceuser", "1111", 22, 'F',
+        {
+            {201, 1, "Monday", {9, 0}, {9, 30}},
+            {201, 1, "Wednesday", {14, 0}, {14, 30}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}}
+        }
+    },
+
+    {
+        202, "Bob", "bobuser", "2222", 30, 'M',
+        {
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}}
+        }
+    },
+
+    {
+        203, "Charlie", "charlieuser", "3333", 28, 'M',
+        {
+            {203, 2, "Tuesday", {9, 0}, {9, 30}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}},
+            {-1, -1, "", {-1, -1}, {-1, -1}}
+        }
+    }
+};
+
+int realSlotIndex[maxAvailTime];
+int fakeCount = 0;
+
 int getNumTimeSlots(int loggedDocIndex) {
     int numSlots = 0;
     while (!doctors[loggedDocIndex].listAvail[numSlots].day.empty() && numSlots < maxAvailTime)
@@ -16,7 +89,7 @@ int getNumTimeSlots(int loggedDocIndex) {
     return numSlots;
 }
 
-void display_doctortime(Doctor doctors[], int Count = docCount)
+void display_doctortime(Doctor doctors[], int Count = doctorcount)
 {
 
     cout << "the available doctors are :" << endl;
@@ -159,60 +232,6 @@ void viewMyAppointment(int patientIndex) {
     }
 }
 
-int getNumOfPatientAppt(int patientIndex) {
-    int numAppt = 0;
-
-    for (int i = 0; i < maxMyAppt; i++) {
-        if (patients[patientIndex].myAppt[i].doctorID != -1)
-            numAppt++;
-    }
-
-    return numAppt;
-}
-
-int getUnbookedAppt(int DocIndex) {
-
-    int cnt = 0;
-    int numSlots = getNumTimeSlots(DocIndex);
-
-    for (int i = 0; i < numSlots; i++) {
-        if (doctors[DocIndex].listAvail[i].patientID == -1) {
-            cnt++;
-
-        }
-    }
-
-    return cnt;
-}
-
-int getDocIndex(int DocID) {
-
-    for (int i = 0; i < maxDoc; i++) {
-        if (doctors[i].ID == DocID)
-            return i;
-    }
-}
-
-int getCancelIndexToUnbook(int numSlotDoc, int editSlot, int patientIndex, int DocIndex) {
-
-    int cancelIndex;
-
-    for (int i = 0; i < numSlotDoc; i++) {  // for cancelling
-        if (doctors[DocIndex].listAvail[i].patientID == patients[patientIndex].ID &&
-            patients[patientIndex].myAppt[editSlot].day == doctors[DocIndex].listAvail[i].day &&
-            patients[patientIndex].myAppt[editSlot].startTime.hour == doctors[DocIndex].listAvail[i].startTime.hour &&
-            patients[patientIndex].myAppt[editSlot].startTime.minute == doctors[DocIndex].listAvail[i].startTime.minute &&
-            patients[patientIndex].myAppt[editSlot].endTime.hour == doctors[DocIndex].listAvail[i].endTime.hour &&
-            patients[patientIndex].myAppt[editSlot].endTime.minute == doctors[DocIndex].listAvail[i].endTime.minute) {
-
-            cancelIndex = i;
-            return cancelIndex;
-
-        }
-    }
-
-}
-
 void getInput(int& time)
 {
     // makes sure there was no characters used in input
@@ -248,7 +267,6 @@ void getInput(int& time)
 }
 
 void displayDocListAvail(int DocIndex, int slot) {
-    int count;
     int numSlots = getNumTimeSlots(DocIndex);
     if (slot == -1) { // editTime and removeTime
         for (int i = 0; i < numSlots; i++) {
@@ -283,11 +301,11 @@ void displayDocListAvail(int DocIndex, int slot) {
         }
     }
     else if (slot == -2) { // bookAppt and editAppt
-        count = 0;
+        fakeCount = 0;
         cout << doctors[DocIndex].Name << "\t" << doctors[DocIndex].specialication << "\n";
         for (int i = 0; i < numSlots; i++) {
             if (doctors[DocIndex].listAvail[i].patientID == -1) {
-                cout << count + 1 << ". ";
+                cout << fakeCount + 1 << ". ";
                 if (doctors[DocIndex].listAvail[i].day == "Wednesday" || doctors[DocIndex].listAvail[i].day == "Thursday" || doctors[DocIndex].listAvail[i].day == "Saturday")
                     cout << doctors[DocIndex].listAvail[i].day << "\t";
                 else
@@ -296,7 +314,8 @@ void displayDocListAvail(int DocIndex, int slot) {
                     << doctors[DocIndex].listAvail[i].startTime.minute << " - "
                     << doctors[DocIndex].listAvail[i].endTime.hour << ":"
                     << doctors[DocIndex].listAvail[i].endTime.minute << "\n";
-                count++;
+                realSlotIndex[fakeCount] = i; // -> realIndex = realSlotIndex[choice-1]; 
+                fakeCount++; // if(choice>=1 && choice<=fakeCount+1)
             }
         }
     }
@@ -304,6 +323,49 @@ void displayDocListAvail(int DocIndex, int slot) {
         cout << "You haven't set your available times yet. Set them now to start receiving appointments!\n";
         return;
     }
+}
+
+int getNumOfPatientAppt(int patientIndex) {
+    int numAppt = 0;
+
+    for (int i = 0; i < maxMyAppt; i++) {
+        if (patients[patientIndex].myAppt[i].doctorID != -1)
+            numAppt++;
+    }
+
+    return numAppt;
+}
+
+int getDocIndex(int DocID) {
+
+    for (int i = 0; i < maxDoc; i++) {
+        if (doctors[i].ID == DocID)
+            return i;
+    }
+
+    return -1;
+}
+
+int getCancelIndexToUnbook(int numSlotDoc, int editSlot, int patientIndex, int DocIndex) {
+
+    int cancelIndex;
+
+    for (int i = 0; i < numSlotDoc; i++) {  // for cancelling
+        if (doctors[DocIndex].listAvail[i].patientID == patients[patientIndex].ID &&
+            patients[patientIndex].myAppt[editSlot].day == doctors[DocIndex].listAvail[i].day &&
+            patients[patientIndex].myAppt[editSlot].startTime.hour == doctors[DocIndex].listAvail[i].startTime.hour &&
+            patients[patientIndex].myAppt[editSlot].startTime.minute == doctors[DocIndex].listAvail[i].startTime.minute &&
+            patients[patientIndex].myAppt[editSlot].endTime.hour == doctors[DocIndex].listAvail[i].endTime.hour &&
+            patients[patientIndex].myAppt[editSlot].endTime.minute == doctors[DocIndex].listAvail[i].endTime.minute) {
+
+            cancelIndex = i;
+            return cancelIndex;
+
+        }
+    }
+
+    return -1;
+
 }
 
 void editMyAppointmentPatient(int patientIndex)
@@ -334,13 +396,13 @@ void editMyAppointmentPatient(int patientIndex)
             editSlot--;
 
             int DocIndex = getDocIndex(patients[patientIndex].myAppt[editSlot].doctorID);
-            int numUnbooked = getUnbookedAppt(DocIndex);
-            if (numUnbooked == 0) {
+
+            displayDocListAvail(DocIndex, -2);
+
+            if (fakeCount == 0) {
                 cout << "The doctor is fully booked.\n";
                 return;
             }
-
-            displayDocListAvail(DocIndex, -2);
 
             cout << "Choose an appointment :\n";
             int choice;
@@ -348,7 +410,7 @@ void editMyAppointmentPatient(int patientIndex)
             while (true) {
                 getInput(choice);
 
-                if (choice > numUnbooked || choice < 1) {
+                if (choice > fakeCount || choice < 1) {
                     cout << "Invalid choice!\n";
                     continue;
                 }
@@ -359,25 +421,16 @@ void editMyAppointmentPatient(int patientIndex)
 
             int numSlotDoc = getNumTimeSlots(DocIndex);
             int cancelIndex = getCancelIndexToUnbook(numSlotDoc, editSlot, patientIndex, DocIndex);
-            int index = -1;
+            int realIndex = realSlotIndex[choice];
 
-            for (int i = 0; i < numSlotDoc; i++) {  // for editting
-                if (doctors[DocIndex].listAvail[i].patientID == -1) {
-                    index++;
-                    if (index == choice) {
-                        doctors[DocIndex].listAvail[i].patientID = patients[patientIndex].ID;
-
-                        patients[patientIndex].myAppt[editSlot].doctorID = doctors[DocIndex].ID;
-                        patients[patientIndex].myAppt[editSlot].day = doctors[DocIndex].listAvail[i].day;
-                        patients[patientIndex].myAppt[editSlot].startTime.hour = doctors[DocIndex].listAvail[i].startTime.hour;
-                        patients[patientIndex].myAppt[editSlot].startTime.minute = doctors[DocIndex].listAvail[i].startTime.minute;
-                        patients[patientIndex].myAppt[editSlot].endTime.hour = doctors[DocIndex].listAvail[i].endTime.hour;
-                        patients[patientIndex].myAppt[editSlot].endTime.minute = doctors[DocIndex].listAvail[i].endTime.minute;
-
-                        break;
-                    }
-                }
-            }
+            // edit
+            doctors[DocIndex].listAvail[realIndex].patientID = patients[patientIndex].ID; 
+            patients[patientIndex].myAppt[editSlot].doctorID = doctors[DocIndex].ID;
+            patients[patientIndex].myAppt[editSlot].day = doctors[DocIndex].listAvail[realIndex].day;
+            patients[patientIndex].myAppt[editSlot].startTime.hour = doctors[DocIndex].listAvail[realIndex].startTime.hour;
+            patients[patientIndex].myAppt[editSlot].startTime.minute = doctors[DocIndex].listAvail[realIndex].startTime.minute;
+            patients[patientIndex].myAppt[editSlot].endTime.hour = doctors[DocIndex].listAvail[realIndex].endTime.hour;
+            patients[patientIndex].myAppt[editSlot].endTime.minute = doctors[DocIndex].listAvail[realIndex].endTime.minute;
 
             doctors[DocIndex].listAvail[cancelIndex].patientID = -1; // unbook
 
@@ -390,6 +443,7 @@ void editMyAppointmentPatient(int patientIndex)
     } while (ans == 'Y' || ans == 'y');
 
 };
+
 void Remove_Appt_By_Patient(Patient& patient)
 {
     int docIdx;
@@ -460,9 +514,5 @@ void Remove_Appt_By_Patient(Patient& patient)
     cout << "\nUpdated appointments:\n";
     viewMyAppointment(loggedpatient);
 }
-int main()
-{
 
-    return 0;
-}
 
