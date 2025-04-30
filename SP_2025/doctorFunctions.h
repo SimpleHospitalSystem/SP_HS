@@ -15,11 +15,6 @@ void addAvailableTimeDoc(int loggedDocIndex);
 bool existAvailableTimeSlot(int loggedDocIndex, int& newTimeIndex);
 void getInput(int& time);
 void RemoveTime(Doctor& doctor);
-<<<<<<< HEAD
-
-#endif
-=======
 void Remove_Appt_By_Patient(Patient& patient, Doctor& doctor);
 void edit_doctor_profile(Doctor & before);
 #endif
->>>>>>> 4253c1072ab2f27bea744ec736dc2f90c07324cd
