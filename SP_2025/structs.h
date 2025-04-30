@@ -33,6 +33,7 @@ struct Doctor {
     string specialication;
     Session listAvail[maxAvailTime];
     Session docAppt[maxDocAppt];
+    int numAppt;
 };
 
 struct Patient {
@@ -43,6 +44,7 @@ struct Patient {
     int age;
     char gender;
     Session myAppt[maxMyAppt];
+    int numAppt;
 };
 
 extern int doctorcount;
