@@ -1,12 +1,7 @@
 ﻿#include <iostream>
-#include <iomanip>
+#include "structs.h"
 #include <string>
 using namespace std;
-#define maxAvailTime 5
-#define maxDocAppt 5
-#define maxMyAppt 5
-#define maxDoc 5
-#define maxPatient 10
 int loggedDocIndex = 0;
 const int docCount = 3;
 int loggedpatient = 1;
