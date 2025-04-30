@@ -98,13 +98,8 @@ Patient patients[3] = {
         }
     }
 };
-
-int availIndexes[maxAvailTime];
-void intializeRealIndex() {
-    for (int i = 0;i < maxAvailTime;i++) {
-        availIndexes[i] = -1;
-    }
-}
+int realSlotIndex[maxAvailTime];
+int fakeCount = 0;
 
 int getNumTimeSlots(int loggedDocIndex) {
     int numSlots = 0;
@@ -155,7 +150,6 @@ void getInput(int& time)
 }
 
 void displayDocListAvail(int DocIndex, int slot) {
-    int count;
     int numSlots = getNumTimeSlots(DocIndex);
     if (slot == -1) { // editTime and removeTime
         for (int i = 0; i < numSlots; i++) {
@@ -190,11 +184,11 @@ void displayDocListAvail(int DocIndex, int slot) {
         }
     }
     else if (slot == -2) { // bookAppt and editAppt
-        count = 0;
+        fakeCount = 0;
         cout << doctors[DocIndex].Name << "\t" << doctors[DocIndex].specialication << "\n";
         for (int i = 0; i < numSlots; i++) {
             if (doctors[DocIndex].listAvail[i].patientID == -1) {
-                cout << count + 1 << ". ";
+                cout << fakeCount + 1 << ". ";
                 if (doctors[DocIndex].listAvail[i].day == "Wednesday" || doctors[DocIndex].listAvail[i].day == "Thursday" || doctors[DocIndex].listAvail[i].day == "Saturday")
                     cout << doctors[DocIndex].listAvail[i].day << "\t";
                 else
@@ -203,8 +197,8 @@ void displayDocListAvail(int DocIndex, int slot) {
                     << doctors[DocIndex].listAvail[i].startTime.minute << " - "
                     << doctors[DocIndex].listAvail[i].endTime.hour << ":"
                     << doctors[DocIndex].listAvail[i].endTime.minute << "\n";
-                availIndexes[count] = i; // -> realIndex = availIndexes[choice-1];
-                count++;
+                realSlotIndex[fakeCount] = i; // -> realIndex = realSlotIndex[choice-1]; 
+                fakeCount++; // if(choice>=1 && choice<=fakeCount+1)
             }
         }
     }
