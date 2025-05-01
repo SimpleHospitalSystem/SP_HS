@@ -514,5 +514,69 @@ void Remove_Appt_By_Patient(Patient& patient)
     cout << "\nUpdated appointments:\n";
     viewMyAppointment(loggedpatient);
 }
+void edit_patient_profile (Patient & before)
+{
+    Patient after= before;
+    int number;
+    cout << "choose what you want to chang. (press the number,please):";
+    cout << "\n1.Name \n 2.ID \n 3.User name \n 4.Password \n 5.Age\n 6.Gender\n";
+    cin >> number;
+    if (number == 1)
+    {
+        cout << "Enter your new Name, Please\t";
+        cin >> after.Name;
+    }
+    else if (number == 2)
+    {
+
+        cout << "Enter your new ID, Please\t";
+        cin >> after.ID;
+    }
+    else if (number == 3)
+    {
+         cout << "Enter your new Username, Please\t";
+        int counter=1;
+        bool check=true;
+         string user;
+
+         while (counter!=0)
+  { 
+    counter=0;
+    cin>>user;
+    for (int i = 0; i < 3; i++)
+      {
+          if(user==patients[i].User)
+          {
+              check=false;
+
+              counter++;
+          }
+
+      } if(check== false){
+          cout<<"This user is already exist. Choose another user, please.";
+      } 
+      check=true; 
+
+}  before.User=user;}
+        
+
+    else if (number == 4)
+    {
+        cout << "Enter your new password, Please\t";
+        cin >> after.Password;
+    }
+    else if(number == 5){
+        cout<<"Enter your new age,Please\t";
+        cin>> after.age;
+    }
+    else if(number==6){
+        cout<<"Enter your new gender,please\t";
+        cin>>after.gender;
+    }
+    else
+    {
+        cout << "undefind choice!! please; choose another...\n";
+
+    }}
 
 
