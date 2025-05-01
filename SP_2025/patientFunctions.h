@@ -16,5 +16,6 @@ int getDocIndex(int DocID);
 int getCancelIndexToUnbook(int numSlotDoc, int editSlot, int patientIndex, int DocIndex);
 void editMyAppointmentPatient(int patientIndex);
 void Remove_Appt_By_Patient(Patient& patient);
+void edit_patient_profile (Patient & before);
 
 #endif
