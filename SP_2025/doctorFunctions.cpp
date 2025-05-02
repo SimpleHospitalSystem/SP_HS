@@ -260,6 +260,28 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
             cout << "You have set this time before. Please enter a new one.\n";
             continue;
         }
+        bool timeOverlab = false;
+        for (int i = 0; i < numSlots; i++) {
+            if (doctors[loggedDoc].listAvail[i].day == day) {
+                int existingStartTotalMins = doctors[loggedDoc].listAvail[i].startTime.hour * 60 + doctors[loggedDoc].listAvail[i].startTime.minute;
+                int existingEndTotalMins = doctors[loggedDoc].listAvail[i].endTime.hour * 60 + doctors[loggedDoc].listAvail[i].endTime.minute;
+
+                // case 1 : existingStartTotalMins < startTotalMins < existingEndTotalMins
+                // case 2 : startTotalMins < existingStartTotalMins && existingStartTotalMins < endTotalMins < existingEndTotalMins
+                // case 3 : startTotalMins < existingStartTotalMins && endTotalMins > existEndTotalMins
+
+                if (startTotalMins > existingStartTotalMins && startTotalMins < existingEndTotalMins ||
+                    startTotalMins < existingStartTotalMins && (endTotalMins > existingStartTotalMins && endTotalMins < existingEndTotalMins) || (endTotalMins > existingEndTotalMins)) {
+                    cout << "You have set an available time in this duration before.\n";
+                    timeOverlab = true;
+                    break;
+                }
+            }
+        }
+
+        if (timeOverlab) {
+            continue;
+        }
         else {
             doctors[loggedDoc].listAvail[Index].day = day;
             doctors[loggedDoc].listAvail[Index].startTime.hour = startHour;
