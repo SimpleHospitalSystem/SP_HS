@@ -266,8 +266,8 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
                 int existingStartTotalMins = doctors[loggedDoc].listAvail[i].startTime.hour * 60 + doctors[loggedDoc].listAvail[i].startTime.minute;
                 int existingEndTotalMins = doctors[loggedDoc].listAvail[i].endTime.hour * 60 + doctors[loggedDoc].listAvail[i].endTime.minute;
 
-                // case 1 : existingStartTotalMins < startTotalMins < xistingEndTotalMins
-                // case 2 : startTotalMins < existingStartTotalMins && existingStartTotalMins < endTotalMins < xistingEndTotalMins
+                // case 1 : existingStartTotalMins < startTotalMins < existingEndTotalMins
+                // case 2 : startTotalMins < existingStartTotalMins && existingStartTotalMins < endTotalMins < existingEndTotalMins
                 // case 3 : startTotalMins < existingStartTotalMins && endTotalMins > existEndTotalMins
 
                 if (startTotalMins > existingStartTotalMins && startTotalMins < existingEndTotalMins ||
