@@ -617,6 +617,7 @@ void clearApptHistory(int loggedPatient) {
         }
         patients[loggedPatient].numAppt = 0;
         cout << "Appointment history cleared successfully.\n";
+        return;
     }
     else {
         cout << "Operation cancelled.\n";
