@@ -514,6 +514,7 @@ void Remove_Appt_By_Patient(Patient& patient)
     cout << "\nUpdated appointments:\n";
     viewMyAppointment(loggedpatient);
 }
+
 void edit_patient_profile (Patient & before)
 {
     Patient after= before;
@@ -578,5 +579,49 @@ void edit_patient_profile (Patient & before)
         cout << "undefind choice!! please; choose another...\n";
 
     }}
+
+void clearApptHistory(int loggedPatient) {
+    char ans;
+    cout << "Do you really want to clear all appointment history? (y/n): ";
+    cin >> ans;
+    if (ans == 'y' || ans == 'Y') {
+        int numApptPat = getNumOfPatientAppt(loggedPatient);
+        for (int i = 0; i < numApptPat; i++) {
+            Session appt = patients[loggedPatient].myAppt[i];
+            int docIndex = getDocIndex(appt.doctorID);
+            if (docIndex != -1) {
+                for (int j = 0; j < maxAvailTime; j++) {
+                    if (doctors[docIndex].listAvail[j].patientID == appt.patientID &&
+                        doctors[docIndex].listAvail[j].day == appt.day &&
+                        doctors[docIndex].listAvail[j].startTime.hour == appt.startTime.hour &&
+                        doctors[docIndex].listAvail[j].startTime.minute == appt.startTime.minute) {
+                        doctors[docIndex].listAvail[j].patientID = -1;
+                        break;
+                    }
+                }
+                for (int j = 0; j < maxDocAppt; j++) {
+                    if (doctors[docIndex].docAppt[j].patientID == appt.patientID &&
+                        doctors[docIndex].docAppt[j].day == appt.day &&
+                        doctors[docIndex].docAppt[j].startTime.hour == appt.startTime.hour &&
+                        doctors[docIndex].docAppt[j].startTime.minute == appt.startTime.minute) {
+                        for (int k = j; k < maxDocAppt - 1; k++) {
+                            doctors[docIndex].docAppt[k] = doctors[docIndex].docAppt[k + 1];
+                        }
+                        doctors[docIndex].docAppt[maxDocAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+                        doctors[docIndex].numAppt--;
+                        break;
+                    }
+                }
+            }
+            patients[loggedPatient].myAppt[i] = { -1, -1, "", {-1, -1}, {-1, -1} };
+        }
+        patients[loggedPatient].numAppt = 0;
+        cout << "Appointment history cleared successfully.\n";
+    }
+    else {
+        cout << "Operation cancelled.\n";
+        return;
+    }
+}
 
 
