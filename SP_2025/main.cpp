@@ -504,7 +504,7 @@ void edit_doctor_profile(Doctor& before)
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n ";
-    cin >> number;
+    getInput(number);
     if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
@@ -520,7 +520,7 @@ void edit_doctor_profile(Doctor& before)
         {
             counter = 0;
             cin >> user;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < maxDoc; i++)
             {
                 if (user == doctors[i].User)
                 {
@@ -876,7 +876,7 @@ void edit_patient_profile(Patient& before)
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
-    cin >> number;
+    getInput(number);
     if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
@@ -893,7 +893,7 @@ void edit_patient_profile(Patient& before)
         {
             counter = 0;
             cin >> user;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < maxPatient; i++)
             {
                 if (user == patients[i].User)
                 {
