@@ -821,7 +821,7 @@ void editMyAppointmentPatient(int patientIndex)
                     doctors[DocIndex].docAppt[i].startTime.minute = doctors[DocIndex].listAvail[realIndex].startTime.minute;
                     doctors[DocIndex].docAppt[i].endTime.hour = doctors[DocIndex].listAvail[realIndex].endTime.hour;
                     doctors[DocIndex].docAppt[i].endTime.minute = doctors[DocIndex].listAvail[realIndex].endTime.minute;
-
+                    break;
                 }
             }
 
