@@ -808,6 +808,23 @@ void editMyAppointmentPatient(int patientIndex)
             int cancelIndex = getCancelIndexToUnbook(numSlotDoc, editSlot, patientIndex, DocIndex);
             int realIndex = realSlotIndex[choice];
 
+            for (int i = 0; i < maxDocAppt; i++) {  // update in docAppt
+                if (doctors[DocIndex].listAvail[i].patientID == patients[patientIndex].ID &&
+                    patients[patientIndex].myAppt[editSlot].day == doctors[DocIndex].docAppt[i].day &&
+                    patients[patientIndex].myAppt[editSlot].startTime.hour == doctors[DocIndex].docAppt[i].startTime.hour &&
+                    patients[patientIndex].myAppt[editSlot].startTime.minute == doctors[DocIndex].docAppt[i].startTime.minute &&
+                    patients[patientIndex].myAppt[editSlot].endTime.hour == doctors[DocIndex].docAppt[i].endTime.hour &&
+                    patients[patientIndex].myAppt[editSlot].endTime.minute == doctors[DocIndex].docAppt[i].endTime.minute) {
+
+                    doctors[DocIndex].docAppt[i].day = doctors[DocIndex].listAvail[realIndex].day;
+                    doctors[DocIndex].docAppt[i].startTime.hour = doctors[DocIndex].listAvail[realIndex].startTime.hour;
+                    doctors[DocIndex].docAppt[i].startTime.minute = doctors[DocIndex].listAvail[realIndex].startTime.minute;
+                    doctors[DocIndex].docAppt[i].endTime.hour = doctors[DocIndex].listAvail[realIndex].endTime.hour;
+                    doctors[DocIndex].docAppt[i].endTime.minute = doctors[DocIndex].listAvail[realIndex].endTime.minute;
+
+                }
+            }
+
             // edit
             doctors[DocIndex].listAvail[realIndex].patientID = patients[patientIndex].ID;
             patients[patientIndex].myAppt[editSlot].doctorID = doctors[DocIndex].ID;
@@ -816,6 +833,9 @@ void editMyAppointmentPatient(int patientIndex)
             patients[patientIndex].myAppt[editSlot].startTime.minute = doctors[DocIndex].listAvail[realIndex].startTime.minute;
             patients[patientIndex].myAppt[editSlot].endTime.hour = doctors[DocIndex].listAvail[realIndex].endTime.hour;
             patients[patientIndex].myAppt[editSlot].endTime.minute = doctors[DocIndex].listAvail[realIndex].endTime.minute;
+
+
+
 
             doctors[DocIndex].listAvail[cancelIndex].patientID = -1; // unbook
 
