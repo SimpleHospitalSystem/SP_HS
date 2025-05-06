@@ -511,7 +511,7 @@ void RemoveTime(Doctor& doctor) {
 void edit_doctor_profile(Doctor& before)
 {
     int number;
-    cout << "choose what you want to chang. (press the number,please):";
+    cout << "choose what you want to change. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n ";
     getInput(number);
 
@@ -902,16 +902,14 @@ void Remove_Appt_By_Patient(Patient& patient)
 
 void edit_patient_profile(Patient& before)
 {
-    Patient after = before;
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
-    getInput(number);
-
+cin>>number;
     if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
-        cin >> after.Name;
+        cin >> before.Name;
     }
     else if (number == 2)
     {
@@ -924,7 +922,7 @@ void edit_patient_profile(Patient& before)
         {
             counter = 0;
             cin >> user;
-            for (int i = 0; i < maxPatient; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (user == patients[i].User)
                 {
@@ -942,15 +940,15 @@ void edit_patient_profile(Patient& before)
     else if (number == 3)
     {
         cout << "Enter your new password, Please\t";
-        cin >> after.Password;
+        cin >> before.Password;
     }
     else if (number == 4) {
         cout << "Enter your new age,Please\t";
-        cin >> after.age;
+        cin >> before.age;
     }
     else if (number == 5) {
         cout << "Enter your new gender,please\t";
-        cin >> after.gender;
+        cin >> before.gender;
     }
     else
     {
