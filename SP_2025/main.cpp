@@ -852,7 +852,7 @@ void Remove_Appt_By_Patient(Patient& patient)
 
     for (int i = 0; i < maxDoc; i++)
     {
-        if (patients[patientcount].myAppt[timeSlotIndex].doctorID == doctors[i].ID)
+        if (patients[loggedPatient].myAppt[timeSlotIndex].doctorID == doctors[i].ID)
         {
             docIdx = i;
         }
