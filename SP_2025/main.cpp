@@ -377,6 +377,7 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
     }
 }
 
+
 void editTime(int loggedDocIndex) {
     int timeSlot;
     char ans;
@@ -486,7 +487,7 @@ void RemoveTime(Doctor& doctor) {
             cout << "Invalid time slot index.\n";
             cout << "Enter valid index\n";
         }
-    } while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.listAvail[timeSlotIndex].day == "");
+    } while (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "");
 
     // Check if the slot is already booked
     if (doctors[loggedDocIndex].listAvail[timeSlotIndex].patientID != -1) {
@@ -508,7 +509,7 @@ void RemoveTime(Doctor& doctor) {
 void edit_doctor_profile(Doctor& before)
 {
     int number;
-    cout << "choose what you want to change. (press the number,please):";
+    cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n ";
     getInput(number);
 
@@ -565,42 +566,48 @@ void display_doctortime(Doctor doctors[], int Count)
         if (numSlots == 0) {
             continue;
         }
+        cout << "--------------------------------------\n";
         cout << "Doctor: " << doctors[i].Name << endl;
         cout << "ID: " << doctors[i].ID << "\t\t";
         cout << "spacializtion: " << doctors[i].specialication << endl;
         if (doctors[i].ratingCount > 0) {
-            cout << "Average Rating(" << doctors[i].averageRating << ")\n";
+          cout << "Average Rating(" << doctors[i].averageRating << ")\n";
         }
         else {
             cout << "Average Rating:  No ratings yet!\n\n";
         }
-
         cout << "Available times:\n";
-
+        
         for (int j = 0; j < numSlots; j++) {
-            if (doctors[i].listAvail[i].day == "" || doctors[i].listAvail[j].startTime.hour == -1 || doctors[i].listAvail[j].endTime.minute == -1)
+            if (doctors[i].listAvail[j].day == "" || doctors[i].listAvail[j].startTime.hour == -1 || doctors[i].listAvail[j].endTime.minute == -1)
             {
                 continue;
             }
-            if (doctors[i].listAvail[j].day == "Wednesday" || doctors[i].listAvail[j].day == "Thursday" || doctors[i].listAvail[j].day == "Saturday")
-            {
-                cout << doctors[i].listAvail[j].day << "\t";
-                cout << " from  " << doctors[i].listAvail[j].startTime.hour << ":" << doctors[i].listAvail[j].startTime.minute;
-                cout << " to " << doctors[i].listAvail[j].endTime.hour << ":" << doctors[i].listAvail[j].endTime.minute << endl;
-            }
-            else {
-                cout << doctors[i].listAvail[j].day << "\t\t";
-                cout << " from  " << doctors[i].listAvail[j].startTime.hour << ":" << doctors[i].listAvail[j].startTime.minute;
-                cout << " to " << doctors[i].listAvail[j].endTime.hour << ":" << doctors[i].listAvail[j].endTime.minute << endl;
+
+            if (doctors[i].listAvail[j].patientID == -1) {
+                if (doctors[i].listAvail[j].day == "Wednesday" || doctors[i].listAvail[j].day == "Thursday" || doctors[i].listAvail[j].day == "Saturday")
+                {
+                    cout << doctors[i].listAvail[j].day << "\t";
+                    cout << " from  " << doctors[i].listAvail[j].startTime.hour << ":" << doctors[i].listAvail[j].startTime.minute;
+                    cout << " to " << doctors[i].listAvail[j].endTime.hour << ":" << doctors[i].listAvail[j].endTime.minute << endl;
+                }
+                else {
+                    cout << doctors[i].listAvail[j].day << "\t\t";
+                    cout << " from  " << doctors[i].listAvail[j].startTime.hour << ":" << doctors[i].listAvail[j].startTime.minute;
+                    cout << " to " << doctors[i].listAvail[j].endTime.hour << ":" << doctors[i].listAvail[j].endTime.minute << endl;
+                }
             }
         }
     }
+    cout << "--------------------------------------\n";
 }
 
 void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
-{
+{  
+    display_doctortime(doctors,maxDoc);
+    cout << endl;
     int doctorID;
-    cout << "Please enter the doctor ID to book with:\n";
+    cout << "\nPlease enter the doctor ID to book with:\n";
     cin >> doctorID;
 
     int docindex = -1;
@@ -618,13 +625,11 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
     cout << "Available times for doctor " << doc.Name << ":\n";
 
     displayDocListAvail(docindex, -2);
-
-
     int choice;
     cout << "Enter the number of the slot you want to book:";
     cin >> choice;
 
-    if (choice < 1 || choice > fakeCount) {
+    if (choice < 1 || choice > fakeCount+1) {
         cout << "Invild choice \n";
         return;
     }
@@ -650,13 +655,24 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
             patient.myAppt[j].startTime.minute = doc.listAvail[realIndex].startTime.minute;
             patient.myAppt[j].endTime.minute = doc.listAvail[realIndex].endTime.minute;
 
-            doc.listAvail[realIndex].day = "";
+            doc.listAvail[realIndex].patientID = patient.ID;
 
-            cout << "Appointment booked successfully!\n";
+          int numappt=getNumApptSlot(docindex);
+          if (numappt<maxDocAppt) {
+              doc.docAppt[numappt].patientID = patient.ID;
+              doc.docAppt[numappt].doctorID = doc.ID;
+              doc.docAppt[numappt].day = doc.listAvail[realIndex].day;
+              doc.docAppt[numappt].startTime.hour = doc.listAvail[realIndex].startTime.hour;
+              doc.docAppt[numappt].endTime.hour = doc.listAvail[realIndex].endTime.hour;
+              doc.docAppt[numappt].startTime.minute = doc.listAvail[realIndex].startTime.minute;
+              doc.docAppt[numappt].endTime.minute = doc.listAvail[realIndex].endTime.minute;
+          }
+            cout << "\nAppointment booked successfully!\n";
             break;
         }
     }
 }
+
 
 void viewMyAppointment(int patientIndex) {
     bool hasAppointments = false;
@@ -886,7 +902,7 @@ void edit_patient_profile(Patient& before)
 {
     Patient after = before;
     int number;
-    cout << "choose what you want to change. (press the number,please):";
+    cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
     getInput(number);
 
@@ -1077,7 +1093,6 @@ int calcpatcount() {
     }
     return maxPatient;
 }
-
 void docregisterfun(int& doctorcount, int   patientcount) {
     string docusername, patusername, password;
     bool check;
@@ -1176,7 +1191,6 @@ void docregisterfun(int& doctorcount, int   patientcount) {
         cout << "registeration is done\n";
     }
 }
-
 void patregisterfun(int& patientcount, int doctorcount) {
     string docusername, patusername, password;
     bool check;
@@ -1278,15 +1292,6 @@ void patregisterfun(int& patientcount, int doctorcount) {
     }
 }
 
-int loginfundoctor(string username, string password) {
-    for (int i = 0; i < maxDoc; i++)
-    {
-        if (username == doctors[i].User && password == doctors[i].Password)
-            return i;
-    }
-    return -1;
-}
-
 int loginfunpatient(string username, string password) {
     for (int i = 0; i < maxPatient; i++) {
 
@@ -1295,6 +1300,19 @@ int loginfunpatient(string username, string password) {
     }
     return -1;
 }
+
+int loginfundoctor(string username, string password) {
+
+    for (int i = 0; i < maxDoc; i++)
+    {
+        if (username == doctors[i].User && password == doctors[i].Password)
+            return i;
+    }
+    return -1;
+}
+
+
+
 
 void loggeduser() {
     string username, password;
@@ -1409,7 +1427,6 @@ void menupatient() {
 
     }
 }
-
 void menudoctor() {
     int choice_menu_doctor;
     while (true) {
