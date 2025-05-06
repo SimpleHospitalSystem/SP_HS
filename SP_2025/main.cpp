@@ -177,6 +177,8 @@ void loggeduser();
 void mainMenu();
 void menupatient();
 void menudoctor();
+void viewMyRate(int loggedDocIndex);
+void rateDoctor(int doctorcount);
 
 int main() {
     mainMenu();
@@ -1008,9 +1010,7 @@ void clearApptHistory(int loggedPatient) {
 
 // Menus or Other functions related
 
-void rateDoctor() {
-
-    doctorcount = calcdoccount();
+void rateDoctor(int doctorcount) {
 
     if (doctorcount == 0) {
         cout << "No doctors available to rate\n";
