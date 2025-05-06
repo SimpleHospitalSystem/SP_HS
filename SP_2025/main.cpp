@@ -169,8 +169,8 @@ void edit_patient_profile(Patient& before);
 // Menus or Other functions related
 int calcdoccount();
 int calcpatcount();
-void docregisterfun();
-void patregisterfun();
+void docregisterfun(int&doctorcount,int patientcount);
+void patregisterfun(int& patientcount,int doctorcount);
 int loginfundoctor(string username, string password);
 int loginfunpatient(string username, string password);
 void loggeduser();
@@ -1159,7 +1159,7 @@ void docregisterfun(int&doctorcount,int patientcount) {
     }
 }
 
-void patregisterfun(int& patientcount, doctorcount) {
+void patregisterfun(int& patientcount, int doctorcount) {
     string docusername, patusername, password;
     bool check;
     patientcount = calcpatcount();
