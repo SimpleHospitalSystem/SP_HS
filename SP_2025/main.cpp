@@ -1229,6 +1229,7 @@ void loggeduser() {
 
 void menupatient() {
     int choice_menu_patient;
+    patientcount = calcpatcount();
     while (true) {
         cout << "\n*operation for patient*\n";
         cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. logout\n\n";
@@ -1266,7 +1267,6 @@ void menupatient() {
             continue;
         }
         else if (choice_menu_patient == 8) {
-            mainMenu();
             break;
         }
         else {
@@ -1279,6 +1279,7 @@ void menupatient() {
 
 void menudoctor() {
     int choice_menu_doctor;
+    doctorcount = calcdoccount();
 
     while (true) {
         cout << "\n*operation for doctor*\n";
@@ -1311,7 +1312,6 @@ void menudoctor() {
             continue;
         }
         else if (choice_menu_doctor == 7) {
-            mainMenu();
             break;
         }
         else {
@@ -1321,7 +1321,6 @@ void menudoctor() {
         }
     }
 }
-
 void mainMenu() {
     int choice;
     do {
@@ -1344,12 +1343,12 @@ void mainMenu() {
         else if (choice == 3) {
             loggeduser();
             menudoctor();
-            break;
+            continue;
         }
         else if (choice == 4) {
             loggeduser();
             menupatient();
-            break;
+            continue;
         }
         else if (choice == 5) {
             // saveDoctors(doctors, numDoctors);
@@ -1360,5 +1359,5 @@ void mainMenu() {
         else {
             cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 5);
+    } while (choice!= 5);
 }
