@@ -479,12 +479,16 @@ void RemoveTime(Doctor& doctor) {
 
     int timeSlotIndex;
     cout << "Enter the time slot index to remove: ";
+            do{
     getInput(timeSlotIndex);
     timeSlotIndex--; // Convert to 0-based index
     if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
         cout << "Invalid time slot index.\n";
+         cout << "Enter valid index\n";
+
         return;
     }
+            } while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.myAppt[timeSlotIndex].patientID == -1);
     // Check if the slot is already booked
     if (doctors[loggedDocIndex].listAvail[timeSlotIndex].patientID != -1) {
         cout << "Error: This time slot is already booked by a patient.\n";
