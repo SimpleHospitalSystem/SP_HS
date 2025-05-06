@@ -34,7 +34,7 @@ struct Doctor {
     Session listAvail[maxAvailTime];
     Session docAppt[maxDocAppt];
     int numAppt;
-    int totalRating; 
+    int totalRating;
     int ratingCount;
     double averageRating;
 };
@@ -169,8 +169,8 @@ void edit_patient_profile(Patient& before);
 // Menus or Other functions related
 int calcdoccount();
 int calcpatcount();
-void docregisterfun(int& doctorcount, int patientcount );
-void patregisterfun(int& patientcount,int doctorcount);
+void docregisterfun(int& doctorcount, int patientcount);
+void patregisterfun(int& patientcount, int doctorcount);
 int loginfundoctor(string username, string password);
 int loginfunpatient(string username, string password);
 void loggeduser();
@@ -354,9 +354,8 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
                 // case 2 : startTotalMins < existingStartTotalMins && existingStartTotalMins < endTotalMins < existingEndTotalMins
                 // case 3 : startTotalMins < existingStartTotalMins && endTotalMins > existEndTotalMins
 
-                if (startTotalMins > existingStartTotalMins && startTotalMins < existingEndTotalMins ||
-                    startTotalMins < existingStartTotalMins && (endTotalMins > existingStartTotalMins && endTotalMins < existingEndTotalMins) || (endTotalMins > existingEndTotalMins)) {
-                    cout << "You have set an available time in this duration before.\n";
+                if ((startTotalMins > existingStartTotalMins && startTotalMins < existingEndTotalMins) ||
+                    (startTotalMins < existingStartTotalMins && ((endTotalMins > existingStartTotalMins && endTotalMins < existingEndTotalMins) || (endTotalMins > existingEndTotalMins)))) {
                     timeOverlab = true;
                     break;
                 }
@@ -364,6 +363,7 @@ void validateAvailTime(int loggedDoc, int Index) { // to make sure that the avai
         }
 
         if (timeOverlab) {
+            cout << "You have set an available time in this duration before.\n";
             continue;
         }
         else {
@@ -479,14 +479,14 @@ void RemoveTime(Doctor& doctor) {
 
     int timeSlotIndex;
     cout << "Enter the time slot index to remove: ";
-do {
-    getInput(timeSlotIndex);
-    timeSlotIndex--; // Convert to 0-based index
-    if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
-        cout << "Invalid time slot index.\n";
-        cout << "Enter valid index\n";
-    }
-} while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.myAppt[timeSlotIndex].patientID == -1);
+    do {
+        getInput(timeSlotIndex);
+        timeSlotIndex--; // Convert to 0-based index
+        if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
+            cout << "Invalid time slot index.\n";
+            cout << "Enter valid index\n";
+        }
+    } while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.listAvail[timeSlotIndex].day == "");
 
     // Check if the slot is already booked
     if (doctors[loggedDocIndex].listAvail[timeSlotIndex].patientID != -1) {
@@ -508,7 +508,7 @@ do {
 void edit_doctor_profile(Doctor& before)
 {
     int number;
-    cout << "choose what you want to chang. (press the number,please):";
+    cout << "choose what you want to change. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n ";
     getInput(number);
 
@@ -569,7 +569,7 @@ void display_doctortime(Doctor doctors[], int Count)
         cout << "ID: " << doctors[i].ID << "\t\t";
         cout << "spacializtion: " << doctors[i].specialication << endl;
         if (doctors[i].ratingCount > 0) {
-            cout << "Average Rating(" << doctors[i].averageRating <<")\n";
+            cout << "Average Rating(" << doctors[i].averageRating << ")\n";
         }
         else {
             cout << "Average Rating:  No ratings yet!\n\n";
@@ -657,7 +657,6 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
         }
     }
 }
-
 
 void viewMyAppointment(int patientIndex) {
     bool hasAppointments = false;
@@ -824,7 +823,7 @@ void Remove_Appt_By_Patient(Patient& patient)
     cout << "\nEnter the appointment index to remove:" << endl;
     int timeSlotIndex;
     do {
-            getInput(timeSlotIndex);
+        getInput(timeSlotIndex);
         timeSlotIndex--;//convert to 0_based index 
         if (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || patient.myAppt[timeSlotIndex].patientID == -1) {
             cout << "Error: Invalid appointment index.\n";
@@ -887,11 +886,11 @@ void edit_patient_profile(Patient& before)
 {
     Patient after = before;
     int number;
-    cout << "choose what you want to chang. (press the number,please):";
+    cout << "choose what you want to change. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
-               getInput(number);
+    getInput(number);
 
-            if (number == 1)
+    if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
         cin >> after.Name;
@@ -993,18 +992,18 @@ void clearApptHistory(int loggedPatient) {
 
 // Menus or Other functions related
 
- void rateDoctor() {
+void rateDoctor() {
 
-     doctorcount = calcdoccount();
+    doctorcount = calcdoccount();
 
-   if (doctorcount == 0) { 
+    if (doctorcount == 0) {
         cout << "No doctors available to rate\n";
-       
+
         return;
     }
 
     cout << "Available Doctors To Rate:\n";
-    for (int i = 0; i < doctorcount; i++) {  
+    for (int i = 0; i < doctorcount; i++) {
         cout << i + 1 << " - " << doctors[i].Name << "  ID: " << doctors[i].ID << "\n";
     }
 
@@ -1027,34 +1026,34 @@ void clearApptHistory(int loggedPatient) {
     while (true) {
         cout << "Enter your rating for " << doctors[i].Name << " (from 1 to 5)\nNote: 1 is the lowest value , 5 is the highest value:\n";
         getInput(rating);
-       
-       if (rating < 1||rating > 5) {
+
+        if (rating < 1 || rating > 5) {
             cout << "Invalid rating! Please enter a number between 1 and 5:\n\n ";
             continue;
         }
-       else {
-           break;
-       }
+        else {
+            break;
+        }
     }
     doctors[i].totalRating += rating;
     doctors[i].ratingCount++;
-    doctors[i].averageRating =  (double)  (doctors[i].totalRating) / doctors[i].ratingCount;
+    doctors[i].averageRating = (double)(doctors[i].totalRating) / doctors[i].ratingCount;
     cout << "Thank you for rating " << doctors[i].Name << "\n";
 
     return;
 }
-  
- void viewMyRate(int loggedDocIndex) {
-     
-     if (doctors[loggedDocIndex].ratingCount == 0) {
-         cout << "You have not received any ratings yet.\n";
-     }
-     else {
-       
-         cout << "Average Rating: " << doctors[loggedDocIndex].averageRating << "\n\n";
-         
-     }
- }
+
+void viewMyRate(int loggedDocIndex) {
+
+    if (doctors[loggedDocIndex].ratingCount == 0) {
+        cout << "You have not received any ratings yet.\n";
+    }
+    else {
+
+        cout << "Average Rating: " << doctors[loggedDocIndex].averageRating << "\n\n";
+
+    }
+}
 
 
 
@@ -1071,14 +1070,15 @@ int calcdoccount() {
 }
 
 int calcpatcount() {
-    for (int i = 0; i < maxDoc; i++)
+    for (int i = 0; i < maxPatient; i++)
     {
         if (patients[i].ID == 0)
             return i;
     }
     return maxPatient;
 }
-void docregisterfun(int& doctorcount,int   patientcount) {
+
+void docregisterfun(int& doctorcount, int   patientcount) {
     string docusername, patusername, password;
     bool check;
     int id;
@@ -1176,7 +1176,8 @@ void docregisterfun(int& doctorcount,int   patientcount) {
         cout << "registeration is done\n";
     }
 }
-void patregisterfun(int& patientcount,int doctorcount) {
+
+void patregisterfun(int& patientcount, int doctorcount) {
     string docusername, patusername, password;
     bool check;
     if (patientcount >= maxPatient)
@@ -1219,7 +1220,7 @@ void patregisterfun(int& patientcount,int doctorcount) {
         cout << "enter patient gender\n";
         while (true) {
             cin >> patients[patientcount].gender;
-            if (patients[patientcount].gender!= 'F'&& patients[patientcount].gender != 'f'&& patients[patientcount].gender != 'M'&&patients[patientcount].gender != 'm') {
+            if (patients[patientcount].gender != 'F' && patients[patientcount].gender != 'f' && patients[patientcount].gender != 'M' && patients[patientcount].gender != 'm') {
                 cout << "invalid gender try again" << endl;
                 continue;
             }
@@ -1275,6 +1276,15 @@ void patregisterfun(int& patientcount,int doctorcount) {
         patientcount++;
         cout << "registeration is done\n";
     }
+}
+
+int loginfundoctor(string username, string password) {
+    for (int i = 0; i < maxDoc; i++)
+    {
+        if (username == doctors[i].User && password == doctors[i].Password)
+            return i;
+    }
+    return -1;
 }
 
 int loginfunpatient(string username, string password) {
@@ -1348,7 +1358,7 @@ void loggeduser() {
 
 void menupatient() {
     int choice_menu_patient;
-    
+
     while (true) {
         cout << "\n*operation for patient*\n";
         cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. Rate Doctor\n9. logout\n\n";
@@ -1385,8 +1395,8 @@ void menupatient() {
             clearApptHistory(loggedPatient);
             continue;
         }
-             else if (choice_menu_patient == 8) {
-              rateDoctor();
+        else if (choice_menu_patient == 8) {
+            rateDoctor();
             continue;
         }
         else if (choice_menu_patient == 9) {
@@ -1399,6 +1409,7 @@ void menupatient() {
 
     }
 }
+
 void menudoctor() {
     int choice_menu_doctor;
     while (true) {
@@ -1432,8 +1443,8 @@ void menudoctor() {
             continue;
         }
 
- else if (choice_menu_doctor ==7 ) {
-           viewMyRate(loggedDocIndex);
+        else if (choice_menu_doctor == 7) {
+            viewMyRate(loggedDocIndex);
             continue;
         }
         else if (choice_menu_doctor == 8) {
@@ -1448,10 +1459,10 @@ void menudoctor() {
 }
 
 void mainMenu() {
- int choice;
- patientcount = calcpatcount();
- doctorcount = calcdoccount();
-            
+    int choice;
+    patientcount = calcpatcount();
+    doctorcount = calcdoccount();
+
     do {
         cout << "\nHospital Management System\n";
         cout << "1. Register as Doctor\n";
@@ -1462,11 +1473,11 @@ void mainMenu() {
         cout << "Enter your choice: ";
         cin >> choice;
         if (choice == 1) {
-            docregisterfun(doctorcount,patientcount);
+            docregisterfun(doctorcount, patientcount);
             continue;
         }
         else if (choice == 2) {
-            patregisterfun(patientcount,doctorcount);
+            patregisterfun(patientcount, doctorcount);
             continue;
         }
         else if (choice == 3) {
@@ -1488,5 +1499,5 @@ void mainMenu() {
         else {
             cout << "Invalid choice. Try again.\n";
         }
-    } while (choice!= 5);
+    } while (choice != 5);
 }
