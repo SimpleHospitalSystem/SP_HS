@@ -1414,10 +1414,11 @@ void menupatient() {
             continue;
         }
         else if (choice_menu_patient == 8) {
-            rateDoctor();
+            rateDoctor(doctorcount);
             continue;
         }
         else if (choice_menu_patient == 9) {
+            loggedPatient = -1;
             break;
         }
         else {
@@ -1427,6 +1428,7 @@ void menupatient() {
 
     }
 }
+
 void menudoctor() {
     int choice_menu_doctor;
     while (true) {
@@ -1465,6 +1467,7 @@ void menudoctor() {
             continue;
         }
         else if (choice_menu_doctor == 8) {
+            loggedDocIndex = -1;
             break;
         }
         else {
@@ -1484,9 +1487,8 @@ void mainMenu() {
         cout << "\nHospital Management System\n";
         cout << "1. Register as Doctor\n";
         cout << "2. Register as Patient\n";
-        cout << "3. Login as Doctor\n";
-        cout << "4. Login as Patient\n";
-        cout << "5. Exit\n";
+        cout << "3. Login\n";
+        cout << "4. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         if (choice == 1) {
@@ -1499,15 +1501,17 @@ void mainMenu() {
         }
         else if (choice == 3) {
             loggeduser();
-            menudoctor();
-            continue;
+            if (loggedDocIndex != -1) {
+                menudoctor();
+                continue;
+            }
+            else if (loggedPatient != -1)
+            {
+                menupatient();
+                continue;
+            }
         }
         else if (choice == 4) {
-            loggeduser();
-            menupatient();
-            continue;
-        }
-        else if (choice == 5) {
             // saveDoctors(doctors, numDoctors);
             // savePatients(patients, numPatients);
             cout << "Data saved. Goodbye!\n";
