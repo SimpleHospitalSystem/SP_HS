@@ -511,7 +511,8 @@ void edit_doctor_profile(Doctor& before)
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n ";
-    cin >> number;
+    getInput(number);
+
     if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
@@ -521,13 +522,12 @@ void edit_doctor_profile(Doctor& before)
     {
         cout << "Enter your new Username, Please\t";
         int counter = 1;
-        bool check = true;
         string user;
         while (counter != 0)
         {
             counter = 0;
             cin >> user;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < maxDoc; i++)
             {
                 if (user == doctors[i].User)
                 {
@@ -825,7 +825,7 @@ void Remove_Appt_By_Patient(Patient& patient)
     cout << "\nEnter the appointment index to remove:" << endl;
     int timeSlotIndex;
     do {
-        cin >> timeSlotIndex;
+            getInput(timeSlotIndex);
         timeSlotIndex--;//convert to 0_based index 
         if (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || patient.myAppt[timeSlotIndex].patientID == -1) {
             cout << "Error: Invalid appointment index.\n";
@@ -890,8 +890,9 @@ void edit_patient_profile(Patient& before)
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
-    cin >> number;
-    if (number == 1)
+               getInput(number);
+
+            if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
         cin >> after.Name;
@@ -907,7 +908,7 @@ void edit_patient_profile(Patient& before)
         {
             counter = 0;
             cin >> user;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < maxPatient; i++)
             {
                 if (user == patients[i].User)
                 {
