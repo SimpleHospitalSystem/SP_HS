@@ -1080,7 +1080,7 @@ int calcpatcount() {
     return maxPatient;
 }
 
-void docregisterfun() {
+void docregisterfun(int&doctorcount,int patientcount) {
     string docusername, patusername, password;
     bool check;
     doctorcount = calcdoccount();
@@ -1159,7 +1159,7 @@ void docregisterfun() {
     }
 }
 
-void patregisterfun() {
+void patregisterfun(int& patientcount, doctorcount) {
     string docusername, patusername, password;
     bool check;
     patientcount = calcpatcount();
@@ -1313,10 +1313,10 @@ void loggeduser() {
 
 void menupatient() {
     int choice_menu_patient;
-    patientcount = calcpatcount();
+    
     while (true) {
         cout << "\n*operation for patient*\n";
-        cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. logout\n\n";
+        cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. Rate Doctor\n9. logout\n\n";
         cout << "Enter your choice:";
 
         cin >> choice_menu_patient;
@@ -1350,7 +1350,11 @@ void menupatient() {
             clearApptHistory(loggedPatient);
             continue;
         }
-        else if (choice_menu_patient == 8) {
+             else if (choice_menu_patient == 8) {
+              rateDoctor();
+            continue;
+        }
+        else if (choice_menu_patient == 9) {
             break;
         }
         else {
@@ -1362,11 +1366,9 @@ void menupatient() {
 }
 void menudoctor() {
     int choice_menu_doctor;
-    doctorcount = calcdoccount();
-
     while (true) {
         cout << "\n*operation for doctor*\n";
-        cout << "1. Display available time\n2. Add available time \n3. Edit available time\n4. Remove available time\n5. View booked appointments \n6. Edit my profile\n7. logout\n\n";
+        cout << "1. Display available time\n2. Add available time \n3. Edit available time\n4. Remove available time\n5. View booked appointments \n6. Edit my profile\n7. view my ratings\n8. logout\n\n";
         cout << "Enter your choice :";
         cin >> choice_menu_doctor;
 
@@ -1394,7 +1396,12 @@ void menudoctor() {
             edit_doctor_profile(doctors[loggedDocIndex]);
             continue;
         }
-        else if (choice_menu_doctor == 7) {
+
+ else if (choice_menu_doctor ==7 ) {
+           viewMyRate(loggedDocIndex);
+            continue;
+        }
+        else if (choice_menu_doctor == 8) {
             break;
         }
         else {
@@ -1406,7 +1413,10 @@ void menudoctor() {
 }
 
 void mainMenu() {
-    int choice;
+ int choice;
+ patientcount = calcpatcount();
+ doctorcount = calcdoccount();
+            
     do {
         cout << "\nHospital Management System\n";
         cout << "1. Register as Doctor\n";
@@ -1417,11 +1427,11 @@ void mainMenu() {
         cout << "Enter your choice: ";
         cin >> choice;
         if (choice == 1) {
-            docregisterfun();
+            docregisterfun(doctorcount,patientcount);
             continue;
         }
         else if (choice == 2) {
-            patregisterfun();
+            patregisterfun(patientcount,doctorcount);
             continue;
         }
         else if (choice == 3) {
