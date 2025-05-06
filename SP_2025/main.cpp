@@ -169,7 +169,7 @@ void edit_patient_profile(Patient& before);
 // Menus or Other functions related
 int calcdoccount();
 int calcpatcount();
-void docregisterfun(int&doctorcount,int patientcount);
+void docregisterfun(int& doctorcount, int patientcount );
 void patregisterfun(int& patientcount,int doctorcount);
 int loginfundoctor(string username, string password);
 int loginfunpatient(string username, string password);
@@ -479,16 +479,15 @@ void RemoveTime(Doctor& doctor) {
 
     int timeSlotIndex;
     cout << "Enter the time slot index to remove: ";
-            do{
+do {
     getInput(timeSlotIndex);
     timeSlotIndex--; // Convert to 0-based index
     if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
         cout << "Invalid time slot index.\n";
-         cout << "Enter valid index\n";
-
-        return;
+        cout << "Enter valid index\n";
     }
-            } while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.myAppt[timeSlotIndex].patientID == -1);
+} while (timeSlotIndex < 0 || timeSlotIndex >= maxMyAppt || doctor.myAppt[timeSlotIndex].patientID == -1);
+
     // Check if the slot is already booked
     if (doctors[loggedDocIndex].listAvail[timeSlotIndex].patientID != -1) {
         cout << "Error: This time slot is already booked by a patient.\n";
@@ -1079,27 +1078,46 @@ int calcpatcount() {
     }
     return maxPatient;
 }
-
-void docregisterfun(int&doctorcount,int patientcount) {
+void docregisterfun(int& doctorcount,int   patientcount) {
     string docusername, patusername, password;
     bool check;
-    doctorcount = calcdoccount();
+    int id;
     if (doctorcount >= maxDoc)
         cout << "maximum registration reached\n";
     else {
         cout << "enter doctor's name \n";
         cin >> doctors[doctorcount].Name;
-        cout << "enter doctor ID\n";
         while (true) {
-            cin >> doctors[doctorcount].ID;
-            if (doctors[doctorcount].ID <= 0) {
-                cout << "invalid ID try again" << endl;
+
+            cout << "enter doctor ID\n";
+            getInput(id);
+
+            if (id <= 0) {
+                cout << "Invalid ID. ID must be greater than zero. Please enter again.\n";
+                continue;
+            }
+            bool idExists = false;
+            for (int i = 0; i < doctorcount; i++) {
+                if (doctors[i].ID == id) {
+                    idExists = true;
+                    break;
+                }
+            }
+            for (int i = 0; i < patientcount; i++) {
+                if (patients[i].ID == id) {
+                    idExists = true;
+                    break;
+                }
+            }
+
+            if (idExists) {
+                cout << "This ID is already taken. Please enter a unique ID.\n";
                 continue;
             }
             else {
+                doctors[doctorcount].ID = id;
                 break;
             }
-
         }
         for (int i = 0; i < maxDocAppt; i++)
         {
@@ -1158,31 +1176,58 @@ void docregisterfun(int&doctorcount,int patientcount) {
         cout << "registeration is done\n";
     }
 }
-
-void patregisterfun(int& patientcount, int doctorcount) {
+void patregisterfun(int& patientcount,int doctorcount) {
     string docusername, patusername, password;
     bool check;
-    patientcount = calcpatcount();
     if (patientcount >= maxPatient)
         cout << "maximum registration reached\n";
     else {
         cout << "enter patient's name \n";
         cin >> patients[patientcount].Name;
         while (true) {
+            int id;
             cout << "enter patient ID\n";
-            cin >> patients[patientcount].ID;
-            if (doctors[doctorcount].ID <= 0) {
-                cout << "invalid ID try again" << endl;
+            getInput(id);
+            if (id <= 0) {
+                cout << "Invalid ID. ID must be greater than zero. Please enter again.\n";
+                continue;
+            }
+            bool idExists = false;
+            for (int i = 0; i < doctorcount; i++) {
+                if (doctors[i].ID == id) {
+                    idExists = true;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < patientcount; i++) {
+                if (patients[i].ID == id) {
+                    idExists = true;
+                    break;
+                }
+            }
+
+            if (idExists) {
+                cout << "This ID is already taken. Please enter a unique ID.\n";
+                continue;
+            }
+            else {
+                patients[patientcount].ID = id;
+                break;
+            }
+        }
+        cout << "enter patient gender\n";
+        while (true) {
+            cin >> patients[patientcount].gender;
+            if (patients[patientcount].gender!= 'F'&& patients[patientcount].gender != 'f'&& patients[patientcount].gender != 'M'&&patients[patientcount].gender != 'm') {
+                cout << "invalid gender try again" << endl;
                 continue;
             }
             else {
                 break;
             }
+
         }
-
-        cout << "enter patient gender\n";
-        cin >> patients[patientcount].gender;
-
         cout << "enter patient age\n";
         cin >> patients[patientcount].age;
         for (int i = 0; i < maxMyAppt; i++)
@@ -1230,16 +1275,6 @@ void patregisterfun(int& patientcount, int doctorcount) {
         patientcount++;
         cout << "registeration is done\n";
     }
-}
-
-int loginfundoctor(string username, string password) {
-
-    for (int i = 0; i < maxDoc; i++)
-    {
-        if (username == doctors[i].User && password == doctors[i].Password)
-            return i;
-    }
-    return -1;
 }
 
 int loginfunpatient(string username, string password) {
