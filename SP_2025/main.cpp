@@ -1026,6 +1026,7 @@ void clearApptHistory(int loggedPatient) {
        
        if (rating < 1||rating > 5) {
             cout << "Invalid rating! Please enter a number between 1 and 5:\n\n ";
+            continue;
         }
        else {
            break;
