@@ -1312,9 +1312,10 @@ void loggeduser() {
 
 void menupatient() {
     int choice_menu_patient;
+    patientcount = calcpatcount();
     while (true) {
         cout << "\n*operation for patient*\n";
-        cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. Rate Doctor\n9. logout\n\n";
+        cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. logout\n\n";
         cout << "Enter your choice:";
 
         cin >> choice_menu_patient;
@@ -1349,11 +1350,6 @@ void menupatient() {
             continue;
         }
         else if (choice_menu_patient == 8) {
-            rateDoctor();
-            continue;
-        }
-        else if (choice_menu_patient == 9) {
-            mainMenu();
             break;
         }
         else {
@@ -1363,13 +1359,13 @@ void menupatient() {
 
     }
 }
-
 void menudoctor() {
     int choice_menu_doctor;
+    doctorcount = calcdoccount();
 
     while (true) {
         cout << "\n*operation for doctor*\n";
-        cout << "1. Display available time\n2. Add available time \n3. Edit available time\n4. Remove available time\n5. View booked appointments \n6. Edit my profile \n7. view my ratings\n8. logout\n\n";
+        cout << "1. Display available time\n2. Add available time \n3. Edit available time\n4. Remove available time\n5. View booked appointments \n6. Edit my profile\n7. logout\n\n";
         cout << "Enter your choice :";
         cin >> choice_menu_doctor;
 
@@ -1398,11 +1394,6 @@ void menudoctor() {
             continue;
         }
         else if (choice_menu_doctor == 7) {
-            viewMyRate(loggedDocIndex);
-            continue;
-        }
-        else if (choice_menu_doctor == 8) {
-            mainMenu();
             break;
         }
         else {
@@ -1435,12 +1426,12 @@ void mainMenu() {
         else if (choice == 3) {
             loggeduser();
             menudoctor();
-            break;
+            continue;
         }
         else if (choice == 4) {
             loggeduser();
             menupatient();
-            break;
+            continue;
         }
         else if (choice == 5) {
             // saveDoctors(doctors, numDoctors);
@@ -1451,5 +1442,5 @@ void mainMenu() {
         else {
             cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 5);
+    } while (choice!= 5);
 }
