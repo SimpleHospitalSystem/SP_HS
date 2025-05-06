@@ -809,7 +809,7 @@ void editMyAppointmentPatient(int patientIndex)
             int realIndex = realSlotIndex[choice];
 
             for (int i = 0; i < maxDocAppt; i++) {  // update in docAppt
-                if (doctors[DocIndex].listAvail[i].patientID == patients[patientIndex].ID &&
+                if (doctors[DocIndex].docAppt[i].patientID == patients[patientIndex].ID &&
                     patients[patientIndex].myAppt[editSlot].day == doctors[DocIndex].docAppt[i].day &&
                     patients[patientIndex].myAppt[editSlot].startTime.hour == doctors[DocIndex].docAppt[i].startTime.hour &&
                     patients[patientIndex].myAppt[editSlot].startTime.minute == doctors[DocIndex].docAppt[i].startTime.minute &&
