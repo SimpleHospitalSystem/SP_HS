@@ -208,7 +208,7 @@ void getInput(int& time)
 
         for (int i = 0; i < currInput.size(); i++)
         {
-            if (currInput[i] >= 'A' && currInput[i] <= 'z')
+            if (!(currInput[i] >= '0' && currInput[i] <= '9'))
             {
                 cout << "Invalid input! Please enter numbers.\n";
                 isValid = false;
@@ -465,7 +465,7 @@ void addAvailableTimeDoc(int loggedDocIndex)
             return;
 
         validateAvailTime(loggedDocIndex, newTimeIndex);
-        cout << "Operation was successful.\nDO you want to add another time slot ? ( Y / N )";
+        cout << "Operation was successful.\nDo you want to add another time slot ? ( Y / N )";
         cin >> ans;
 
     } while (ans == 'Y' || ans == 'y');
