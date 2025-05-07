@@ -185,9 +185,9 @@ int main() {
     return 0;
 }
 
-int getNumTimeSlots(int loggedDocIndex) {
+int getNumTimeSlots(int loggedDocIndex) { // Changed from checking an empty string to startTime.hour
     int numSlots = 0;
-    while (!doctors[loggedDocIndex].listAvail[numSlots].day.empty() && numSlots < maxAvailTime)
+    while (doctors[loggedDocIndex].listAvail[numSlots].startTime.hour != -1 && numSlots < maxAvailTime)
         numSlots++;
     return numSlots;
 }
@@ -977,7 +977,7 @@ void edit_patient_profile(Patient& before)
     }
 }
 
-void clearApptHistory(int loggedPatient) {
+void clearApptHistory(int loggedPatient) { //Adjusted day's value to -1 (Intialization)
     int numApptPat = getNumOfPatientAppt(loggedPatient);
     if (numApptPat == 0) {
         cout << "No appointments found.\n";
@@ -1008,13 +1008,13 @@ void clearApptHistory(int loggedPatient) {
                         for (int k = j; k < maxDocAppt - 1; k++) {
                             doctors[docIndex].docAppt[k] = doctors[docIndex].docAppt[k + 1];
                         }
-                        doctors[docIndex].docAppt[maxDocAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+                        doctors[docIndex].docAppt[maxDocAppt - 1] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
                         doctors[docIndex].numAppt--;
                         break;
                     }
                 }
             }
-            patients[loggedPatient].myAppt[i] = { -1, -1, "", {-1, -1}, {-1, -1} };
+            patients[loggedPatient].myAppt[i] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
         }
         patients[loggedPatient].numAppt = 0;
         cout << "Appointment history cleared successfully.\n";
