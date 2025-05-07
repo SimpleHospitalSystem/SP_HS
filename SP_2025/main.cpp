@@ -485,11 +485,11 @@ void RemoveTime(Doctor& doctor) {
     do {
         getInput(timeSlotIndex);
         timeSlotIndex--; // Convert to 0-based index
-        if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
+        if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "-1") {
             cout << "Invalid time slot index.\n";
             cout << "Enter valid index\n";
         }
-    } while (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "");
+    } while (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "-1");
 
     // Check if the slot is already booked
     if (doctors[loggedDocIndex].listAvail[timeSlotIndex].patientID != -1) {
@@ -500,7 +500,7 @@ void RemoveTime(Doctor& doctor) {
     for (int i = timeSlotIndex; i < maxAvailTime - 1; i++) {
         doctors[loggedDocIndex].listAvail[i] = doctors[loggedDocIndex].listAvail[i + 1];
     }
-    doctors[loggedDocIndex].listAvail[maxAvailTime - 1] = { -1, doctor.ID, "", {-1, -1}, {-1, -1} };
+    doctors[loggedDocIndex].listAvail[maxAvailTime - 1] = { -1, doctor.ID, "-1", {-1, -1}, {-1, -1} };
 
     cout << "\nThe availability slot has been removed successfully.\n \n";
 
@@ -886,7 +886,7 @@ void Remove_Appt_By_Patient(Patient& patient)
         patient.myAppt[i] = patient.myAppt[i + 1];
     }
 
-    patient.myAppt[maxMyAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+    patient.myAppt[maxMyAppt - 1] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
 
     for (int i = 0; i < maxAvailTime; i++) {
         if (doctors[docIdx].docAppt[i].patientID == patID &&
@@ -897,7 +897,7 @@ void Remove_Appt_By_Patient(Patient& patient)
             for (int j = i; j < maxDocAppt - 1; j++) {
                 doctors[docIdx].docAppt[j] = doctors[docIdx].docAppt[j + 1];
             }
-            doctors[docIdx].docAppt[maxDocAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+            doctors[docIdx].docAppt[maxDocAppt - 1] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
             doctors[docIdx].numAppt--;
             break;
         }

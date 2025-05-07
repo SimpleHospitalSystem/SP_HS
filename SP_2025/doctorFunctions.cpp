@@ -399,7 +399,7 @@ void RemoveTime(Doctor& doctor) {
     cout << "Enter the time slot index to remove: ";
     cin >> timeSlotIndex;
     timeSlotIndex--; // Convert to 0-based index
-    if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "") {
+    if (timeSlotIndex < 0 || timeSlotIndex >= maxAvailTime || doctors[loggedDocIndex].listAvail[timeSlotIndex].day == "-1") {
         cout << "Invalid time slot index.\n";
         return;
     }
@@ -412,7 +412,7 @@ void RemoveTime(Doctor& doctor) {
     for (int i = timeSlotIndex; i < maxAvailTime - 1; i++) {
         doctors[loggedDocIndex].listAvail[i] = doctors[loggedDocIndex].listAvail[i + 1];
     }
-    doctors[loggedDocIndex].listAvail[maxAvailTime - 1] = { -1, doctor.ID, "", {-1, -1}, {-1, -1} };
+    doctors[loggedDocIndex].listAvail[maxAvailTime - 1] = { -1, doctor.ID, "-1", {-1, -1}, {-1, -1} };
 
     cout << "\nThe availability slot has been removed successfully.\n \n";
 

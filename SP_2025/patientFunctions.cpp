@@ -481,7 +481,7 @@ void Remove_Appt_By_Patient(Patient& patient)
         patient.myAppt[i] = patient.myAppt[i + 1];
     }
 
-    patient.myAppt[maxMyAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+    patient.myAppt[maxMyAppt - 1] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
 
     for (int i = 0; i < maxAvailTime; i++) {
         if (doctors[docIdx].docAppt[i].patientID == patID &&
@@ -492,7 +492,7 @@ void Remove_Appt_By_Patient(Patient& patient)
             for (int j = i; j < maxDocAppt - 1; j++) {
                 doctors[docIdx].docAppt[j] = doctors[docIdx].docAppt[j + 1];
             }
-            doctors[docIdx].docAppt[maxDocAppt - 1] = { -1, -1, "", {-1, -1}, {-1, -1} };
+            doctors[docIdx].docAppt[maxDocAppt - 1] = { -1, -1, "-1", {-1, -1}, {-1, -1} };
             doctors[docIdx].numAppt--;
             break;
         }
