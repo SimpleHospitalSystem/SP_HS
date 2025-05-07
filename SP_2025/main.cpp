@@ -573,13 +573,13 @@ void display_doctortime(Doctor doctors[], int Count)
         cout << "ID: " << doctors[i].ID << "\t\t";
         cout << "spacializtion: " << doctors[i].specialication << endl;
         if (doctors[i].ratingCount > 0) {
-          cout << "Average Rating(" << doctors[i].averageRating << ")\n";
+            cout << "Average Rating(" << doctors[i].averageRating << ")\n";
         }
         else {
             cout << "Average Rating:  No ratings yet!\n\n";
         }
         cout << "Available times:\n";
-        
+
         for (int j = 0; j < numSlots; j++) {
             if (doctors[i].listAvail[j].day == "" || doctors[i].listAvail[j].startTime.hour == -1 || doctors[i].listAvail[j].endTime.minute == -1)
             {
@@ -605,12 +605,12 @@ void display_doctortime(Doctor doctors[], int Count)
 }
 
 void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
-{  
-    display_doctortime(doctors,maxDoc);
+{
+    display_doctortime(doctors, maxDoc);
     cout << endl;
     int doctorID;
     cout << "\nPlease enter the doctor ID to book with:\n";
-    cin >> doctorID;
+    getInput( doctorID);
 
     int docindex = -1;
     for (int i = 0; i < doctorCount; i++) {
@@ -629,9 +629,9 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
     displayDocListAvail(docindex, -2);
     int choice;
     cout << "Enter the number of the slot you want to book:";
-    cin >> choice;
+    getInput(choice);
 
-    if (choice < 1 || choice > fakeCount+1) {
+    if (choice < 1 || choice > fakeCount + 1) {
         cout << "Invild choice \n";
         return;
     }
@@ -659,16 +659,16 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
 
             doc.listAvail[realIndex].patientID = patient.ID;
 
-          int numappt=getNumApptSlot(docindex);
-          if (numappt<maxDocAppt) {
-              doc.docAppt[numappt].patientID = patient.ID;
-              doc.docAppt[numappt].doctorID = doc.ID;
-              doc.docAppt[numappt].day = doc.listAvail[realIndex].day;
-              doc.docAppt[numappt].startTime.hour = doc.listAvail[realIndex].startTime.hour;
-              doc.docAppt[numappt].endTime.hour = doc.listAvail[realIndex].endTime.hour;
-              doc.docAppt[numappt].startTime.minute = doc.listAvail[realIndex].startTime.minute;
-              doc.docAppt[numappt].endTime.minute = doc.listAvail[realIndex].endTime.minute;
-          }
+            int numappt = getNumApptSlot(docindex);
+            if (numappt < maxDocAppt) {
+                doc.docAppt[numappt].patientID = patient.ID;
+                doc.docAppt[numappt].doctorID = doc.ID;
+                doc.docAppt[numappt].day = doc.listAvail[realIndex].day;
+                doc.docAppt[numappt].startTime.hour = doc.listAvail[realIndex].startTime.hour;
+                doc.docAppt[numappt].endTime.hour = doc.listAvail[realIndex].endTime.hour;
+                doc.docAppt[numappt].startTime.minute = doc.listAvail[realIndex].startTime.minute;
+                doc.docAppt[numappt].endTime.minute = doc.listAvail[realIndex].endTime.minute;
+            }
             cout << "\nAppointment booked successfully!\n";
             break;
         }
@@ -925,7 +925,7 @@ void edit_patient_profile(Patient& before)
     int number;
     cout << "choose what you want to chang. (press the number,please):";
     cout << "\n1.Name \n 2.User name \n 3.Password \n 4.Age\n 5.Gender\n";
-cin>>number;
+    cin >> number;
     if (number == 1)
     {
         cout << "Enter your new Name, Please\t";
@@ -1111,6 +1111,7 @@ int calcpatcount() {
     }
     return maxPatient;
 }
+
 void docregisterfun(int& doctorcount, int   patientcount) {
     string docusername, patusername, password;
     bool check;
@@ -1400,7 +1401,7 @@ void menupatient() {
         cout << "1. Display doctors' available times\n2. Book appointment\n3. Edit appointment\n4. Cancel appointment\n5. View my appointment\n6. Edit my profile\n7. Clear appointment history\n8. Rate Doctor\n9. logout\n\n";
         cout << "Enter your choice:";
 
-        cin >> choice_menu_patient;
+        getInput(choice_menu_patient);
 
         if (choice_menu_patient == 1) {
 
@@ -1453,7 +1454,7 @@ void menudoctor() {
         cout << "\n*operation for doctor*\n";
         cout << "1. Display available time\n2. Add available time \n3. Edit available time\n4. Remove available time\n5. View booked appointments \n6. Edit my profile\n7. view my ratings\n8. logout\n\n";
         cout << "Enter your choice :";
-        cin >> choice_menu_doctor;
+        getInput(choice_menu_doctor);
 
         if (choice_menu_doctor == 1) {
             displayDocListAvail(loggedDocIndex, -1);
@@ -1508,7 +1509,7 @@ void mainMenu() {
         cout << "3. Login\n";
         cout << "4. Exit\n";
         cout << "Enter your choice: ";
-        cin >> choice;
+        getInput(choice);
         if (choice == 1) {
             docregisterfun(doctorcount, patientcount);
             continue;
