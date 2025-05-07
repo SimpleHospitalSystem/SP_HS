@@ -443,7 +443,7 @@ bool existAvailableTimeSlot(int loggedDocIndex, int& newTimeIndex)
 
     for (int i = 0; i < maxAvailTime; i++)
     {
-        if (doctors[loggedDocIndex].listAvail[i].day == "\0")
+        if (doctors[loggedDocIndex].listAvail[i].day == "-1")
         {
             newTimeIndex = i;
             return 1;
