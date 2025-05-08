@@ -563,7 +563,7 @@ void display_doctortime(Doctor doctors[], int Count)
 
     cout << "the available doctors are :" << endl;
     for (int i = 0; i < Count; i++) {
-        //what is this why ?
+        
         int numSlots = getNumTimeSlots(i);
         if (numSlots == 0) {
             continue;
@@ -581,7 +581,7 @@ void display_doctortime(Doctor doctors[], int Count)
         cout << "Available times:\n";
 
         for (int j = 0; j < numSlots; j++) {
-            if (doctors[i].listAvail[j].day == "" || doctors[i].listAvail[j].startTime.hour == -1 || doctors[i].listAvail[j].endTime.minute == -1)
+            if (doctors[i].listAvail[j].day == "-1" || doctors[i].listAvail[j].startTime.hour == -1 || doctors[i].listAvail[j].endTime.minute == -1)
             {
                 continue;
             }
@@ -643,11 +643,11 @@ void Bookappointment(Patient& patient, Doctor doctors[], int doctorCount)
     }
     for (int j = 0; j < maxMyAppt; j++)
     {
-        if (doctors[docindex].listAvail[realIndex].day == "" || doctors[docindex].listAvail[realIndex].startTime.hour == -1 || doctors[docindex].listAvail[realIndex].endTime.minute == -1)
+        if (doctors[docindex].listAvail[realIndex].day == "-1" || doctors[docindex].listAvail[realIndex].startTime.hour == -1 || doctors[docindex].listAvail[realIndex].endTime.minute == -1)
         {
             continue;
         }
-        if (patient.myAppt[j].day == "") {
+        if (patient.myAppt[j].day == "-1") {
             // booking
             patient.myAppt[j].patientID = patient.ID;
             patient.myAppt[j].doctorID = doc.ID;
