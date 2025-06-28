@@ -291,6 +291,7 @@ namespace Project8 {
 			this->Name = L"loginform";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"login";
+			this->Load += gcnew System::EventHandler(this, &loginform::loginform_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -327,17 +328,19 @@ namespace Project8 {
 
 		for each (String ^ line in lines) {
 			line = line->Trim();
-			if (line->StartsWith("{")) {
-				array<String^>^ parts = line->Split(',');
-				if (parts->Length >= 4) {
-					String^ id = parts[0]->Trim()->Replace("\"", "");
-					String^ name = parts[1]->Trim()->Replace("\"", "");
-					String^ fileUsername = parts[2]->Trim()->Replace("\"", "");
-					String^ filePassword = parts[3]->Trim()->Replace("\"", "");
+			line = line->Replace("{", "");
+			line = line->Replace("}", "");
 
-					if (fileUsername == username && filePassword == password) {
-						return gcnew Doctor(id, name, fileUsername, filePassword);
-					}
+			array<String^>^ parts = line->Split(',');
+			if (parts->Length >= 5) {
+				String^ id = parts[0]->Trim()->Replace("\"", "");
+				String^ name = parts[1]->Trim()->Replace("\"", "");
+				String^ fileUsername = parts[2]->Trim()->Replace("\"", "");
+				String^ filePassword = parts[3]->Trim()->Replace("\"", "");
+				String^ fileSpecialization = parts[4]->Trim()->Replace("\"", "");
+
+				if (fileUsername == username && filePassword == password) {
+					return gcnew Doctor(id, name, fileUsername, filePassword, fileSpecialization);
 				}
 			}
 		}
@@ -351,24 +354,44 @@ namespace Project8 {
 
 			   auto lines = System::IO::File::ReadAllLines("patients.txt");
 
+			   //for each (String ^ line in lines) {
+				  // if (line->StartsWith("{")) {
+					 //  array<String^>^ parts = line->Split(',');
+					 //  if (parts->Length >= 6) {
+						//   String^ id = parts[0]->Trim()->Replace("{", "")->Replace("\"", "");
+						//   String^ name = parts[1]->Trim()->Replace("\"", "");
+						//   String^ fileUsername = parts[2]->Trim()->Replace("\"", "");
+						//   String^ filePassword = parts[3]->Trim()->Replace("\"", "");
+						//   int age = Convert::ToInt32(parts[4]->Trim());
+						//   char gender = parts[5]->Trim()->Replace("}", "")[1]; // get the char inside the single quotes
+						//   if (fileUsername == username && filePassword == password) {
+						//	   return gcnew Patient(id, name, fileUsername, filePassword, age, gender);
+						//   }
+					 //  }
+				  // }
+			   //}
 			   for each (String ^ line in lines) {
-				   if (line->StartsWith("{")) {
-					   array<String^>^ parts = line->Split(',');
+				   line = line->Replace("{", "");
+				   line = line->Replace("}", "");
+				   line = line->Replace("\"", "");
+				   line = line->Trim();
 
-					   if (parts->Length >= 6) {
-						   String^ id = parts[0]->Trim()->Replace("{", "")->Replace("\"", "");
-						   String^ name = parts[1]->Trim()->Replace("\"", "");
-						   String^ fileUsername = parts[2]->Trim()->Replace("\"", "");
-						   String^ filePassword = parts[3]->Trim()->Replace("\"", "");
-						   int age = Convert::ToInt32(parts[4]->Trim());
-						   char gender = parts[5]->Trim()->Replace("}", "")[1]; // get the char inside the single quotes
+				   array<String^>^ parts = line->Split(',');
 
-						   if (fileUsername == username && filePassword == password) {
-							   return gcnew Patient(id, name, fileUsername, filePassword, age, gender);
-						   }
+				   if (parts->Length >= 6) {
+					   String^ id = parts[0]->Trim();
+					   String^ name = parts[1]->Trim();
+					   String^ fileUsername = parts[2]->Trim();
+					   String^ filePassword = parts[3]->Trim();
+					   int age = Convert::ToInt32(parts[4]->Trim());
+					   char gender = parts[5]->Trim()->Replace("}", "")[0];
+
+					   if (fileUsername == username && filePassword == password) {
+						   return gcnew Patient(id, name, fileUsername, filePassword, age, gender);
 					   }
 				   }
 			   }
+
 
 			   return nullptr;
 		   }
@@ -384,8 +407,8 @@ namespace Project8 {
 		if (doctor != nullptr) {
 			MessageBox::Show("Login successful! Welcome Dr. " + doctor->name, "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
-		/*dochome^ doctorForm = gcnew dochome(doctor);
-			doctorForm->Show();*/
+			/*dochome^ doctorForm = gcnew dochome(doctor);
+				doctorForm->Show();*/
 			this->Hide();
 			dochome^ doctorForm = gcnew dochome(doctor);
 			doctorForm->ShowDialog();
@@ -412,6 +435,8 @@ namespace Project8 {
 		else {
 			MessageBox::Show("Invalid username or password.", "Login Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+	}
+	private: System::Void loginform_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 };

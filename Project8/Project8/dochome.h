@@ -1,5 +1,6 @@
 ﻿#pragma once
-#include "Patient.h"
+#include "Doctor.h"
+//#include "MyMenu.h"
 using namespace System::IO;
 namespace Project8 {
 
@@ -13,16 +14,25 @@ namespace Project8 {
 	/// <summary>
 	/// Summary for dochome
 	/// </summary>
-	public ref class homepatient : public System::Windows::Forms::Form
+	public ref class dochome : public System::Windows::Forms::Form
 	{
-	private: Patient^ currentPatient;
+
+	private: Doctor^ currentDoc;
+
+	//public: MyMenu^ mainForm;
+
+		   void LoadAppointments();
 
 	public:
-		homepatient(Project8::Patient^ pat)
+
+		dochome(Project8::Doctor^ doc)
 		{
+
 			InitializeComponent();
-			currentPatient = pat;
-			this->Load += gcnew System::EventHandler(this, &homepatient::homepatient_Load);
+			currentDoc = doc;
+			LoadAppointments();
+
+			this->Load += gcnew System::EventHandler(this, &dochome::dochome_Load);
 
 			//
 			//TODO: Add the constructor code here
@@ -33,13 +43,14 @@ namespace Project8 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~homepatient()
+		~dochome()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::Panel^ panel2;
 	protected:
 	private: System::Windows::Forms::Button^ button5;
@@ -53,8 +64,7 @@ namespace Project8 {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Button^ editdoc;
-	private: System::Windows::Forms::Label^ age;
-
+	private: System::Windows::Forms::Label^ specialication;
 
 	private: System::Windows::Forms::Label^ ID;
 	private: System::Windows::Forms::Label^ name;
@@ -90,13 +100,11 @@ namespace Project8 {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ avgrate;
 
-	private: System::Windows::Forms::Label^ doctor;
-	private: System::Windows::Forms::ComboBox^ combodoc;
-
-	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ gender;
+	private: System::Windows::Forms::Button^ button3;
+
 
 	private:
 		/// <summary>
@@ -111,9 +119,9 @@ namespace Project8 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(homepatient::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(dochome::typeid));
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->gender = (gcnew System::Windows::Forms::Label());
+			this->avgrate = (gcnew System::Windows::Forms::Label());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->passwordelabledoc = (gcnew System::Windows::Forms::Label());
@@ -125,7 +133,7 @@ namespace Project8 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->editdoc = (gcnew System::Windows::Forms::Button());
-			this->age = (gcnew System::Windows::Forms::Label());
+			this->specialication = (gcnew System::Windows::Forms::Label());
 			this->ID = (gcnew System::Windows::Forms::Label());
 			this->name = (gcnew System::Windows::Forms::Label());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
@@ -136,23 +144,21 @@ namespace Project8 {
 			this->user = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->myappoint = (gcnew System::Windows::Forms::Panel());
-			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->exitmyappoint = (gcnew System::Windows::Forms::Button());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
-			this->doctor = (gcnew System::Windows::Forms::Label());
 			this->day = (gcnew System::Windows::Forms::Label());
 			this->time = (gcnew System::Windows::Forms::Label());
 			this->deletebutton = (gcnew System::Windows::Forms::Button());
 			this->editbutton = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
-			this->combodoc = (gcnew System::Windows::Forms::ComboBox());
 			this->combotime = (gcnew System::Windows::Forms::ComboBox());
 			this->comboday = (gcnew System::Windows::Forms::ComboBox());
 			this->addbutton = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->panel2->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel3->SuspendLayout();
@@ -164,32 +170,33 @@ namespace Project8 {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::LightSteelBlue;
-			this->panel2->Controls->Add(this->gender);
+			this->panel2->Controls->Add(this->avgrate);
 			this->panel2->Controls->Add(this->button5);
 			this->panel2->Controls->Add(this->panel1);
 			this->panel2->Controls->Add(this->editdoc);
-			this->panel2->Controls->Add(this->age);
+			this->panel2->Controls->Add(this->specialication);
 			this->panel2->Controls->Add(this->ID);
 			this->panel2->Controls->Add(this->name);
 			this->panel2->Controls->Add(this->panel3);
 			this->panel2->Controls->Add(this->user);
 			this->panel2->Controls->Add(this->label2);
-			this->panel2->Location = System::Drawing::Point(483, 82);
+			this->panel2->Location = System::Drawing::Point(361, 106);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(1004, 658);
+			this->panel2->Size = System::Drawing::Size(968, 658);
 			this->panel2->TabIndex = 9;
 			this->panel2->Visible = false;
+			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &dochome::panel2_Paint);
 			// 
-			// gender
+			// avgrate
 			// 
-			this->gender->AutoSize = true;
-			this->gender->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->avgrate->AutoSize = true;
+			this->avgrate->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->gender->Location = System::Drawing::Point(305, 345);
-			this->gender->Name = L"gender";
-			this->gender->Size = System::Drawing::Size(50, 62);
-			this->gender->TabIndex = 15;
-			this->gender->Text = L"F";
+			this->avgrate->Location = System::Drawing::Point(305, 359);
+			this->avgrate->Name = L"avgrate";
+			this->avgrate->Size = System::Drawing::Size(61, 62);
+			this->avgrate->TabIndex = 15;
+			this->avgrate->Text = L"11";
 			// 
 			// button5
 			// 
@@ -206,7 +213,7 @@ namespace Project8 {
 			this->button5->TabIndex = 14;
 			this->button5->Text = L"Exit";
 			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &homepatient::button5_Click);
+			this->button5->Click += gcnew System::EventHandler(this, &dochome::button5_Click);
 			// 
 			// panel1
 			// 
@@ -298,7 +305,7 @@ namespace Project8 {
 			this->button4->TabIndex = 13;
 			this->button4->Text = L"Done";
 			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &homepatient::button4_Click);
+			this->button4->Click += gcnew System::EventHandler(this, &dochome::button4_Click);
 			// 
 			// comboBox1
 			// 
@@ -307,12 +314,12 @@ namespace Project8 {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Username", L"Name", L"Age", L"Gender", L"Password" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Username", L"Name", L"Specialication", L"Password" });
 			this->comboBox1->Location = System::Drawing::Point(102, 3);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(164, 30);
 			this->comboBox1->TabIndex = 11;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &homepatient::comboBox1_SelectedIndexChanged);
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &dochome::comboBox1_SelectedIndexChanged);
 			// 
 			// textBox1
 			// 
@@ -341,25 +348,25 @@ namespace Project8 {
 			this->editdoc->TabIndex = 10;
 			this->editdoc->Text = L"Edit My Profile";
 			this->editdoc->UseVisualStyleBackColor = true;
-			this->editdoc->Click += gcnew System::EventHandler(this, &homepatient::editdoc_Click);
+			this->editdoc->Click += gcnew System::EventHandler(this, &dochome::editdoc_Click);
 			// 
-			// age
+			// specialication
 			// 
-			this->age->AutoSize = true;
-			this->age->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->specialication->AutoSize = true;
+			this->specialication->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->age->Location = System::Drawing::Point(305, 283);
-			this->age->Name = L"age";
-			this->age->Size = System::Drawing::Size(68, 62);
-			this->age->TabIndex = 8;
-			this->age->Text = L"18";
+			this->specialication->Location = System::Drawing::Point(305, 283);
+			this->specialication->Name = L"specialication";
+			this->specialication->Size = System::Drawing::Size(264, 62);
+			this->specialication->TabIndex = 8;
+			this->specialication->Text = L"Dermatology";
 			// 
 			// ID
 			// 
 			this->ID->AutoSize = true;
 			this->ID->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ID->Location = System::Drawing::Point(302, 221);
+			this->ID->Location = System::Drawing::Point(305, 221);
 			this->ID->Name = L"ID";
 			this->ID->Size = System::Drawing::Size(61, 62);
 			this->ID->TabIndex = 7;
@@ -370,7 +377,7 @@ namespace Project8 {
 			this->name->AutoSize = true;
 			this->name->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->name->Location = System::Drawing::Point(302, 163);
+			this->name->Location = System::Drawing::Point(305, 163);
 			this->name->Name = L"name";
 			this->name->Size = System::Drawing::Size(148, 62);
 			this->name->TabIndex = 6;
@@ -383,7 +390,7 @@ namespace Project8 {
 			this->panel3->Controls->Add(this->label5);
 			this->panel3->Controls->Add(this->label4);
 			this->panel3->Controls->Add(this->label6);
-			this->panel3->Location = System::Drawing::Point(0, 156);
+			this->panel3->Location = System::Drawing::Point(3, 160);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(293, 508);
 			this->panel3->TabIndex = 4;
@@ -393,11 +400,11 @@ namespace Project8 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Display", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(3, 189);
+			this->label3->Location = System::Drawing::Point(0, 199);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(160, 62);
+			this->label3->Size = System::Drawing::Size(228, 62);
 			this->label3->TabIndex = 5;
-			this->label3->Text = L"Gender";
+			this->label3->Text = L"Avg rating:";
 			// 
 			// label5
 			// 
@@ -428,9 +435,9 @@ namespace Project8 {
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(3, 123);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(107, 62);
+			this->label6->Size = System::Drawing::Size(293, 62);
 			this->label6->TabIndex = 3;
-			this->label6->Text = L"Age:";
+			this->label6->Text = L"Specialication:";
 			// 
 			// user
 			// 
@@ -443,13 +450,12 @@ namespace Project8 {
 			this->user->TabIndex = 1;
 			this->user->Text = L"asmauser";
 			this->user->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->user->Click += gcnew System::EventHandler(this, &homepatient::user_Click);
 			// 
 			// label2
 			// 
 			this->label2->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->label2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label2.Image")));
-			this->label2->Location = System::Drawing::Point(3, 0);
+			this->label2->Location = System::Drawing::Point(-3, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(169, 163);
 			this->label2->TabIndex = 0;
@@ -457,7 +463,6 @@ namespace Project8 {
 			// myappoint
 			// 
 			this->myappoint->BackColor = System::Drawing::Color::LightSteelBlue;
-			this->myappoint->Controls->Add(this->button6);
 			this->myappoint->Controls->Add(this->exitmyappoint);
 			this->myappoint->Controls->Add(this->listView1);
 			this->myappoint->Controls->Add(this->panel6);
@@ -465,29 +470,12 @@ namespace Project8 {
 			this->myappoint->Controls->Add(this->editbutton);
 			this->myappoint->Controls->Add(this->panel7);
 			this->myappoint->Controls->Add(this->addbutton);
-			this->myappoint->Location = System::Drawing::Point(522, 82);
+			this->myappoint->Location = System::Drawing::Point(361, 106);
 			this->myappoint->Name = L"myappoint";
 			this->myappoint->Size = System::Drawing::Size(965, 600);
 			this->myappoint->TabIndex = 16;
 			this->myappoint->Visible = false;
-			this->myappoint->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &homepatient::myappoint_Paint);
-			// 
-			// button6
-			// 
-			this->button6->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
-			this->button6->FlatAppearance->MouseDownBackColor = System::Drawing::Color::CornflowerBlue;
-			this->button6->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Blue;
-			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button6->ForeColor = System::Drawing::Color::White;
-			this->button6->Location = System::Drawing::Point(10, 246);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(92, 30);
-			this->button6->TabIndex = 16;
-			this->button6->Text = L"clear";
-			this->button6->UseVisualStyleBackColor = true;
-			this->button6->Click += gcnew System::EventHandler(this, &homepatient::button6_Click);
+			this->myappoint->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &dochome::myappoint_Paint);
 			// 
 			// exitmyappoint
 			// 
@@ -504,48 +492,37 @@ namespace Project8 {
 			this->exitmyappoint->TabIndex = 15;
 			this->exitmyappoint->Text = L"Exit";
 			this->exitmyappoint->UseVisualStyleBackColor = true;
-			this->exitmyappoint->Click += gcnew System::EventHandler(this, &homepatient::exitmyappoint_Click);
+			this->exitmyappoint->Click += gcnew System::EventHandler(this, &dochome::exitmyappoint_Click);
 			// 
 			// listView1
 			// 
 			this->listView1->GridLines = true;
 			this->listView1->HideSelection = false;
-			this->listView1->Location = System::Drawing::Point(322, 3);
+			this->listView1->Location = System::Drawing::Point(305, 3);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(484, 418);
+			this->listView1->Size = System::Drawing::Size(634, 418);
 			this->listView1->TabIndex = 8;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
-			this->listView1->Click += gcnew System::EventHandler(this, &homepatient::listView1_Click);
+			this->listView1->SelectedIndexChanged += gcnew System::EventHandler(this, &dochome::listView1_SelectedIndexChanged);
+			this->listView1->Click += gcnew System::EventHandler(this, &dochome::listView1_Click);
 			// 
 			// panel6
 			// 
 			this->panel6->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->panel6->Controls->Add(this->doctor);
 			this->panel6->Controls->Add(this->day);
 			this->panel6->Controls->Add(this->time);
 			this->panel6->Location = System::Drawing::Point(3, 3);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(127, 109);
+			this->panel6->Size = System::Drawing::Size(127, 86);
 			this->panel6->TabIndex = 6;
-			// 
-			// doctor
-			// 
-			this->doctor->AutoSize = true;
-			this->doctor->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->doctor->Location = System::Drawing::Point(3, 12);
-			this->doctor->Name = L"doctor";
-			this->doctor->Size = System::Drawing::Size(76, 24);
-			this->doctor->TabIndex = 3;
-			this->doctor->Text = L"doctor";
 			// 
 			// day
 			// 
 			this->day->AutoSize = true;
 			this->day->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->day->Location = System::Drawing::Point(3, 42);
+			this->day->Location = System::Drawing::Point(3, 14);
 			this->day->Name = L"day";
 			this->day->Size = System::Drawing::Size(46, 24);
 			this->day->TabIndex = 1;
@@ -556,7 +533,7 @@ namespace Project8 {
 			this->time->AutoSize = true;
 			this->time->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->time->Location = System::Drawing::Point(3, 72);
+			this->time->Location = System::Drawing::Point(3, 50);
 			this->time->Name = L"time";
 			this->time->Size = System::Drawing::Size(57, 24);
 			this->time->TabIndex = 2;
@@ -571,13 +548,13 @@ namespace Project8 {
 			this->deletebutton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->deletebutton->ForeColor = System::Drawing::Color::White;
-			this->deletebutton->Location = System::Drawing::Point(10, 200);
+			this->deletebutton->Location = System::Drawing::Point(8, 177);
 			this->deletebutton->Name = L"deletebutton";
 			this->deletebutton->Size = System::Drawing::Size(92, 30);
 			this->deletebutton->TabIndex = 11;
 			this->deletebutton->Text = L"delete";
 			this->deletebutton->UseVisualStyleBackColor = true;
-			this->deletebutton->Click += gcnew System::EventHandler(this, &homepatient::deletebutton_Click);
+			this->deletebutton->Click += gcnew System::EventHandler(this, &dochome::deletebutton_Click);
 			// 
 			// editbutton
 			// 
@@ -588,36 +565,23 @@ namespace Project8 {
 			this->editbutton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->editbutton->ForeColor = System::Drawing::Color::White;
-			this->editbutton->Location = System::Drawing::Point(10, 154);
+			this->editbutton->Location = System::Drawing::Point(8, 141);
 			this->editbutton->Name = L"editbutton";
 			this->editbutton->Size = System::Drawing::Size(92, 30);
 			this->editbutton->TabIndex = 10;
 			this->editbutton->Text = L"edit";
 			this->editbutton->UseVisualStyleBackColor = true;
-			this->editbutton->Click += gcnew System::EventHandler(this, &homepatient::editbutton_Click);
+			this->editbutton->Click += gcnew System::EventHandler(this, &dochome::editbutton_Click);
 			// 
 			// panel7
 			// 
 			this->panel7->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->panel7->Controls->Add(this->combodoc);
 			this->panel7->Controls->Add(this->combotime);
 			this->panel7->Controls->Add(this->comboday);
 			this->panel7->Location = System::Drawing::Point(136, 3);
 			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(171, 109);
+			this->panel7->Size = System::Drawing::Size(171, 86);
 			this->panel7->TabIndex = 7;
-			// 
-			// combodoc
-			// 
-			this->combodoc->BackColor = System::Drawing::Color::AliceBlue;
-			this->combodoc->Cursor = System::Windows::Forms::Cursors::Default;
-			this->combodoc->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->combodoc->FormattingEnabled = true;
-			this->combodoc->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"asmaa", L"alaa", L"amany", L"omnya" });
-			this->combodoc->Location = System::Drawing::Point(0, 12);
-			this->combodoc->Name = L"combodoc";
-			this->combodoc->Size = System::Drawing::Size(121, 24);
-			this->combodoc->TabIndex = 13;
 			// 
 			// combotime
 			// 
@@ -629,7 +593,7 @@ namespace Project8 {
 				L"11:00", L"12:30", L"13:00", L"14:30", L"15:00",
 					L"16:30", L"17:00"
 			});
-			this->combotime->Location = System::Drawing::Point(3, 72);
+			this->combotime->Location = System::Drawing::Point(3, 50);
 			this->combotime->Name = L"combotime";
 			this->combotime->Size = System::Drawing::Size(121, 24);
 			this->combotime->TabIndex = 12;
@@ -641,10 +605,10 @@ namespace Project8 {
 			this->comboday->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->comboday->FormattingEnabled = true;
 			this->comboday->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
-				L"satarday", L"sunday", L"monday", L"tuesday", L"wednsday",
-					L"tharasday", L"friday"
+				L"saterday", L"sunday", L"monday", L"tuesday", L"wednsday",
+					L"tharsday", L"friday"
 			});
-			this->comboday->Location = System::Drawing::Point(0, 42);
+			this->comboday->Location = System::Drawing::Point(3, 11);
 			this->comboday->Name = L"comboday";
 			this->comboday->Size = System::Drawing::Size(121, 24);
 			this->comboday->TabIndex = 6;
@@ -658,13 +622,13 @@ namespace Project8 {
 			this->addbutton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->addbutton->ForeColor = System::Drawing::Color::White;
-			this->addbutton->Location = System::Drawing::Point(10, 118);
+			this->addbutton->Location = System::Drawing::Point(8, 105);
 			this->addbutton->Name = L"addbutton";
 			this->addbutton->Size = System::Drawing::Size(92, 30);
 			this->addbutton->TabIndex = 9;
 			this->addbutton->Text = L"add";
 			this->addbutton->UseVisualStyleBackColor = true;
-			this->addbutton->Click += gcnew System::EventHandler(this, &homepatient::addbutton_Click);
+			this->addbutton->Click += gcnew System::EventHandler(this, &dochome::addbutton_Click);
 			// 
 			// label1
 			// 
@@ -699,7 +663,7 @@ namespace Project8 {
 			this->button2->TabIndex = 18;
 			this->button2->Text = L"My Account";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &homepatient::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &dochome::button2_Click);
 			// 
 			// button1
 			// 
@@ -716,23 +680,43 @@ namespace Project8 {
 			this->button1->TabIndex = 19;
 			this->button1->Text = L"My Appointments";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &homepatient::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &dochome::button1_Click);
 			// 
-			// homepatient
+			// button3
+			// 
+			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->button3->FlatAppearance->MouseDownBackColor = System::Drawing::Color::CornflowerBlue;
+			this->button3->FlatAppearance->MouseOverBackColor = System::Drawing::SystemColors::Info;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->ForeColor = System::Drawing::Color::Navy;
+			this->button3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button3->Location = System::Drawing::Point(113, 306);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(142, 83);
+			this->button3->TabIndex = 20;
+			this->button3->Text = L"Exit";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &dochome::button3_Click);
+			// 
+			// dochome
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1484, 743);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->myappoint);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::SizableToolWindow;
-			this->Name = L"homepatient";
+			this->Name = L"dochome";
 			this->Text = L"dochome";
-			this->Load += gcnew System::EventHandler(this, &homepatient::homepatient_Load);
+			this->Load += gcnew System::EventHandler(this, &dochome::dochome_Load);
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->panel1->ResumeLayout(false);
@@ -750,84 +734,48 @@ namespace Project8 {
 #pragma endregion
 	private: System::Void editdoc_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
-
-
-
-
 		MessageBox::Show("choose from combobox then write in textbox", "instructions", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		panel1->Visible = true;
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ selectedField = comboBox1->SelectedItem ? comboBox1->SelectedItem->ToString() : nullptr;
+		String^ selectedField = comboBox1->SelectedItem->ToString();
 		String^ newValue = textBox1->Text->Trim();
 
-		if (String::IsNullOrEmpty(selectedField)) {
-			MessageBox::Show("Please select a field to edit.", "Warning", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			return;
-		}
-
 		if (selectedField == "Name") {
+			currentDoc->name = newValue;
 			name->Text = newValue;
-			currentPatient->name = newValue;
+			MessageBox::Show("Name updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else if (selectedField == "Username") {
-			// تأكد من عدم التكرار
-			array<String^>^ lines = File::ReadAllLines("patients.txt");
+			auto lines = System::IO::File::ReadAllLines("doctors.txt");
 			for each (String ^ line in lines) {
-				if (line->Contains("\"" + newValue + "\"")) {
-					MessageBox::Show("This username is already taken!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				if (line->Contains(newValue)) {
+					MessageBox::Show("Username already exists!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 					return;
 				}
 			}
+			currentDoc->username = newValue;
 			user->Text = newValue;
-			currentPatient->username = newValue;
+			MessageBox::Show("Username updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
-		else if (selectedField == "Age") {
-			int newAge;
-			if (!Int32::TryParse(newValue, newAge)) {
-				MessageBox::Show("Please enter a valid age.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				return;
-			}
-			age->Text = newAge.ToString();
-			currentPatient->age = newAge;
-		}
-		else if (selectedField == "Gender") {
-			gender->Text = newValue;
-			currentPatient->gender = newValue[0];
-		}
-		else if (selectedField == "Password") {
-			String^ newPassword = textBox1->Text->Trim();
-			String^ confirmPassword = passwordtextboxdoc->Text->Trim();
 
-			if (newPassword != confirmPassword) {
+		else if (selectedField == "Password") {
+			String^ confirm = passwordtextboxdoc->Text->Trim();
+			if (newValue != confirm) {
 				MessageBox::Show("Password does not match", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				textBox1->Text = "";
 				passwordtextboxdoc->Text = "";
 				return;
 			}
-
-			// تحديث المتغير في الذاكرة
-			currentPatient->password = newPassword;
-
-			// إخفاء العناصر الخاصة بالتأكيد
+			currentDoc->password = newValue;
+			MessageBox::Show("Password updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			passwordtextboxdoc->Visible = false;
-			passwordelabledoc->Visible = false;
 			passwordPanal->Visible = false;
-
-			// رسالة نجاح
-			MessageBox::Show("Password changed successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			passwordelabledoc->Visible = false;
 		}
-		UpdatePatientInFile(currentPatient);
 
 		comboBox1->SelectedIndex = -1;
 		textBox1->Text = "";
-		passwordtextboxdoc->Text = "";
-		passwordtextboxdoc->Visible = false;
-		passwordelabledoc->Visible = false;
-		passwordPanal->Visible = false;
-
-		MessageBox::Show("Updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		panel1->Visible = false;
 
 		comboBox1->SelectedIndex = -1;
@@ -849,74 +797,142 @@ namespace Project8 {
 
 	}
 	private: System::Void myappoint_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-		listView1->Columns->Add("Doctor", 120);
-		listView1->Columns->Add("day", 120);
-		listView1->Columns->Add("time", 120);
-		if (currentPatient->id == "201") {
-			ListViewItem^ item1 = gcnew ListViewItem("Dr. Asmaa");
-			item1->SubItems->Add("Monday");
-			item1->SubItems->Add("12 PM");
-			listView1->Items->Add(item1);
-		}
-		else if (currentPatient->id == "202") {
-			ListViewItem^ item2 = gcnew ListViewItem("Dr. Aly");
-			item2->SubItems->Add("Wednesday");
-			item2->SubItems->Add("3 PM");
-			listView1->Items->Add(item2);
-		}
-		else if (currentPatient->id == "203") {
-			ListViewItem^ item3 = gcnew ListViewItem("Dr. Aly");
-			item3->SubItems->Add("Monday");
-			item3->SubItems->Add("4 PM");
-			listView1->Items->Add(item3);
-		}
-		else if (currentPatient->id == "204") {
-			ListViewItem^ item4 = gcnew ListViewItem("Dr. Aly");
-			item4->SubItems->Add("Wednesday");
-			item4->SubItems->Add("5 PM");
-			listView1->Items->Add(item4);
-		}
-		
+
+		//if (currentDoc->id == "31") {
+		//	ListViewItem^ item1 = gcnew ListViewItem("Monday");
+		//	item1->SubItems->Add("12:00->12:30");
+		//	item1->SubItems->Add("Booked");
+		//	listView1->Items->Add(item1);
+		//	ListViewItem^ newItem2 = gcnew ListViewItem("Tuseday");
+		//	newItem2->SubItems->Add("11:30->12:00");
+		//	newItem2->SubItems->Add("booked");
+		//	listView1->Items->Add(newItem2);
+		//	ListViewItem^ newItem3 = gcnew ListViewItem("Tuseday");
+		//	newItem3->SubItems->Add("2:30->3:00");
+		//	newItem3->SubItems->Add("booked");
+		//	listView1->Items->Add(newItem3);
+		//}
+
 
 	}
 	private: System::Void deletebutton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (listView1->SelectedItems->Count > 0)
 		{
 			String^ state = listView1->SelectedItems[0]->SubItems[2]->Text;
-			listView1->SelectedItems[0]->Remove();
-			MessageBox::Show("Appointment deleted successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			combodoc->SelectedIndex = -1;
-			comboday->SelectedIndex = -1;
-			combotime->SelectedIndex = -1;
 
+			if (state == "Booked")
+			{
+				MessageBox::Show("Cannot delete booked appointment", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else
+			{
+				String^ selectedDay = listView1->SelectedItems[0]->SubItems[0]->Text;
+				String^ selectedTime = listView1->SelectedItems[0]->SubItems[1]->Text;
+
+				array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
+				System::Collections::Generic::List<String^>^ updatedLines = gcnew System::Collections::Generic::List<String^>();
+
+				for each (String ^ line in lines)
+				{
+					array<String^>^ parts = line->Split(',');
+
+					// Format: id,name,user,day,time,isBooked,patientID,specialization
+					if (parts->Length >= 7)
+					{
+						bool isSameDoctor = parts[0] == currentDoc->id;
+						bool isSameDay = parts[3] == selectedDay;
+						bool isSameTime = parts[4] == selectedTime;
+
+						if (!(isSameDoctor && isSameDay && isSameTime))
+						{
+							updatedLines->Add(line);
+						}
+					}
+				}
+
+				System::IO::File::WriteAllLines("appointments.txt", updatedLines);
+
+				listView1->SelectedItems[0]->Remove();
+
+				MessageBox::Show("Appointment deleted successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				comboday->SelectedIndex = -1;
+				combotime->SelectedIndex = -1;
+			}
+		}
+		else
+		{
+			MessageBox::Show("Please select an appointment to delete", "Info", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
+
 	private: System::Void editbutton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (listView1->SelectedItems->Count > 0)
 		{
-			combodoc->SelectedItem = listView1->SelectedItems[0]->SubItems[0]->Text;
-			comboday->SelectedItem = listView1->SelectedItems[0]->SubItems[1]->Text;
-			combotime->SelectedItem = listView1->SelectedItems[0]->SubItems[2]->Text;
+			ListViewItem^ selectedItem = listView1->SelectedItems[0];
+			String^ state = selectedItem->SubItems[2]->Text;
+
+			if (state == "Booked") {
+				MessageBox::Show("Cannot edit booked appointment", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			String^ oldDay = selectedItem->SubItems[0]->Text;
+			String^ oldTime = selectedItem->SubItems[1]->Text;
+
+			String^ newDay = comboday->SelectedItem != nullptr ? comboday->SelectedItem->ToString() : "";
+			String^ newTime = combotime->SelectedItem != nullptr ? combotime->SelectedItem->ToString() : "";
+
+			if (String::IsNullOrWhiteSpace(newDay) || String::IsNullOrWhiteSpace(newTime)) {
+				MessageBox::Show("Please select both new day and time.");
+				return;
+			}
+
+			selectedItem->SubItems[0]->Text = newDay;
+			selectedItem->SubItems[1]->Text = newTime;
+
+			array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
+			String^ doctorID = currentDoc->id;
+			String^ doctorName = currentDoc->name;
+			String^ doctorSpec = currentDoc->specialication;
+
+			for (int i = 0; i < lines->Length; i++) {
+				array<String^>^ parts = lines[i]->Split(',');
+				if (parts->Length >= 7) {
+					if (parts[0]->Trim() == doctorID &&
+						parts[3]->Trim() == oldDay &&
+						parts[4]->Trim() == oldTime) {
+
+						lines[i] = doctorID + "," + doctorName + "," + doctorSpec + "," + newDay + "," + newTime + ",False,";
+						break;
+					}
+				}
+			}
+
+			System::IO::File::WriteAllLines("appointments.txt", lines);
+
 			MessageBox::Show("Appointment edited successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			combodoc->SelectedIndex = -1;
 			comboday->SelectedIndex = -1;
 			combotime->SelectedIndex = -1;
-
 		}
 	}
 
+
 	private: System::Void addbutton_Click(System::Object^ sender, System::EventArgs^ e) {
 		bool isDuplicate = false;
-		String^ selectedDoc = combodoc->SelectedItem->ToString();
-		String^ selectedDay = comboday->SelectedItem->ToString();
-		String^ selectedTime = combotime->SelectedItem->ToString();
+
+		String^ selectedDay = comboday->SelectedItem != nullptr ? comboday->SelectedItem->ToString() : "";
+		String^ selectedTime = combotime->SelectedItem != nullptr ? combotime->SelectedItem->ToString() : "";
+
+		if (String::IsNullOrWhiteSpace(selectedDay) || String::IsNullOrWhiteSpace(selectedTime)) {
+			MessageBox::Show("Please select both day and time.");
+			return;
+		}
 
 		for (int i = 0; i < listView1->Items->Count; i++) {
-			String^ existingDoc = listView1->Items[i]->SubItems[0]->Text;
-			String^ existingDay = listView1->Items[i]->SubItems[1]->Text;
-			String^ existingTime = listView1->Items[i]->SubItems[2]->Text;
+			String^ existingDay = listView1->Items[i]->SubItems[0]->Text;
+			String^ existingTime = listView1->Items[i]->SubItems[1]->Text;
 
-			if (existingDoc == selectedDoc && existingDay == selectedDay && existingTime == selectedTime) {
+			if (existingDay == selectedDay && existingTime == selectedTime) {
 				isDuplicate = true;
 				break;
 			}
@@ -926,18 +942,35 @@ namespace Project8 {
 			MessageBox::Show("This time slot already exists!");
 		}
 		else {
-			ListViewItem^ newItem = gcnew ListViewItem(selectedDoc);
-			newItem->SubItems->Add(selectedDay);
+			ListViewItem^ newItem = gcnew ListViewItem(selectedDay);
 			newItem->SubItems->Add(selectedTime);
+			newItem->SubItems->Add("Unbooked");
+			newItem->SubItems->Add(""); 
 			listView1->Items->Add(newItem);
+
+			String^ doctorID = currentDoc->id;     
+			String^ doctorName = currentDoc->name; 
+			String^ doctorSpec = currentDoc->specialication; 
+			String^ line = doctorID + "," + doctorName + "," + doctorSpec + "," + selectedDay + "," + selectedTime + ",False,__";
+			System::IO::File::AppendAllText("appointments.txt", line + Environment::NewLine);
+
+			MessageBox::Show("Appointment added successfully!");
 		}
-		combodoc->SelectedIndex = -1;
+
 		comboday->SelectedIndex = -1;
 		combotime->SelectedIndex = -1;
 	}
+
+
+
+
+
+
+
+
+
 	private: System::Void listView1_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (listView1->SelectedItems->Count > 0) {
-
 			comboday->SelectedItem = listView1->SelectedItems[0]->SubItems[0]->Text;
 			combotime->SelectedItem = listView1->SelectedItems[0]->SubItems[1]->Text;
 
@@ -958,39 +991,95 @@ namespace Project8 {
 		myappoint->Visible = true;
 		label1->Text = "My appointments";
 	}
-	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-		listView1->Items->Clear();
-	}
-	private: System::Void user_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		
-	}
-private: System::Void homepatient_Load(System::Object^ sender, System::EventArgs^ e) {
-	user->Text = currentPatient->username;
-	name->Text = currentPatient->name;
-	ID->Text = currentPatient->id->ToString();
-	age->Text = currentPatient->age.ToString();
-	gender->Text = currentPatient->gender.ToString();
-}
-	   void UpdatePatientInFile(Patient^ updatedPatient) {
-    array<String^>^ lines = File::ReadAllLines("patients.txt");
-    for (int i = 0; i < lines->Length; i++) {
-        String^ line = lines[i]->Trim();
-        if (line->StartsWith("{")) {
-            array<String^>^ parts = line->Split(',');
-            if (parts->Length >= 6) {
-                String^ id = parts[0]->Trim()->Replace("{", "")->Replace("\"", "");
-                if (id == updatedPatient->id) {
-                    lines[i] = "{" + updatedPatient->id + ",\"" + updatedPatient->name + "\",\"" + updatedPatient->username +
-                        "\",\"" + updatedPatient->password + "\"," + updatedPatient->age + ", '" + updatedPatient->gender + "',";
-                    break;
-                }
-            }
-        }
-    }
+	private: System::Void dochome_Load(System::Object^ sender, System::EventArgs^ e) {
 
-    File::WriteAllLines("patients.txt", lines);
-}
+		user->Text = currentDoc->username;
+		name->Text = currentDoc->name;
+		ID->Text = currentDoc->id->ToString();
+		specialication->Text = currentDoc->specialication;
+	}
+	private: System::Void listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		/*if (currentDoc->id == "315") {
+			ListViewItem^ newItem = gcnew ListViewItem("Tuseday");
+			newItem->SubItems->Add("11:30->12:00");
+			newItem->SubItems->Add("booked");
+			ListViewItem^ newItem2 = gcnew ListViewItem("Tuseday");
+			newItem->SubItems->Add("11:30->12:00");
+			newItem->SubItems->Add("booked");
+			ListViewItem^ newItem3 = gcnew ListViewItem("Tuseday");
+			newItem->SubItems->Add("11:30->12:00");
+			newItem->SubItems->Add("booked");
 
+		}*/
+
+	}
+	private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+
+		
+
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("ratings.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading ratings file: " + ex->Message);
+			return;
+		}
+
+		int total = 0;
+		int count = 0;
+
+		for each (String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 4) {
+				String^ doctorName = parts[2]->Trim();
+				String^ ratingStr = parts[3]->Trim();
+
+				if (doctorName == currentDoc->name) {
+					int rating = Int32::Parse(ratingStr);
+					total += rating;
+					count++;
+				}
+			}
+		}
+
+		double average = 0;
+
+		if (count > 0)
+		{
+			average = static_cast<double>(total) / count;
+			avgrate->Text = average.ToString("F1");
+		}
+		else
+		{
+			avgrate->Text = "0";
+		}
+	}
+
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+}
 };
+
 }
+
+/*
+
+this->Hide();
+	MyMenu^ exit = gcnew MyMenu();
+	exit->ShowDialog();
+	this->Close();
+*/
+
+
+
+
+
+
+
+
+
+
+
+//============================================================================functions!!================================================================

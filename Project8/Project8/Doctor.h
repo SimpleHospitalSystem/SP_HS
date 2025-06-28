@@ -9,15 +9,15 @@ namespace Project8 {
 		String^ name;
 		String^ username;
 		String^ password;
-		//String^ specialication;
+		String^ specialication;
 
-
-		Doctor(String^ id, String^ name, String^ username, String^ password) {
+		Doctor(String^ id, String^ name, String^ username, String^ password, String^ specialication) {
 			this->id = id;
 			this->name = name;
 			this->username = username;
 			this->password = password;
-			//this->specialication = specialication;
+			this->specialication = specialication;
+
 		}
 	};
 
