@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Patient.h"
-
+//#include "ma.h"
 using namespace System::IO;
 namespace Project8 {
 
@@ -118,56 +118,57 @@ namespace Project8 {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::ListView^ otherapp;
 	private: System::Windows::Forms::Label^ la10;
-private: System::Windows::Forms::GroupBox^ groupBox1;
-private: System::Windows::Forms::Panel^ addpa;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Panel^ addpa;
 
-private: System::Windows::Forms::Label^ label14;
-private: System::Windows::Forms::Label^ label15;
-private: System::Windows::Forms::ListView^ docavti;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::ListView^ docavti;
 
-private: System::Windows::Forms::Button^ button7;
+	private: System::Windows::Forms::Button^ button7;
 
-private: System::Windows::Forms::ComboBox^ compdoc;
+	private: System::Windows::Forms::ComboBox^ compdoc;
 
-private: System::Windows::Forms::ComboBox^ compspc;
-
-
-private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::ComboBox^ compspc;
 
 
-private: System::Windows::Forms::Label^ label18;
-private: System::Windows::Forms::ComboBox^ uspc;
-private: System::Windows::Forms::Label^ label13;
-private: System::Windows::Forms::GroupBox^ groupBox2;
-private: System::Windows::Forms::Label^ label21;
-private: System::Windows::Forms::Label^ label20;
-private: System::Windows::Forms::Label^ label19;
-private: System::Windows::Forms::Label^ label16;
-private: System::Windows::Forms::Label^ label25;
-private: System::Windows::Forms::Label^ label23;
-private: System::Windows::Forms::Label^ label24;
-private: System::Windows::Forms::Label^ label22;
-private: System::Windows::Forms::Panel^ panel5;
-private: System::Windows::Forms::GroupBox^ groupBox3;
-private: System::Windows::Forms::Label^ label26;
-private: System::Windows::Forms::Label^ label27;
-private: System::Windows::Forms::ListView^ ratelist;
-
-private: System::Windows::Forms::Button^ button8;
-private: System::Windows::Forms::ComboBox^ docra;
-private: System::Windows::Forms::ComboBox^ spcra;
+	private: System::Windows::Forms::Label^ label17;
 
 
-private: System::Windows::Forms::Label^ label28;
-private: System::Windows::Forms::Label^ label29;
-private: System::Windows::Forms::Button^ button3;
-private: System::Windows::Forms::RadioButton^ radioButton5;
-private: System::Windows::Forms::RadioButton^ radioButton4;
-private: System::Windows::Forms::RadioButton^ radioButton3;
-private: System::Windows::Forms::RadioButton^ radioButton2;
-private: System::Windows::Forms::RadioButton^ radioButton1;
-private: System::Windows::Forms::Button^ ratedone;
-private: System::Windows::Forms::Button^ button9;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::ComboBox^ uspc;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::Label^ label21;
+	private: System::Windows::Forms::Label^ label20;
+	private: System::Windows::Forms::Label^ label19;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label25;
+	private: System::Windows::Forms::Label^ label23;
+	private: System::Windows::Forms::Label^ label24;
+	private: System::Windows::Forms::Label^ label22;
+	private: System::Windows::Forms::Panel^ panel5;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: System::Windows::Forms::Label^ label26;
+	private: System::Windows::Forms::Label^ label27;
+	private: System::Windows::Forms::ListView^ ratelist;
+
+	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::ComboBox^ docra;
+	private: System::Windows::Forms::ComboBox^ spcra;
+
+
+	private: System::Windows::Forms::Label^ label28;
+	private: System::Windows::Forms::Label^ label29;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::RadioButton^ radioButton5;
+	private: System::Windows::Forms::RadioButton^ radioButton4;
+	private: System::Windows::Forms::RadioButton^ radioButton3;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::Button^ ratedone;
+	private: System::Windows::Forms::Button^ button9;
+
 
 
 
@@ -587,7 +588,7 @@ private: System::Windows::Forms::Button^ button9;
 			this->addpa->Controls->Add(this->compspc);
 			this->addpa->Controls->Add(this->label17);
 			this->addpa->Controls->Add(this->label18);
-			this->addpa->Location = System::Drawing::Point(380, 59);
+			this->addpa->Location = System::Drawing::Point(350, 64);
 			this->addpa->Name = L"addpa";
 			this->addpa->Size = System::Drawing::Size(1137, 673);
 			this->addpa->TabIndex = 26;
@@ -713,7 +714,7 @@ private: System::Windows::Forms::Button^ button9;
 			this->panel5->Controls->Add(this->spcra);
 			this->panel5->Controls->Add(this->label28);
 			this->panel5->Controls->Add(this->label29);
-			this->panel5->Location = System::Drawing::Point(367, 56);
+			this->panel5->Location = System::Drawing::Point(350, 61);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(1137, 673);
 			this->panel5->TabIndex = 27;
@@ -1417,16 +1418,15 @@ private: System::Windows::Forms::Button^ button9;
 			this->button9->FlatAppearance->MouseDownBackColor = System::Drawing::Color::CornflowerBlue;
 			this->button9->FlatAppearance->MouseOverBackColor = System::Drawing::SystemColors::Info;
 			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button9->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->button9->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 18, System::Drawing::FontStyle::Bold));
 			this->button9->ForeColor = System::Drawing::Color::Navy;
-			this->button9->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button9->Location = System::Drawing::Point(111, 363);
+			this->button9->Location = System::Drawing::Point(114, 363);
 			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(142, 83);
+			this->button9->Size = System::Drawing::Size(135, 84);
 			this->button9->TabIndex = 28;
 			this->button9->Text = L"Exit";
 			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &homepatient::button9_Click);
 			// 
 			// homepatient
 			// 
@@ -1496,7 +1496,7 @@ private: System::Windows::Forms::Button^ button9;
 		}
 		else if (selectedField == "Username") {
 			array<String^>^ lines = File::ReadAllLines("patients.txt");
-			for each (String ^ line in lines) {
+			for each(String ^ line in lines) {
 				if (line->Contains("\"" + newValue + "\"")) {
 					MessageBox::Show("This username is already taken!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 					return;
@@ -1569,49 +1569,49 @@ private: System::Windows::Forms::Button^ button9;
 	}
 
 
-						private: System::Void LoadPatientAppointments() {
-							listView1->Items->Clear();
-							listView1->Columns->Clear();
+	private: System::Void LoadPatientAppointments() {
+		listView1->Items->Clear();
+		listView1->Columns->Clear();
 
 
-							if (currentPatient == nullptr || currentPatient->id == nullptr) {
-								MessageBox::Show("Patient is not logged in.");
-								return;
-							}
+		if (currentPatient == nullptr || currentPatient->id == nullptr) {
+			MessageBox::Show("Patient is not logged in.");
+			return;
+		}
 
-							String^ patientID = currentPatient->id;
+		String^ patientID = currentPatient->id;
 
-							if (System::IO::File::Exists("appointments.txt")) {
-								array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
+		if (System::IO::File::Exists("appointments.txt")) {
+			array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
 
-								for each (String ^ line in lines) {
-									array<String^>^ parts = line->Split(',');
+			for each(String ^ line in lines) {
+				array<String^>^ parts = line->Split(',');
 
-									// Format: DoctorID,DoctorName,Specialization,Date,Time,IsBooked,PatientID
-									if (parts->Length >= 7) {
-										String^ isBooked = parts[5]->Trim()->ToLower();
-										String^ bookedBy = parts[6]->Trim();
+				// Format: DoctorID,DoctorName,Specialization,Date,Time,IsBooked,PatientID
+				if (parts->Length >= 7) {
+					String^ isBooked = parts[5]->Trim()->ToLower();
+					String^ bookedBy = parts[6]->Trim();
 
-										if (isBooked == "true" && bookedBy == patientID) {
-											String^ spec = parts[2]->Trim();
-											String^ doc = parts[1]->Trim();
-											String^ day = parts[3]->Trim();
-											String^ time = parts[4]->Trim();
+					if (isBooked == "true" && bookedBy == patientID) {
+						String^ spec = parts[2]->Trim();
+						String^ doc = parts[1]->Trim();
+						String^ day = parts[3]->Trim();
+						String^ time = parts[4]->Trim();
 
-											ListViewItem^ item = gcnew ListViewItem(doc);    // Specialization
-											item->SubItems->Add(spec);                         // Doctor
-											item->SubItems->Add(day);                         // Day
-											item->SubItems->Add(time);                        // Time
+						ListViewItem^ item = gcnew ListViewItem(doc);    // Specialization
+						item->SubItems->Add(spec);                         // Doctor
+						item->SubItems->Add(day);                         // Day
+						item->SubItems->Add(time);                        // Time
 
-											listView1->Items->Add(item);
-										}
-									}
-								}
-							}
-							else {
-								MessageBox::Show("appointments.txt not found.");
-							}
-						}
+						listView1->Items->Add(item);
+					}
+				}
+			}
+		}
+		else {
+			MessageBox::Show("appointments.txt not found.");
+		}
+	}
 
 	private: System::Void myappoint_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		LoadPatientAppointments();
@@ -1620,7 +1620,7 @@ private: System::Windows::Forms::Button^ button9;
 		listView1->Columns->Add("day", 120);
 		listView1->Columns->Add("time", 120);
 
-		
+
 
 	}
 	private: System::Void deletebutton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1651,849 +1651,878 @@ private: System::Windows::Forms::Button^ button9;
 		myappoint->Visible = true;
 		label1->Text = "My appointments";
 	}
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to clear all booked appointments?",
-		"Confirmation",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Warning
-	);
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to clear all booked appointments?",
+			"Confirmation",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Warning
+		);
 
-	if (result == System::Windows::Forms::DialogResult::Yes) {
-		// Step 1: Clear the ListView
-		listView1->Items->Clear();
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			// Step 1: Clear the ListView
+			listView1->Items->Clear();
 
-		// Step 2: Read and update the file
-		array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
+			// Step 2: Read and update the file
+			array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
 
-		for (int i = 0; i < lines->Length; i++) {
-			array<String^>^ parts = lines[i]->Split(',');
+			for (int i = 0; i < lines->Length; i++) {
+				array<String^>^ parts = lines[i]->Split(',');
 
-			if (parts->Length >= 7) {
+				if (parts->Length >= 7) {
+					String^ isBooked = parts[5]->Trim()->ToLower();
+
+					if (isBooked == "true") {
+						parts[5] = "False";
+						parts[6] = ""; // remove PatientID
+						lines[i] = String::Join(",", parts);
+					}
+				}
+			}
+
+			System::IO::File::WriteAllLines("appointments.txt", lines);
+
+			MessageBox::Show("All booked appointments have been cleared.", "Done", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+	}
+	private: System::Void user_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+	}
+	private: System::Void homepatient_Load(System::Object^ sender, System::EventArgs^ e) {
+		user->Text = currentPatient->username;
+		name->Text = currentPatient->name;
+		ID->Text = currentPatient->id->ToString();
+		age->Text = currentPatient->age.ToString();
+		gender->Text = currentPatient->gender.ToString();
+	}
+		   void UpdatePatientInFile(Patient^ updatedPatient) {
+			   array<String^>^ lines = File::ReadAllLines("patients.txt");
+			   for (int i = 0; i < lines->Length; i++) {
+				   String^ line = lines[i]->Trim();
+				   if (line->StartsWith("{")) {
+					   array<String^>^ parts = line->Split(',');
+					   if (parts->Length >= 6) {
+						   String^ id = parts[0]->Trim()->Replace("{", "")->Replace("\"", "");
+						   if (id == updatedPatient->id) {
+							   lines[i] = "{" + updatedPatient->id + ",\"" + updatedPatient->name + "\",\"" + updatedPatient->username +
+								   "\",\"" + updatedPatient->password + "\"," + updatedPatient->age + ", '" + updatedPatient->gender + "',";
+							   break;
+						   }
+					   }
+				   }
+			   }
+
+			   File::WriteAllLines("patients.txt", lines);
+		   }
+
+
+
+
+
+	private: System::Void exyapp_Click(System::Object^ sender, System::EventArgs^ e) {
+		otherapp->Items->Clear();
+		ydapp->Items->Clear();
+
+		if (uspc->Items->Count == 0 || uspc->Items[0]->ToString() != "") {
+			uspc->Items->Insert(0, "");
+		}
+		uspc->SelectedIndex = 0;
+
+		if (udoc->Items->Count == 0 || udoc->Items[0]->ToString() != "") {
+			udoc->Items->Insert(0, "");
+		}
+		udoc->SelectedIndex = 0;
+		label20->Visible = false;
+		label21->Visible = false;
+		label23->Visible = false;
+		label24->Visible = false;
+
+		apped->Visible = false;
+	}
+	private: System::Void compspc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		compdoc->Items->Clear();
+
+		if (compspc->SelectedItem == nullptr) return;
+
+		String^ selectedSpecialization = compspc->SelectedItem->ToString()->Trim()->ToLower();
+
+		array<String^>^ lines;
+		try
+		{
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error reading appointments file: " + ex->Message);
+			return;
+		}
+
+		System::Collections::Generic::List<String^>^ availableDoctors = gcnew System::Collections::Generic::List<String^>();
+
+		for each(String ^ line in lines)
+		{
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 6)
+			{
+				String^ doctorName = parts[1]->Trim();
+				String^ specialization = parts[2]->Trim()->ToLower();
 				String^ isBooked = parts[5]->Trim()->ToLower();
 
-				if (isBooked == "true") {
-					parts[5] = "False";
-					parts[6] = ""; // remove PatientID
-					lines[i] = String::Join(",", parts);
-				}
-			}
-		}
-
-		System::IO::File::WriteAllLines("appointments.txt", lines);
-
-		MessageBox::Show("All booked appointments have been cleared.", "Done", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	}
-}
-	private: System::Void user_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		
-	}
-private: System::Void homepatient_Load(System::Object^ sender, System::EventArgs^ e) {
-	user->Text = currentPatient->username;
-	name->Text = currentPatient->name;
-	ID->Text = currentPatient->id->ToString();
-	age->Text = currentPatient->age.ToString();
-	gender->Text = currentPatient->gender.ToString();
-}
-	   void UpdatePatientInFile(Patient^ updatedPatient) {
-    array<String^>^ lines = File::ReadAllLines("patients.txt");
-    for (int i = 0; i < lines->Length; i++) {
-        String^ line = lines[i]->Trim();
-        if (line->StartsWith("{")) {
-            array<String^>^ parts = line->Split(',');
-            if (parts->Length >= 6) {
-                String^ id = parts[0]->Trim()->Replace("{", "")->Replace("\"", "");
-                if (id == updatedPatient->id) {
-                    lines[i] = "{" + updatedPatient->id + ",\"" + updatedPatient->name + "\",\"" + updatedPatient->username +
-                        "\",\"" + updatedPatient->password + "\"," + updatedPatient->age + ", '" + updatedPatient->gender + "',";
-                    break;
-                }
-            }
-        }
-    }
-
-    File::WriteAllLines("patients.txt", lines);
-}
-
-
-
-
-
-private: System::Void exyapp_Click(System::Object^ sender, System::EventArgs^ e) {
-	otherapp->Items->Clear();
-	ydapp->Items->Clear();
-
-	if (uspc->Items->Count == 0 || uspc->Items[0]->ToString() != "") {
-		uspc->Items->Insert(0, ""); 
-	}
-	uspc->SelectedIndex = 0;
-
-	if (udoc->Items->Count == 0 || udoc->Items[0]->ToString() != "") {
-		udoc->Items->Insert(0, "");
-	}
-	udoc->SelectedIndex = 0;
-
-	apped->Visible = false;
-}
-private: System::Void compspc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	compdoc->Items->Clear();
-
-	if (compspc->SelectedItem == nullptr) return;
-
-	String^ selectedSpecialization = compspc->SelectedItem->ToString()->Trim()->ToLower();
-
-	array<String^>^ lines;
-	try
-	{
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show("Error reading appointments file: " + ex->Message);
-		return;
-	}
-
-	System::Collections::Generic::List<String^>^ availableDoctors = gcnew System::Collections::Generic::List<String^>();
-
-	for each (String ^ line in lines)
-	{
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 6)
-		{
-			String^ doctorName = parts[1]->Trim();
-			String^ specialization = parts[2]->Trim()->ToLower();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-
-			if (specialization == selectedSpecialization && isBooked == "false")
-			{
-				if (!availableDoctors->Contains(doctorName))
+				if (specialization == selectedSpecialization && isBooked == "false")
 				{
-					availableDoctors->Add(doctorName);
-					compdoc->Items->Add(doctorName);
+					if (!availableDoctors->Contains(doctorName))
+					{
+						availableDoctors->Add(doctorName);
+						compdoc->Items->Add(doctorName);
+					}
 				}
 			}
 		}
+
+		compdoc->Items->Insert(0, "");
+		compdoc->SelectedIndex = 0;
+
+		if (compdoc->Items->Count == 0)
+		{
+			MessageBox::Show("No doctors available for this specialization at the moment.", "No Available Doctors");
+		}
+
 	}
-
-	compdoc->Items->Insert(0, "");
-	compdoc->SelectedIndex = 0;
-
-	if (compdoc->Items->Count == 0)
-	{
-		MessageBox::Show("No doctors available for this specialization at the moment.", "No Available Doctors");
+	private: System::Void adap_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void compdoc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		docavti->Items->Clear();
 
-}
-private: System::Void adap_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void compdoc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	docavti->Items->Clear();
+		// التأكد من أن الدكتور محدد
+		if (compdoc->SelectedItem == nullptr || compdoc->SelectedItem->ToString() == "") return;
 
-	// التأكد من أن الدكتور محدد
-	if (compdoc->SelectedItem == nullptr || compdoc->SelectedItem->ToString() == "") return;
+		String^ selectedDoctor = compdoc->SelectedItem->ToString()->Trim();
 
-	String^ selectedDoctor = compdoc->SelectedItem->ToString()->Trim();
+		// قراءة الملف
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading appointments file: " + ex->Message);
+			return;
+		}
 
-	// قراءة الملف
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading appointments file: " + ex->Message);
-		return;
-	}
+		// استعراض المواعيد المتاحة للدكتور المحدد
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
 
-	// استعراض المواعيد المتاحة للدكتور المحدد
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
+			if (parts->Length >= 6) {
+				String^ doctorName = parts[1]->Trim();
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
 
-		if (parts->Length >= 6) {
-			String^ doctorName = parts[1]->Trim();
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-
-			if (doctorName == selectedDoctor && isBooked == "false") {
-				// إنشاء عنصر جديد للعرض
-				ListViewItem^ item = gcnew ListViewItem(date);
-				item->SubItems->Add(time);
-				docavti->Items->Add(item);
+				if (doctorName == selectedDoctor && isBooked == "false") {
+					// إنشاء عنصر جديد للعرض
+					ListViewItem^ item = gcnew ListViewItem(date);
+					item->SubItems->Add(time);
+					docavti->Items->Add(item);
+				}
 			}
 		}
-	}
 
-	// إذا لم يوجد مواعيد متاحة
-	if (docavti->Items->Count == 0) {
-		MessageBox::Show("No available appointments for this doctor.", "No Appointments", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	}
-}
-private: System::Void docavti_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (docavti->SelectedItems->Count == 0 || compdoc->SelectedItem == nullptr || currentPatient == nullptr) return;
-
-	// استخراج البيانات
-	String^ selectedDate = docavti->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ selectedTime = docavti->SelectedItems[0]->SubItems[1]->Text->Trim();
-	String^ selectedDoctor = compdoc->SelectedItem->ToString()->Trim();
-	String^ selectedspcs = compspc->SelectedItem->ToString()->Trim();
-
-	// قراءة كل المواعيد
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading appointments file: " + ex->Message);
-		return;
-	}
-
-	// ✅ تحقق 1: هل أكثر من دكتور عنده نفس التاريخ والوقت؟
-	int sameTimeCount = 0;
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
-		if (parts->Length >= 6) {
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-
-			if (date == selectedDate && time == selectedTime && isBooked == "false") {
-				sameTimeCount++;
-			}
+		// إذا لم يوجد مواعيد متاحة
+		if (docavti->Items->Count == 0) {
+			MessageBox::Show("No available appointments for this doctor.", "No Appointments", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
-	if (sameTimeCount > 1) {
-		MessageBox::Show("This time slot is available with more than one doctor. You cannot book it.", "Conflict", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		return;
-	}
+	private: System::Void docavti_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (docavti->SelectedItems->Count == 0 || compdoc->SelectedItem == nullptr || currentPatient == nullptr) return;
 
-	// ✅ تحقق 2: هل المريض لديه موعد في هذا الوقت؟
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
-		if (parts->Length >= 7) {
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-			String^ patientId = parts[6]->Trim();
+		// استخراج البيانات
+		String^ selectedDate = docavti->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ selectedTime = docavti->SelectedItems[0]->SubItems[1]->Text->Trim();
+		String^ selectedDoctor = compdoc->SelectedItem->ToString()->Trim();
+		String^ selectedspcs = compspc->SelectedItem->ToString()->Trim();
 
-			if (date == selectedDate && time == selectedTime && isBooked == "true" && patientId == currentPatient->id) {
-				MessageBox::Show("You already have an appointment at this time.", "Conflict", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				return;
+		// قراءة كل المواعيد
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading appointments file: " + ex->Message);
+			return;
+		}
+
+		// ✅ تحقق 1: هل أكثر من دكتور عنده نفس التاريخ والوقت؟
+		int sameTimeCount = 0;
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+			if (parts->Length >= 6) {
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+
+				if (date == selectedDate && time == selectedTime && isBooked == "false") {
+					sameTimeCount++;
+				}
 			}
 		}
+		if (sameTimeCount > 1) {
+			MessageBox::Show("This time slot is available with more than one doctor. You cannot book it.", "Conflict", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
+		// ✅ تحقق 2: هل المريض لديه موعد في هذا الوقت؟
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+			if (parts->Length >= 7) {
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+				String^ patientId = parts[6]->Trim();
+
+				if (date == selectedDate && time == selectedTime && isBooked == "true" && patientId == currentPatient->id) {
+					MessageBox::Show("You already have an appointment at this time.", "Conflict", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+					return;
+				}
+			}
+		}
+
+		// رسالة التأكيد
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to book this appointment?",
+			"Confirm Booking",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Question
+		);
+
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			// تعديل الملف
+			for (int i = 0; i < lines->Length; i++) {
+				array<String^>^ parts = lines[i]->Split(',');
+
+				if (parts->Length >= 7) {
+					String^ doctorName = parts[1]->Trim();
+					String^ spcs = parts[2]->Trim();
+					String^ date = parts[3]->Trim();
+					String^ time = parts[4]->Trim();
+					String^ isBooked = parts[5]->Trim()->ToLower();
+
+					if (spcs == selectedspcs && doctorName == selectedDoctor && date == selectedDate && time == selectedTime && isBooked == "false") {
+						parts[5] = "True";
+						parts[6] = currentPatient->id;
+						lines[i] = String::Join(",", parts);
+						break;
+					}
+				}
+			}
+
+			System::IO::File::WriteAllLines("appointments.txt", lines);
+
+
+			docavti->Items->Remove(docavti->SelectedItems[0]);
+
+			MessageBox::Show("Appointment booked successfully.", "Booked", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			addpa->Visible = false;
+		}
+
+		compdoc->Items->Clear();
+		compspc->SelectedIndex = 0;
+
+		if (compdoc->Items->Count == 0 || compdoc->Items[0]->ToString() != "") {
+			compdoc->Items->Insert(0, "");
+		}
+		compdoc->SelectedIndex = 0;
+	}
+	private: System::Void addpa_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		docavti->Columns->Add("Day", 250);
+		docavti->Columns->Add("Time", 250);
+		//==============
+
+	}
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		compdoc->Items->Clear();
+
+		compspc->SelectedIndex = 0;
+
+		if (compdoc->Items->Count == 0 || compdoc->Items[0]->ToString() != "") {
+			compdoc->Items->Insert(0, "");
+		}
+		compdoc->SelectedIndex = 0;
+
+		addpa->Visible = false;
 	}
 
-	// رسالة التأكيد
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to book this appointment?",
-		"Confirm Booking",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Question
-	);
 
-	if (result == System::Windows::Forms::DialogResult::Yes) {
-		// تعديل الملف
+
+	private: System::Void apped_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		otherapp->Columns->Add("Day", 150);
+		otherapp->Columns->Add("Time", 150);
+		ydapp->Columns->Add("Day", 150);
+		ydapp->Columns->Add("Time", 150);
+
+
+
+	}
+
+
+
+
+	private: System::Void uspc_SelectedIndexChanged_1(System::Object^ sender, System::EventArgs^ e) {
+		udoc->Items->Clear();
+
+		System::Collections::Generic::List<String^>^ doctors = gcnew System::Collections::Generic::List<String^>();
+		if (uspc->SelectedItem == nullptr) return;  // تأكدي إن في حاجة متختارة
+
+		String^ selectedSpc = uspc->SelectedItem->ToString()->Trim();  // ده السطر المهم
+
+		array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 7) {
+				String^ spcs = parts[2]->Trim();
+				String^ doctor = parts[1]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+				String^ patientId = parts[6]->Trim();
+
+				if (isBooked == "true" && patientId == currentPatient->id && spcs == selectedSpc) {
+					if (!doctors->Contains(doctor)) {
+						doctors->Add(doctor);
+					}
+				}
+			}
+		}
+
+		for each(String ^ d in doctors) {
+			udoc->Items->Add(d);
+		}
+
+	}
+
+	private: System::Void udoc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		ydapp->Items->Clear();
+		otherapp->Items->Clear();
+
+		if (udoc->SelectedItem == nullptr || currentPatient == nullptr) return;
+
+		String^ selectedDoctor = udoc->SelectedItem->ToString()->Trim();
+		array<String^>^ lines;
+
+		try {
+			lines = File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading file: " + ex->Message);
+			return;
+		}
+
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 7) {
+				String^ doctorName = parts[1]->Trim();
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+				String^ patientId = parts[6]->Trim();
+
+				if (isBooked == "true" && patientId == currentPatient->id && doctorName == selectedDoctor) {
+					ListViewItem^ item = gcnew ListViewItem(date);
+					item->SubItems->Add(time);
+					ydapp->Items->Add(item);
+				}
+				else if (isBooked == "false" && doctorName == selectedDoctor) {
+					ListViewItem^ item = gcnew ListViewItem(date);
+					item->SubItems->Add(time);
+					otherapp->Items->Add(item);
+				}
+			}
+		}
+
+	}
+	private: System::Void delap_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (ydapp->SelectedItems->Count == 0 || currentPatient == nullptr)
+		{
+			MessageBox::Show("Please select an appointment to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			return;
+		}
+
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to delete this appointment?",
+			"Confirm Delete",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Warning
+		);
+
+		if (result == System::Windows::Forms::DialogResult::No)
+			return;
+
+		String^ selectedDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ selectedTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
+		String^ selectedDoctor = udoc->SelectedItem != nullptr ? udoc->SelectedItem->ToString()->Trim() : "";
+
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading file: " + ex->Message);
+			return;
+		}
+
 		for (int i = 0; i < lines->Length; i++) {
 			array<String^>^ parts = lines[i]->Split(',');
 
 			if (parts->Length >= 7) {
 				String^ doctorName = parts[1]->Trim();
-				String^ spcs = parts[2]->Trim();
 				String^ date = parts[3]->Trim();
 				String^ time = parts[4]->Trim();
 				String^ isBooked = parts[5]->Trim()->ToLower();
+				String^ patientId = parts[6]->Trim();
 
-				if (spcs == selectedspcs && doctorName == selectedDoctor && date == selectedDate && time == selectedTime && isBooked == "false") {
-					parts[5] = "True";
-					parts[6] = currentPatient->id;
+				if (doctorName == selectedDoctor && date == selectedDate && time == selectedTime &&
+					isBooked == "true" && patientId == currentPatient->id) {
+
+					parts[5] = "false";
+					parts[6] = "";
 					lines[i] = String::Join(",", parts);
 					break;
 				}
 			}
 		}
 
-		System::IO::File::WriteAllLines("appointments.txt", lines);
-
-	
-		docavti->Items->Remove(docavti->SelectedItems[0]);
-
-		MessageBox::Show("Appointment booked successfully.", "Booked", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		addpa->Visible = false;
-	}
-
-	compdoc->Items->Clear();
-	compspc->SelectedIndex = 0;
-
-	if (compdoc->Items->Count == 0 || compdoc->Items[0]->ToString() != "") {
-		compdoc->Items->Insert(0, "");
-	}
-	compdoc->SelectedIndex = 0;
-}
-private: System::Void addpa_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	docavti->Columns->Add("Day", 250);
-	docavti->Columns->Add("Time", 250);
-	//==============
-	
-}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	compdoc->Items->Clear();
-
-	compspc->SelectedIndex = 0;
-
-	if (compdoc->Items->Count == 0 || compdoc->Items[0]->ToString() != "") {
-		compdoc->Items->Insert(0, "");
-	}
-	compdoc->SelectedIndex = 0;
-
-	addpa->Visible = false;
-}
-
-
-
-private: System::Void apped_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	otherapp->Columns->Add("Day", 150);
-	otherapp->Columns->Add("Time", 150);
-	ydapp->Columns->Add("Day", 150);
-	ydapp->Columns->Add("Time", 150);
-
-	
-	
-}
-
-
-
-
-private: System::Void uspc_SelectedIndexChanged_1(System::Object^ sender, System::EventArgs^ e) {
-	udoc->Items->Clear();
-
-	System::Collections::Generic::List<String^>^ doctors = gcnew System::Collections::Generic::List<String^>();
-	if (uspc->SelectedItem == nullptr) return;  // تأكدي إن في حاجة متختارة
-
-	String^ selectedSpc = uspc->SelectedItem->ToString()->Trim();  // ده السطر المهم
-
-	array<String^>^ lines = System::IO::File::ReadAllLines("appointments.txt");
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 7) {
-			String^ spcs = parts[2]->Trim();
-			String^ doctor = parts[1]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-			String^ patientId = parts[6]->Trim();
-
-			if (isBooked == "true" && patientId == currentPatient->id && spcs == selectedSpc) {
-				if (!doctors->Contains(doctor)) {
-					doctors->Add(doctor);
-				}
-			}
-		}
-	}
-
-	for each (String ^ d in doctors) {
-		udoc->Items->Add(d);
-	}
-
-}
-
-private: System::Void udoc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	ydapp->Items->Clear();
-	otherapp->Items->Clear();
-
-	if (udoc->SelectedItem == nullptr || currentPatient == nullptr) return;
-
-	String^ selectedDoctor = udoc->SelectedItem->ToString()->Trim();
-	array<String^>^ lines;
-
-	try {
-		lines = File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading file: " + ex->Message);
-		return;
-	}
-
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 7) {
-			String^ doctorName = parts[1]->Trim();
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-			String^ patientId = parts[6]->Trim();
-
-			if (isBooked == "true" && patientId == currentPatient->id && doctorName == selectedDoctor) {
-				ListViewItem^ item = gcnew ListViewItem(date);
-				item->SubItems->Add(time);
-				ydapp->Items->Add(item);
-			}
-			else if (isBooked == "false" && doctorName == selectedDoctor) {
-				ListViewItem^ item = gcnew ListViewItem(date);
-				item->SubItems->Add(time);
-				otherapp->Items->Add(item);
-			}
-		}
-	}
-
-}
-private: System::Void delap_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (ydapp->SelectedItems->Count == 0 || currentPatient == nullptr)
-	{
-		MessageBox::Show("Please select an appointment to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		return;
-	}
-
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to delete this appointment?",
-		"Confirm Delete",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Warning
-	);
-
-	if (result == System::Windows::Forms::DialogResult::No)
-		return;
-
-	String^ selectedDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ selectedTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
-	String^ selectedDoctor = udoc->SelectedItem != nullptr ? udoc->SelectedItem->ToString()->Trim() : "";
-
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading file: " + ex->Message);
-		return;
-	}
-
-	for (int i = 0; i < lines->Length; i++) {
-		array<String^>^ parts = lines[i]->Split(',');
-
-		if (parts->Length >= 7) {
-			String^ doctorName = parts[1]->Trim();
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-			String^ patientId = parts[6]->Trim();
-
-			if (doctorName == selectedDoctor && date == selectedDate && time == selectedTime &&
-				isBooked == "true" && patientId == currentPatient->id) {
-
-				parts[5] = "false";      
-				parts[6] = "";
-				lines[i] = String::Join(",", parts);
-				break;
-			}
-		}
-	}
-
-	try {
-		System::IO::File::WriteAllLines("appointments.txt", lines);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error writing to file: " + ex->Message);
-		return;
-	}
-
-	ydapp->Items->Remove(ydapp->SelectedItems[0]);
-
-	MessageBox::Show("Appointment deleted successfully.", "Deleted", MessageBoxButtons::OK, MessageBoxIcon::Information);
-}
-private: System::Void listView1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (listView1->SelectedItems->Count == 0)
-	{
-		MessageBox::Show("Please select an appointment to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		return;
-	}
-
-	// رسالة التأكيد
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to delete this appointment?",
-		"Confirm Deletion",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Warning
-	);
-
-	if (result == System::Windows::Forms::DialogResult::No)
-		return;
-
-	// استخراج بيانات الموعد المحدد
-	String^ selectedDoctor = listView1->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ selectedSpec = listView1->SelectedItems[0]->SubItems[1]->Text->Trim();
-	String^ selectedDay = listView1->SelectedItems[0]->SubItems[2]->Text->Trim();
-	String^ selectedTime = listView1->SelectedItems[0]->SubItems[3]->Text->Trim();
-
-	// قراءة محتوى الملف
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading file: " + ex->Message);
-		return;
-	}
-
-	// قائمة جديدة بدون السطر الذي نريد حذفه
-	System::Collections::Generic::List<String^>^ updatedLines = gcnew System::Collections::Generic::List<String^>();
-
-	for each (String ^ line in lines)
-	{
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 7)
-		{
-			String^ docName = parts[1]->Trim();
-			String^ spec = parts[2]->Trim();
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-
-			// إذا كان هذا السطر هو السطر الذي نريد حذفه، لا نضيفه للقائمة
-			if (docName == selectedDoctor && spec == selectedSpec && date == selectedDay && time == selectedTime)
-				continue;
-
-			updatedLines->Add(line);
-		}
-		else
-		{
-			// إذا السطر غير مكتمل، نحتفظ به كما هو (احتياطيًا)
-			updatedLines->Add(line);
-		}
-	}
-
-	// كتابة الملف من جديد بدون السطر المحذوف
-	try {
-		System::IO::File::WriteAllLines("appointments.txt", updatedLines);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error writing to file: " + ex->Message);
-		return;
-	}
-
-	// حذف العنصر من الليست فيو
-	listView1->Items->Remove(listView1->SelectedItems[0]);
-
-	MessageBox::Show("Appointment deleted successfully.", "Deleted", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	label13->Visible = false;
-}
-
-
-
-private: System::Void ydapp_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (ydapp->SelectedItems->Count == 0)
-		return;
-	label11->Visible = true;
-	String^ selectedDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ selectedTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
-
-	label20->Text = selectedDate;
-	label21->Text = selectedTime;
-	label20->Visible = true;
-	label21->Visible = true;
-}
-private: System::Void otherapp_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (otherapp->SelectedItems->Count == 0)
-		return;
-
-	String^ selectedDate = otherapp->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ selectedTime = otherapp->SelectedItems[0]->SubItems[1]->Text->Trim();
-
-	label23->Text = selectedDate;
-	label24->Text = selectedTime;
-}
-private: System::Void editap_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (ydapp->SelectedItems->Count == 0 || otherapp->SelectedItems->Count == 0 || currentPatient == nullptr)
-	{
-		MessageBox::Show("Please select both the current appointment and the new one from available list.", "Incomplete Selection", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		return;
-	}
-
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to edit this appointment?",
-		"Confirm Edit",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Question
-	);
-
-	if (result != System::Windows::Forms::DialogResult::Yes)
-		return;
-
-	String^ oldDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ oldTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
-
-	String^ newDate = otherapp->SelectedItems[0]->SubItems[0]->Text->Trim();
-	String^ newTime = otherapp->SelectedItems[0]->SubItems[1]->Text->Trim();
-
-	String^ selectedDoctor = udoc->SelectedItem != nullptr ? udoc->SelectedItem->ToString()->Trim() : "";
-
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading appointments file: " + ex->Message);
-		return;
-	}
-
-	bool oldFound = false;
-	bool newFound = false;
-
-	for (int i = 0; i < lines->Length; i++)
-	{
-		array<String^>^ parts = lines[i]->Split(',');
-
-		if (parts->Length >= 7)
-		{
-			String^ docName = parts[1]->Trim();
-			String^ date = parts[3]->Trim();
-			String^ time = parts[4]->Trim();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-			String^ patientId = parts[6]->Trim();
-
-			if (!oldFound && docName == selectedDoctor && date == oldDate && time == oldTime &&
-				isBooked == "true" && patientId == currentPatient->id)
-			{
-				parts[5] = "false";
-				parts[6] = "";
-				lines[i] = String::Join(",", parts);
-				oldFound = true;
-			}
-
-			else if (!newFound && docName == selectedDoctor && date == newDate && time == newTime &&
-				isBooked == "false")
-			{
-				parts[5] = "true";
-				parts[6] = currentPatient->id;
-				lines[i] = String::Join(",", parts);
-				newFound = true;
-			}
-
-			if (oldFound && newFound) break;
-		}
-	}
-
-	try {
-		System::IO::File::WriteAllLines("appointments.txt", lines);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error writing to file: " + ex->Message);
-		return;
-	}
-
-	if (!newFound)
-	{
-		MessageBox::Show("The new appointment is not available anymore.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		return;
-	}
-
-	ydapp->Items->Remove(ydapp->SelectedItems[0]);
-
-	ListViewItem^ newItem = gcnew ListViewItem(newDate);
-	newItem->SubItems->Add(newTime);
-	ydapp->Items->Add(newItem);
-
-	otherapp->Items->Remove(otherapp->SelectedItems[0]);
-
-	MessageBox::Show("Appointment updated successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-}
-private: System::Void panel5_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	ratelist->Columns->Add("Specialication", 150);
-	ratelist->Columns->Add("Doctor", 150);
-	ratelist->Columns->Add("rate", 150);
-//===========================================
-	ratelist->Items->Clear();
-
-	if (currentPatient == nullptr) {
-		MessageBox::Show("No patient is currently logged in.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		return;
-	}
-
-	String^ patientId = currentPatient->id;
-
-	array<String^>^ lines;
-	try {
-		lines = System::IO::File::ReadAllLines("ratings.txt");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading ratings file: " + ex->Message);
-		return;
-	}
-
-	for each (String ^ line in lines) {
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 4) {
-			String^ filePatientId = parts[0]->Trim();
-			String^ specialization = parts[1]->Trim();
-			String^ doctorName = parts[2]->Trim();
-			String^ rating = parts[3]->Trim();
-
-			if (filePatientId == patientId) {
-				ListViewItem^ item = gcnew ListViewItem(specialization);
-				item->SubItems->Add(doctorName);
-				item->SubItems->Add(rating);
-				ratelist->Items->Add(item);
-			}
-		}
-	}
-}
-private: System::Void spcra_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	docra->Items->Clear();
-
-	if (spcra->SelectedItem == nullptr) return;
-
-	String^ selectedSpecialization = spcra->SelectedItem->ToString()->Trim()->ToLower();
-
-	array<String^>^ lines;
-	try
-	{
-		lines = System::IO::File::ReadAllLines("appointments.txt");
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show("Error reading appointments file: " + ex->Message);
-		return;
-	}
-
-	System::Collections::Generic::List<String^>^ availableDoctors = gcnew System::Collections::Generic::List<String^>();
-
-	for each (String ^ line in lines)
-	{
-		array<String^>^ parts = line->Split(',');
-
-		if (parts->Length >= 6)
-		{
-			String^ doctorName = parts[1]->Trim();
-			String^ specialization = parts[2]->Trim()->ToLower();
-			String^ isBooked = parts[5]->Trim()->ToLower();
-
-			if (specialization == selectedSpecialization && isBooked == "false")
-			{
-				if (!availableDoctors->Contains(doctorName))
-				{
-					availableDoctors->Add(doctorName);
-					docra->Items->Add(doctorName);
-				}
-			}
-		}
-	}
-
-	docra->Items->Insert(0, ""); 
-	docra->SelectedIndex = 0;
-
-	if (docra->Items->Count == 0)
-	{
-		MessageBox::Show("No doctors available for this specialization at the moment.", "No Available Doctors");
-	}
-
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	panel5->Visible = true;
-}
-private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	docra->Items->Clear();
-
-	spcra->SelectedIndex = 0;
-
-	if (docra->Items->Count == 0 || docra->Items[0]->ToString() != "") {
-		docra->Items->Insert(0, "");
-	}
-	docra->SelectedIndex = 0;
-
-	panel5->Visible = false;
-}
-private: System::Void ratedone_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (currentPatient == nullptr || docra->SelectedItem == nullptr || spcra->SelectedItem == nullptr) {
-		MessageBox::Show("Please make sure all selections are made.", "Input Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		return;
-	}
-
-	String^ specialization = spcra->SelectedItem->ToString()->Trim();
-	String^ doctorName = docra->SelectedItem->ToString()->Trim();
-	String^ rating = "";
-
-	if (radioButton1->Checked) rating = "1";
-	else if (radioButton2->Checked) rating = "2";
-	else if (radioButton3->Checked) rating = "3";
-	else if (radioButton4->Checked) rating = "4";
-	else if (radioButton5->Checked) rating = "5";
-	else {
-		MessageBox::Show("Please select a rating before submitting.", "No Rating Selected", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		return;
-	}
-
-	System::Windows::Forms::DialogResult result =
-		MessageBox::Show("Are you sure you want to submit this rating?", "Confirm Rating", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-	if (result == System::Windows::Forms::DialogResult::Yes) {
-		String^ line = currentPatient->id + "," + specialization + "," + doctorName + "," + rating;
-
 		try {
-			System::IO::File::AppendAllText("ratings.txt", line + "\n");
-			MessageBox::Show("Rating submitted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			System::IO::File::WriteAllLines("appointments.txt", lines);
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("Error writing to file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Error writing to file: " + ex->Message);
+			return;
 		}
+
+		ydapp->Items->Remove(ydapp->SelectedItems[0]);
+
+		MessageBox::Show("Appointment deleted successfully.", "Deleted", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-//============================================
-	ListViewItem^ item = gcnew ListViewItem(specialization);
-	item->SubItems->Add(doctorName);
-	item->SubItems->Add(rating);
-	ratelist->Items->Add(item);
-}
+	private: System::Void listView1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedItems->Count == 0)
+		{
+			MessageBox::Show("Please select an appointment to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			return;
+		}
 
-private: System::Void ratelist_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		// رسالة التأكيد
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to delete this appointment?",
+			"Confirm Deletion",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Warning
+		);
 
-	
+		if (result == System::Windows::Forms::DialogResult::No)
+			return;
 
-}
-private: System::Void ratelist_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (ratelist->SelectedItems->Count == 0) return;
+		// استخراج بيانات الموعد المحدد
+		String^ selectedDoctor = listView1->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ selectedSpec = listView1->SelectedItems[0]->SubItems[1]->Text->Trim();
+		String^ selectedDay = listView1->SelectedItems[0]->SubItems[2]->Text->Trim();
+		String^ selectedTime = listView1->SelectedItems[0]->SubItems[3]->Text->Trim();
 
-	System::Windows::Forms::DialogResult result = MessageBox::Show(
-		"Are you sure you want to delete this rating?",
-		"Confirm Delete",
-		MessageBoxButtons::YesNo,
-		MessageBoxIcon::Question
-	);
+		// قراءة محتوى الملف
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading file: " + ex->Message);
+			return;
+		}
 
-	if (result != System::Windows::Forms::DialogResult::Yes) return;
-
-	ListViewItem^ selectedItem = ratelist->SelectedItems[0];
-	String^ specialization = selectedItem->SubItems[0]->Text->Trim();
-	String^ doctor = selectedItem->SubItems[1]->Text->Trim();
-	String^ rating = selectedItem->SubItems[2]->Text->Trim();
-
-	ratelist->Items->Remove(selectedItem);
-
-	try {
-		array<String^>^ lines = System::IO::File::ReadAllLines("ratings.txt");
+		// قائمة جديدة بدون السطر الذي نريد حذفه
 		System::Collections::Generic::List<String^>^ updatedLines = gcnew System::Collections::Generic::List<String^>();
 
-		for each (String ^ line in lines) {
+		for each(String ^ line in lines)
+		{
 			array<String^>^ parts = line->Split(',');
-			if (parts->Length >= 4) {
-				String^ patientId = parts[0]->Trim();
-				String^ spc = parts[1]->Trim();
-				String^ doc = parts[2]->Trim();
-				String^ rate = parts[3]->Trim();
 
-				if (!(patientId == currentPatient->id && spc == specialization && doc == doctor && rate == rating)) {
-					updatedLines->Add(line);
+			if (parts->Length >= 7)
+			{
+				String^ docName = parts[1]->Trim();
+				String^ spec = parts[2]->Trim();
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+
+				// إذا كان هذا السطر هو السطر الذي نريد حذفه، لا نضيفه للقائمة
+				if (docName == selectedDoctor && spec == selectedSpec && date == selectedDay && time == selectedTime)
+					continue;
+
+				updatedLines->Add(line);
+			}
+			else
+			{
+				// إذا السطر غير مكتمل، نحتفظ به كما هو (احتياطيًا)
+				updatedLines->Add(line);
+			}
+		}
+
+		// كتابة الملف من جديد بدون السطر المحذوف
+		try {
+			System::IO::File::WriteAllLines("appointments.txt", updatedLines);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error writing to file: " + ex->Message);
+			return;
+		}
+
+		// حذف العنصر من الليست فيو
+		listView1->Items->Remove(listView1->SelectedItems[0]);
+
+		MessageBox::Show("Appointment deleted successfully.", "Deleted", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		label13->Visible = false;
+	}
+
+
+
+	private: System::Void ydapp_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (ydapp->SelectedItems->Count == 0)
+			return;
+		label11->Visible = true;
+		String^ selectedDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ selectedTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
+
+		label20->Text = selectedDate;
+		label21->Text = selectedTime;
+		label20->Visible = true;
+		label21->Visible = true;
+	}
+	private: System::Void otherapp_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		if (otherapp->SelectedItems->Count == 0)
+			return;
+
+		String^ selectedDate = otherapp->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ selectedTime = otherapp->SelectedItems[0]->SubItems[1]->Text->Trim();
+
+		label23->Text = selectedDate;
+		label24->Text = selectedTime;
+		label23->Visible = true;
+		label24->Visible = true;
+	}
+	private: System::Void editap_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (ydapp->SelectedItems->Count == 0 || otherapp->SelectedItems->Count == 0 || currentPatient == nullptr)
+		{
+			MessageBox::Show("Please select both the current appointment and the new one from available list.", "Incomplete Selection", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to edit this appointment?",
+			"Confirm Edit",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Question
+		);
+
+		if (result != System::Windows::Forms::DialogResult::Yes)
+			return;
+
+		String^ oldDate = ydapp->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ oldTime = ydapp->SelectedItems[0]->SubItems[1]->Text->Trim();
+
+		String^ newDate = otherapp->SelectedItems[0]->SubItems[0]->Text->Trim();
+		String^ newTime = otherapp->SelectedItems[0]->SubItems[1]->Text->Trim();
+
+		String^ selectedDoctor = udoc->SelectedItem != nullptr ? udoc->SelectedItem->ToString()->Trim() : "";
+
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading appointments file: " + ex->Message);
+			return;
+		}
+
+		bool oldFound = false;
+		bool newFound = false;
+
+		for (int i = 0; i < lines->Length; i++)
+		{
+			array<String^>^ parts = lines[i]->Split(',');
+
+			if (parts->Length >= 7)
+			{
+				String^ docName = parts[1]->Trim();
+				String^ date = parts[3]->Trim();
+				String^ time = parts[4]->Trim();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+				String^ patientId = parts[6]->Trim();
+
+				if (!oldFound && docName == selectedDoctor && date == oldDate && time == oldTime &&
+					isBooked == "true" && patientId == currentPatient->id)
+				{
+					parts[5] = "false";
+					parts[6] = "";
+					lines[i] = String::Join(",", parts);
+					oldFound = true;
+				}
+
+				else if (!newFound && docName == selectedDoctor && date == newDate && time == newTime &&
+					isBooked == "false")
+				{
+					parts[5] = "true";
+					parts[6] = currentPatient->id;
+					lines[i] = String::Join(",", parts);
+					newFound = true;
+				}
+
+				if (oldFound && newFound) break;
+			}
+		}
+
+		try {
+			System::IO::File::WriteAllLines("appointments.txt", lines);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error writing to file: " + ex->Message);
+			return;
+		}
+
+		if (!newFound)
+		{
+			MessageBox::Show("The new appointment is not available anymore.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		ydapp->Items->Remove(ydapp->SelectedItems[0]);
+
+		ListViewItem^ newItem = gcnew ListViewItem(newDate);
+		newItem->SubItems->Add(newTime);
+		ydapp->Items->Add(newItem);
+
+		otherapp->Items->Remove(otherapp->SelectedItems[0]);
+
+		MessageBox::Show("Appointment updated successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		label20->Visible = false;
+		label21->Visible = false;
+		label23->Visible = false;
+		label24->Visible = false;
+
+	}
+
+
+
+
+
+
+
+
+
+	private: System::Void panel5_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		ratelist->Columns->Add("Specialication", 150);
+		ratelist->Columns->Add("Doctor", 150);
+		ratelist->Columns->Add("rate", 150);
+		//===========================================
+		ratelist->Items->Clear();
+
+		if (currentPatient == nullptr) {
+			MessageBox::Show("No patient is currently logged in.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		String^ patientId = currentPatient->id;
+
+		array<String^>^ lines;
+		try {
+			lines = System::IO::File::ReadAllLines("ratings.txt");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error reading ratings file: " + ex->Message);
+			return;
+		}
+
+		for each(String ^ line in lines) {
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 4) {
+				String^ filePatientId = parts[0]->Trim();
+				String^ specialization = parts[1]->Trim();
+				String^ doctorName = parts[2]->Trim();
+				String^ rating = parts[3]->Trim();
+
+				if (filePatientId == patientId) {
+					ListViewItem^ item = gcnew ListViewItem(specialization);
+					item->SubItems->Add(doctorName);
+					item->SubItems->Add(rating);
+					ratelist->Items->Add(item);
+				}
+			}
+		}
+	}
+	private: System::Void spcra_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		docra->Items->Clear();
+
+		if (spcra->SelectedItem == nullptr) return;
+
+		String^ selectedSpecialization = spcra->SelectedItem->ToString()->Trim()->ToLower();
+
+		array<String^>^ lines;
+		try
+		{
+			lines = System::IO::File::ReadAllLines("appointments.txt");
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error reading appointments file: " + ex->Message);
+			return;
+		}
+
+		System::Collections::Generic::List<String^>^ availableDoctors = gcnew System::Collections::Generic::List<String^>();
+
+		for each(String ^ line in lines)
+		{
+			array<String^>^ parts = line->Split(',');
+
+			if (parts->Length >= 6)
+			{
+				String^ doctorName = parts[1]->Trim();
+				String^ specialization = parts[2]->Trim()->ToLower();
+				String^ isBooked = parts[5]->Trim()->ToLower();
+
+				if (specialization == selectedSpecialization && isBooked == "false")
+				{
+					if (!availableDoctors->Contains(doctorName))
+					{
+						availableDoctors->Add(doctorName);
+						docra->Items->Add(doctorName);
+					}
 				}
 			}
 		}
 
-		System::IO::File::WriteAllLines("ratings.txt", updatedLines->ToArray());
-		MessageBox::Show("Rating deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		docra->Items->Insert(0, "");
+		docra->SelectedIndex = 0;
+
+		if (docra->Items->Count == 0)
+		{
+			MessageBox::Show("No doctors available for this specialization at the moment.", "No Available Doctors");
+		}
+
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error writing file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		panel5->Visible = true;
+	}
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+		docra->Items->Clear();
+
+		spcra->SelectedIndex = 0;
+
+		if (docra->Items->Count == 0 || docra->Items[0]->ToString() != "") {
+			docra->Items->Insert(0, "");
+		}
+		docra->SelectedIndex = 0;
+
+		panel5->Visible = false;
+	}
+	private: System::Void ratedone_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (currentPatient == nullptr || docra->SelectedItem == nullptr || spcra->SelectedItem == nullptr) {
+			MessageBox::Show("Please make sure all selections are made.", "Input Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
+		String^ specialization = spcra->SelectedItem->ToString()->Trim();
+		String^ doctorName = docra->SelectedItem->ToString()->Trim();
+		String^ rating = "";
+
+		if (radioButton1->Checked) rating = "1";
+		else if (radioButton2->Checked) rating = "2";
+		else if (radioButton3->Checked) rating = "3";
+		else if (radioButton4->Checked) rating = "4";
+		else if (radioButton5->Checked) rating = "5";
+		else {
+			MessageBox::Show("Please select a rating before submitting.", "No Rating Selected", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
+		System::Windows::Forms::DialogResult result =
+			MessageBox::Show("Are you sure you want to submit this rating?", "Confirm Rating", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			String^ line = currentPatient->id + "," + specialization + "," + doctorName + "," + rating;
+
+			try {
+				System::IO::File::AppendAllText("ratings.txt", line + "\n");
+				MessageBox::Show("Rating submitted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error writing to file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		//============================================
+		ListViewItem^ item = gcnew ListViewItem(specialization);
+		item->SubItems->Add(doctorName);
+		item->SubItems->Add(rating);
+		ratelist->Items->Add(item);
 	}
 
-}
+	private: System::Void ratelist_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
-};
+
+
+	}
+	private: System::Void ratelist_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (ratelist->SelectedItems->Count == 0) return;
+
+		System::Windows::Forms::DialogResult result = MessageBox::Show(
+			"Are you sure you want to delete this rating?",
+			"Confirm Delete",
+			MessageBoxButtons::YesNo,
+			MessageBoxIcon::Question
+		);
+
+		if (result != System::Windows::Forms::DialogResult::Yes) return;
+
+		ListViewItem^ selectedItem = ratelist->SelectedItems[0];
+		String^ specialization = selectedItem->SubItems[0]->Text->Trim();
+		String^ doctor = selectedItem->SubItems[1]->Text->Trim();
+		String^ rating = selectedItem->SubItems[2]->Text->Trim();
+
+		ratelist->Items->Remove(selectedItem);
+
+		try {
+			array<String^>^ lines = System::IO::File::ReadAllLines("ratings.txt");
+			System::Collections::Generic::List<String^>^ updatedLines = gcnew System::Collections::Generic::List<String^>();
+
+			for each(String ^ line in lines) {
+				array<String^>^ parts = line->Split(',');
+				if (parts->Length >= 4) {
+					String^ patientId = parts[0]->Trim();
+					String^ spc = parts[1]->Trim();
+					String^ doc = parts[2]->Trim();
+					String^ rate = parts[3]->Trim();
+
+					if (!(patientId == currentPatient->id && spc == specialization && doc == doctor && rate == rating)) {
+						updatedLines->Add(line);
+					}
+				}
+			}
+
+			System::IO::File::WriteAllLines("ratings.txt", updatedLines->ToArray());
+			MessageBox::Show("Rating deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error writing file: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+
+	}
+
+	private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result;
+		result = MessageBox::Show("Are you sure you want to exit?", "Confirmation",
+			MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			this->Close();
+		}
+	}
+	};
 }

@@ -19,7 +19,7 @@ namespace Project8 {
 
 	private: Doctor^ currentDoc;
 
-	//public: MyMenu^ mainForm;
+		   //public: MyMenu^ mainForm;
 
 		   void LoadAppointments();
 
@@ -103,7 +103,8 @@ namespace Project8 {
 	private: System::Windows::Forms::Label^ avgrate;
 
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button9;
+
 
 
 	private:
@@ -158,7 +159,7 @@ namespace Project8 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->panel2->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel3->SuspendLayout();
@@ -314,7 +315,7 @@ namespace Project8 {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Username", L"Name", L"Specialication", L"Password" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Username", L"Password" });
 			this->comboBox1->Location = System::Drawing::Point(102, 3);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(164, 30);
@@ -682,24 +683,22 @@ namespace Project8 {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &dochome::button1_Click);
 			// 
-			// button3
+			// button9
 			// 
-			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
-			this->button3->FlatAppearance->MouseDownBackColor = System::Drawing::Color::CornflowerBlue;
-			this->button3->FlatAppearance->MouseOverBackColor = System::Drawing::SystemColors::Info;
-			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button3->ForeColor = System::Drawing::Color::Navy;
-			this->button3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button3->Location = System::Drawing::Point(113, 306);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(142, 83);
-			this->button3->TabIndex = 20;
-			this->button3->Text = L"Exit";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &dochome::button3_Click);
+			this->button9->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->button9->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->button9->FlatAppearance->MouseDownBackColor = System::Drawing::Color::CornflowerBlue;
+			this->button9->FlatAppearance->MouseOverBackColor = System::Drawing::SystemColors::Info;
+			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button9->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 18, System::Drawing::FontStyle::Bold));
+			this->button9->ForeColor = System::Drawing::Color::Navy;
+			this->button9->Location = System::Drawing::Point(125, 305);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(135, 84);
+			this->button9->TabIndex = 29;
+			this->button9->Text = L"Exit";
+			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &dochome::button9_Click);
 			// 
 			// dochome
 			// 
@@ -707,7 +706,7 @@ namespace Project8 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::AliceBlue;
 			this->ClientSize = System::Drawing::Size(1484, 743);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button9);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->button2);
@@ -741,42 +740,69 @@ namespace Project8 {
 		String^ selectedField = comboBox1->SelectedItem->ToString();
 		String^ newValue = textBox1->Text->Trim();
 
-		if (selectedField == "Name") {
-			currentDoc->name = newValue;
-			name->Text = newValue;
-			MessageBox::Show("Name updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
-		else if (selectedField == "Username") {
-			auto lines = System::IO::File::ReadAllLines("doctors.txt");
-			for each (String ^ line in lines) {
-				if (line->Contains(newValue)) {
-					MessageBox::Show("Username already exists!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					return;
+		auto lines = System::IO::File::ReadAllLines("doctors.txt");
+
+		for (int i = 0; i < lines->Length; i++) {
+			String^ line = lines[i]->Trim();
+
+			if (line->StartsWith("{") && line->EndsWith("}")) {
+				// إزالة القوسين
+				line = line->Substring(1, line->Length - 2);
+
+				// تقسيم باستخدام ',' واحترام علامات الاقتباس
+				array<String^>^ parts = line->Split(',');
+
+				if (parts->Length == 5) {
+					// نظف العناصر من علامات التنصيص والمسافات
+					String^ id = parts[0]->Trim();
+					String^ name = parts[1]->Trim()->Trim('"');
+					String^ username = parts[2]->Trim()->Trim('"');
+					String^ password = parts[3]->Trim()->Trim('"');
+					String^ specialty = parts[4]->Trim()->Trim('"');
+
+					if (id == currentDoc->id->Trim()) {
+						if (selectedField == "Username") {
+							// تحقق من التكرار أولًا
+							for each (String ^ otherLine in lines) {
+								if (otherLine != lines[i] && otherLine->Contains(newValue)) {
+									MessageBox::Show("Username already exists!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+									return;
+								}
+							}
+
+							username = newValue;
+							currentDoc->username = newValue;
+							user->Text = newValue;
+							MessageBox::Show("Username updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						}
+						else if (selectedField == "Password") {
+							String^ confirm = passwordtextboxdoc->Text->Trim();
+							if (newValue != confirm) {
+								MessageBox::Show("Password does not match", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+								textBox1->Text = "";
+								passwordtextboxdoc->Text = "";
+								return;
+							}
+
+							password = newValue;
+							currentDoc->password = newValue;
+							MessageBox::Show("Password updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							passwordtextboxdoc->Visible = false;
+							passwordPanal->Visible = false;
+							passwordelabledoc->Visible = false;
+						}
+
+						// إعادة تجميع السطر بنفس التنسيق
+						lines[i] = "{" + id + ", \"" + name + "\", \"" + username + "\", \"" + password + "\", \"" + specialty + "\"}";
+						break;
+					}
 				}
 			}
-			currentDoc->username = newValue;
-			user->Text = newValue;
-			MessageBox::Show("Username updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 
-		else if (selectedField == "Password") {
-			String^ confirm = passwordtextboxdoc->Text->Trim();
-			if (newValue != confirm) {
-				MessageBox::Show("Password does not match", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				textBox1->Text = "";
-				passwordtextboxdoc->Text = "";
-				return;
-			}
-			currentDoc->password = newValue;
-			MessageBox::Show("Password updated successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			passwordtextboxdoc->Visible = false;
-			passwordPanal->Visible = false;
-			passwordelabledoc->Visible = false;
-		}
+		// إعادة كتابة الملف بعد التعديل
+		System::IO::File::WriteAllLines("doctors.txt", lines);
 
-		comboBox1->SelectedIndex = -1;
-		textBox1->Text = "";
-		panel1->Visible = false;
 
 		comboBox1->SelectedIndex = -1;
 		textBox1->Text = "";
@@ -945,12 +971,12 @@ namespace Project8 {
 			ListViewItem^ newItem = gcnew ListViewItem(selectedDay);
 			newItem->SubItems->Add(selectedTime);
 			newItem->SubItems->Add("Unbooked");
-			newItem->SubItems->Add(""); 
+			newItem->SubItems->Add("");
 			listView1->Items->Add(newItem);
 
-			String^ doctorID = currentDoc->id;     
-			String^ doctorName = currentDoc->name; 
-			String^ doctorSpec = currentDoc->specialication; 
+			String^ doctorID = currentDoc->id;
+			String^ doctorName = currentDoc->name;
+			String^ doctorSpec = currentDoc->specialication;
 			String^ line = doctorID + "," + doctorName + "," + doctorSpec + "," + selectedDay + "," + selectedTime + ",False,__";
 			System::IO::File::AppendAllText("appointments.txt", line + Environment::NewLine);
 
@@ -1015,7 +1041,7 @@ namespace Project8 {
 	}
 	private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 
-		
+
 
 		array<String^>^ lines;
 		try {
@@ -1057,10 +1083,16 @@ namespace Project8 {
 		}
 	}
 
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-}
-};
+	private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result;
+		result = MessageBox::Show("Are you sure you want to exit?", "Confirmation",
+			MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			this->Close();
+		}
+	}
+	};
 
 }
 
