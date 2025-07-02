@@ -67,8 +67,9 @@ namespace Project8 {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(-2, -2);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(759, 93);
+			this->label1->Size = System::Drawing::Size(570, 76);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Hospital system";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -77,9 +78,10 @@ namespace Project8 {
 			// 
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(281, 111);
+			this->label2->Location = System::Drawing::Point(211, 90);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(246, 87);
+			this->label2->Size = System::Drawing::Size(184, 71);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Main Menu";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -88,9 +90,10 @@ namespace Project8 {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(369, 201);
+			this->button1->Location = System::Drawing::Point(277, 163);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(135, 67);
+			this->button1->Size = System::Drawing::Size(101, 54);
 			this->button1->TabIndex = 2;
 			this->button1->TabStop = false;
 			this->button1->Text = L"Regstration";
@@ -101,9 +104,10 @@ namespace Project8 {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(369, 308);
+			this->button2->Location = System::Drawing::Point(277, 250);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(135, 74);
+			this->button2->Size = System::Drawing::Size(101, 60);
 			this->button2->TabIndex = 3;
 			this->button2->TabStop = false;
 			this->button2->Text = L"Login";
@@ -112,24 +116,26 @@ namespace Project8 {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(58, 111);
+			this->pictureBox1->Location = System::Drawing::Point(44, 90);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(140, 141);
+			this->pictureBox1->Size = System::Drawing::Size(105, 115);
 			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
 			// 
 			// MyMenu
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(736, 565);
+			this->ClientSize = System::Drawing::Size(552, 459);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"MyMenu";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyMenu";

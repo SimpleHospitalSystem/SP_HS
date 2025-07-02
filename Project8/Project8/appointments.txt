@@ -1,16 +1,11 @@
-1211,asmaa,Neurologist,monday,11:00,false,
-31,docwho,Neurologist,sunday,14:30,False,
-31,docwho,Neurologist,monday,11:00,False,
+31,docwho,Neurosurgeon,Friday,14:30,False,
+31,docwho,Neurosurgeon,Friday,13:00,False,
 31,docwho,Neurosurgeon,friday,12:30,False,
 31,docwho,Neurosurgeon,monday,12:30,False,
-31,docwho,Neurosurgeon,saterday,11:00,True,1234
 31,docwho,Neurosurgeon,sunday,16:30,False,
-1211,asmaa,Neurologist,friday,12:30,false,
-1211,asmaa,Neurologist,tuesday,13:00,False,
-1211,asmaa,Neurologist,friday,17:00,true,1234
 1211,asmaa,Neurologist,tuesday,15:00,False,
 1211,asmaa,Neurologist,sunday,12:30,False,
-12345,jana,Cardiologist,monday,12:30,True,1234
+12345,jana,Cardiologist,monday,12:30,False,
 12345,jana,Cardiologist,monday,15:00,False,
 32,salma,Dermatologist,wednsday,13:00,False,
 32,salma,Dermatologist,tharsday,17:00,False,
@@ -18,3 +13,8 @@
 1211,asmaa,Neurologist,tuesday,16:30,False,
 1211,asmaa,Neurologist,saterday,17:00,False,
 1211,asmaa,Neurologist,tharsday,15:00,False,__
+31,docwho,Neurosurgeon,Thursday,15:00,False,
+40,nora,General Surgeon,Wednesday,12:30,False,
+40,nora,General Surgeon,Friday,17:00,false,
+40,nora,General Surgeon,Wednesday,13:00,False,__
+40,nora,General Surgeon,Friday,16:30,False,__

@@ -90,6 +90,7 @@ namespace Project8 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(loginform::typeid));
 			this->radioButton1_DOC = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2_PAT = (gcnew System::Windows::Forms::RadioButton());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -114,10 +115,10 @@ namespace Project8 {
 			this->radioButton1_DOC->AutoSize = true;
 			this->radioButton1_DOC->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->radioButton1_DOC->Location = System::Drawing::Point(221, 105);
-			this->radioButton1_DOC->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->radioButton1_DOC->Location = System::Drawing::Point(166, 85);
+			this->radioButton1_DOC->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton1_DOC->Name = L"radioButton1_DOC";
-			this->radioButton1_DOC->Size = System::Drawing::Size(81, 22);
+			this->radioButton1_DOC->Size = System::Drawing::Size(67, 19);
 			this->radioButton1_DOC->TabIndex = 3;
 			this->radioButton1_DOC->Text = L"Doctor";
 			this->radioButton1_DOC->UseVisualStyleBackColor = true;
@@ -127,10 +128,10 @@ namespace Project8 {
 			// 
 			this->radioButton2_PAT->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->radioButton2_PAT->Location = System::Drawing::Point(395, 98);
-			this->radioButton2_PAT->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->radioButton2_PAT->Location = System::Drawing::Point(296, 80);
+			this->radioButton2_PAT->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton2_PAT->Name = L"radioButton2_PAT";
-			this->radioButton2_PAT->Size = System::Drawing::Size(111, 34);
+			this->radioButton2_PAT->Size = System::Drawing::Size(83, 28);
 			this->radioButton2_PAT->TabIndex = 4;
 			this->radioButton2_PAT->Text = L"Patient";
 			this->radioButton2_PAT->UseVisualStyleBackColor = true;
@@ -142,8 +143,9 @@ namespace Project8 {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(-1, 0);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(551, 73);
+			this->label1->Size = System::Drawing::Size(414, 60);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Login Form";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -155,11 +157,11 @@ namespace Project8 {
 			this->groupBox1->Controls->Add(this->username_textbox_doc);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Location = System::Drawing::Point(29, 139);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Location = System::Drawing::Point(22, 113);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(476, 164);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(357, 133);
 			this->groupBox1->TabIndex = 5;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Doctor";
@@ -169,10 +171,10 @@ namespace Project8 {
 			// 
 			this->log_butt_doctor->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->log_butt_doctor->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->log_butt_doctor->Location = System::Drawing::Point(365, 116);
-			this->log_butt_doctor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->log_butt_doctor->Location = System::Drawing::Point(274, 94);
+			this->log_butt_doctor->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->log_butt_doctor->Name = L"log_butt_doctor";
-			this->log_butt_doctor->Size = System::Drawing::Size(83, 30);
+			this->log_butt_doctor->Size = System::Drawing::Size(62, 24);
 			this->log_butt_doctor->TabIndex = 4;
 			this->log_butt_doctor->Text = L"login";
 			this->log_butt_doctor->UseVisualStyleBackColor = true;
@@ -180,36 +182,38 @@ namespace Project8 {
 			// 
 			// passward_textbox_doc
 			// 
-			this->passward_textbox_doc->Location = System::Drawing::Point(73, 116);
-			this->passward_textbox_doc->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->passward_textbox_doc->Location = System::Drawing::Point(55, 94);
+			this->passward_textbox_doc->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->passward_textbox_doc->Name = L"passward_textbox_doc";
 			this->passward_textbox_doc->PasswordChar = '*';
-			this->passward_textbox_doc->Size = System::Drawing::Size(189, 22);
+			this->passward_textbox_doc->Size = System::Drawing::Size(143, 20);
 			this->passward_textbox_doc->TabIndex = 3;
 			// 
 			// username_textbox_doc
 			// 
-			this->username_textbox_doc->Location = System::Drawing::Point(73, 60);
-			this->username_textbox_doc->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->username_textbox_doc->Location = System::Drawing::Point(55, 49);
+			this->username_textbox_doc->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->username_textbox_doc->Name = L"username_textbox_doc";
-			this->username_textbox_doc->Size = System::Drawing::Size(189, 22);
+			this->username_textbox_doc->Size = System::Drawing::Size(143, 20);
 			this->username_textbox_doc->TabIndex = 2;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(33, 97);
+			this->label3->Location = System::Drawing::Point(25, 79);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(66, 16);
+			this->label3->Size = System::Drawing::Size(52, 13);
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"password";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(33, 33);
+			this->label2->Location = System::Drawing::Point(25, 27);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(70, 16);
+			this->label2->Size = System::Drawing::Size(55, 13);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Username";
 			// 
@@ -220,11 +224,11 @@ namespace Project8 {
 			this->groupBox2->Controls->Add(this->username_textbox_pat);
 			this->groupBox2->Controls->Add(this->label4);
 			this->groupBox2->Controls->Add(this->label5);
-			this->groupBox2->Location = System::Drawing::Point(12, 215);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox2->Location = System::Drawing::Point(9, 175);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox2->Size = System::Drawing::Size(476, 164);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Size = System::Drawing::Size(357, 133);
 			this->groupBox2->TabIndex = 6;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Patient";
@@ -233,10 +237,10 @@ namespace Project8 {
 			// Log_butt_patient
 			// 
 			this->Log_butt_patient->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Log_butt_patient->Location = System::Drawing::Point(383, 116);
-			this->Log_butt_patient->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Log_butt_patient->Location = System::Drawing::Point(287, 94);
+			this->Log_butt_patient->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Log_butt_patient->Name = L"Log_butt_patient";
-			this->Log_butt_patient->Size = System::Drawing::Size(65, 30);
+			this->Log_butt_patient->Size = System::Drawing::Size(49, 24);
 			this->Log_butt_patient->TabIndex = 4;
 			this->Log_butt_patient->Text = L"login";
 			this->Log_butt_patient->UseVisualStyleBackColor = true;
@@ -244,50 +248,53 @@ namespace Project8 {
 			// 
 			// passward_textbox_pat
 			// 
-			this->passward_textbox_pat->Location = System::Drawing::Point(73, 116);
-			this->passward_textbox_pat->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->passward_textbox_pat->Location = System::Drawing::Point(55, 94);
+			this->passward_textbox_pat->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->passward_textbox_pat->Name = L"passward_textbox_pat";
 			this->passward_textbox_pat->PasswordChar = '*';
-			this->passward_textbox_pat->Size = System::Drawing::Size(189, 22);
+			this->passward_textbox_pat->Size = System::Drawing::Size(143, 20);
 			this->passward_textbox_pat->TabIndex = 3;
 			// 
 			// username_textbox_pat
 			// 
-			this->username_textbox_pat->Location = System::Drawing::Point(73, 60);
-			this->username_textbox_pat->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->username_textbox_pat->Location = System::Drawing::Point(55, 49);
+			this->username_textbox_pat->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->username_textbox_pat->Name = L"username_textbox_pat";
-			this->username_textbox_pat->Size = System::Drawing::Size(189, 22);
+			this->username_textbox_pat->Size = System::Drawing::Size(143, 20);
 			this->username_textbox_pat->TabIndex = 2;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(33, 97);
+			this->label4->Location = System::Drawing::Point(25, 79);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(66, 16);
+			this->label4->Size = System::Drawing::Size(52, 13);
 			this->label4->TabIndex = 1;
 			this->label4->Text = L"password";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(33, 33);
+			this->label5->Location = System::Drawing::Point(25, 27);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(70, 16);
+			this->label5->Size = System::Drawing::Size(55, 13);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"Username";
 			// 
 			// loginform
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(547, 514);
+			this->ClientSize = System::Drawing::Size(410, 418);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->radioButton2_PAT);
 			this->Controls->Add(this->radioButton1_DOC);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"loginform";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"login";
